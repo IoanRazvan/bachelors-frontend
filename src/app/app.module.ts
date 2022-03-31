@@ -20,7 +20,7 @@ import { AuthorizedModule } from './authorized/authorized.module';
     CoreModule,
     AuthorizedModule
   ],
-  providers: [    {
+  providers: [{
     provide: APP_INITIALIZER,
     useFactory: initializeKeycloak,
     multi: true,
@@ -36,14 +36,13 @@ function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://localhost:8081/auth',
         realm: 'bachelors',
-        clientId: 'bachelors-online-coding',
+        clientId: 'bachelors-online-coding'
       },
       initOptions: {
-        redirectUri: 'http://localhost:4200',
         pkceMethod: 'S256',
         flow: 'standard',
         onLoad: 'check-sso',
-        checkLoginIframe: true
+        silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html'
       }
     });
 }

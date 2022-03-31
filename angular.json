@@ -74,7 +74,10 @@
               "browserTarget": "bachelors-frontend:build:production"
             },
             "development": {
-              "browserTarget": "bachelors-frontend:build:development"
+              "browserTarget": "bachelors-frontend:build:development",
+              "headers": {
+                "Content-Security-Policy": "default-src 'self' http://localhost:*; script-src 'self' 'sha256-0zZPgsifJ8h8aM+gmSxkrfNtAGUZb7ItVug6/j1UR5g='"
+              }
             }
           },
           "defaultConfiguration": "development"
