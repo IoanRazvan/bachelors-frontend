@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-landing',
@@ -11,7 +12,7 @@ export class LandingComponent {
 
   onSignIn() {
     this.keycloakService.login({
-      redirectUri: 'http://localhost:4200/home'
+      redirectUri: environment.signInRedirectUri
     });
   }
 }
