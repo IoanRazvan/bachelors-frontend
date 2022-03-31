@@ -1,35 +1,24 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CoreModule, KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { HomeComponent } from './components/home/home.component';
+import { CoreModule } from './core/core.module';
+import { AuthorizedModule } from './authorized/authorized.module';
 
-function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'http://localhost:8081/auth',
-        realm: 'bachelors',
-        clientId: 'bachelors-online-coding'
-      },
-      initOptions: {}
-    });
-}
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     KeycloakAngularModule,
-    CoreModule
+    CoreModule,
+    AuthorizedModule
   ],
   providers: [    {
     provide: APP_INITIALIZER,
@@ -40,3 +29,21 @@ function initializeKeycloak(keycloak: KeycloakService) {
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8081/auth',
+        realm: 'bachelors',
+        clientId: 'bachelors-online-coding',
+      },
+      initOptions: {
+        redirectUri: 'http://localhost:4200',
+        pkceMethod: 'S256',
+        flow: 'standard',
+        onLoad: 'check-sso',
+        checkLoginIframe: true
+      }
+    });
+}

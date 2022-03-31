@@ -1,0 +1,8 @@
+<ul class="nav mt-2 shadow-sm">
+    <li class="navbar-brand ms-3">
+        StealCode
+    </li>
+    <li *ngFor="let item of navItems" class="nav-item">
+        <a [routerLink]="[item.path]" class="nav-link">{{item.name}}</a>
+    </li>
+</ul>
