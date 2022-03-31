@@ -11,12 +11,12 @@ export class AuthGuardService extends KeycloakAuthGuard {
     }
 
     public async isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
-        console.log(route);
-        console.log(state);
-        if (!this.authenticated) {
+        if (!this.authenticated && state.url !== '/') {
             await this.keycloak.login({
                 redirectUri: window.location.origin + state.url
             });
+        } else if (this.authenticated && state.url === '/') {
+            return this.router.parseUrl('home');
         }
         return true;
     }
