@@ -1,25 +1,29 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ContributeProblemComponent } from './contribute-problem.component';
-import { RouterModule, Routes } from '@angular/router';
 import { ContributeProblemHomeComponent } from './components/contribute-problem-home/contribute-problem-home.component';
-import { AuthGuardService } from '../core/services/auth-guard.service';
+import { ContributeProblemQuestionComponent } from './components/contribute-problem-question/contribute-problem-question.component';
+import { StepsModule } from 'primeng/steps';
+import { EditorModule } from 'primeng/editor';
+import { ContributeProblemRoutingModule } from './contribute-problem-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { ContributeProblemFormService } from './services/contribute-problem-form.service';
 
-export const contributeProblemRoutes: Routes = [
-  {path: '', component: ContributeProblemHomeComponent, canActivate: [AuthGuardService]}
-]
 
 @NgModule({
   declarations: [
     ContributeProblemComponent,
     ContributeProblemHomeComponent,
+    ContributeProblemQuestionComponent,
   ],
   imports: [
-    CommonModule,
-    RouterModule.forChild(contributeProblemRoutes)
+    SharedModule,
+    ContributeProblemRoutingModule,
+    StepsModule,
+    EditorModule,
   ],
-  exports: [
-    ContributeProblemComponent
+  providers: [
+    ContributeProblemFormService
   ]
 })
-export class ContributeProblemModule { }
+export class ContributeProblemModule {
+}

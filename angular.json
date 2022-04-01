@@ -28,10 +28,17 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "node_modules/quill/dist/quill.js"
             ]
           },
           "configurations": {
@@ -76,7 +83,7 @@
             "development": {
               "browserTarget": "bachelors-frontend:build:development",
               "headers": {
-                "Content-Security-Policy": "default-src 'self' http://localhost:*; script-src 'self' 'sha256-0zZPgsifJ8h8aM+gmSxkrfNtAGUZb7ItVug6/j1UR5g='"
+                "Content-Security-Policy": "default-src 'self' http://localhost:*; script-src 'self' 'sha256-0zZPgsifJ8h8aM+gmSxkrfNtAGUZb7ItVug6/j1UR5g='; style-src 'self' 'sha256-0/Y5pwgNH3TK76pSMja2x9L5s0Gug9u/YwaCmIv3nrc=' 'sha256-vZcgfkHCG2roVHN2ArdGm/4ZKyd/dptBjqe0Cv7+CYQ=' 'sha256-RvAvREUHojDuwHylTVWZp9DhleqLs6ml8G7LpjCF+EY=' 'unsafe-hashes'; img-src 'self' data:"
               }
             }
           },

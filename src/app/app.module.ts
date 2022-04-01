@@ -1,24 +1,27 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { AuthorizedModule } from './authorized/authorized.module';
-
+import { ContributeProblemModule } from './contribute-problem/contribute-problem.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
+    LandingComponent
   ],
   imports: [
-    BrowserModule,
+    CoreModule,
     AppRoutingModule,
     KeycloakAngularModule,
-    CoreModule,
-    AuthorizedModule
+    BrowserModule,
+    CommonModule,
+    AuthorizedModule,
+    ContributeProblemModule
   ],
   providers: [{
     provide: APP_INITIALIZER,

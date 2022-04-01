@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authorizedRoutes } from './authorized/authorized-routing.module';
 import { AuthorizedComponent } from './authorized/authorized.component';
-import { authorizedRoutes } from './authorized/authorized.module';
 import { LandingComponent } from './components/landing/landing.component';
 import { AuthGuardService } from './core/services/auth-guard.service';
 
@@ -14,4 +14,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
