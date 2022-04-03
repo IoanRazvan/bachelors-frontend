@@ -1,0 +1,9 @@
+<app-form-step-layout [formGroup]="form" [stepTitle]="stepData.stepTitle"
+    (onNextStep)="onNextStepClick()" (onPrevStep)="onPrevStepClick()">
+    <label for="tetcase" class="form-label">{{stepData.stepLabel}}*</label>
+    <textarea name="testcase" id="testcase" cols="30" rows="10" class="form-control"
+        [formControl]="input" [class.is-invalid]="input.invalid && input.dirty"></textarea>
+    <div class="invalid-feedback">
+        {{stepData.stepErrorMessage}}
+    </div>
+</app-form-step-layout>

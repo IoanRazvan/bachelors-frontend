@@ -1,33 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LanguageService } from 'src/app/core/services/language.service';
-import { ContributeProblemFormService } from '../../services/contribute-problem-form.service';
+import { FormStepBase } from '../../base/form-step.base';
 
 @Component({
-  selector: 'app-contribute-problem-details',
+  selector: 'app-contribute-problem-question',
   templateUrl: './contribute-problem-question.component.html',
 })
-export class ContributeProblemQuestionComponent {
-  form: FormGroup;
-  title: FormControl;
-  description: FormControl;
-  dictionary: any;
-
-
-  constructor(formBuilder: FormBuilder, private router: Router, private problemService: ContributeProblemFormService, languageService: LanguageService) {
+export class ContributeProblemQuestionComponent extends FormStepBase implements OnChanges {
+  title!: FormControl;
+  description!: FormControl;
+  @Input() override formData: any;
+  @Output() override onNextStep = new EventEmitter<any>();
+  override form: FormGroup;
+  
+  constructor(formBuilder: FormBuilder, languageService: LanguageService) {
+    super(languageService);
     this.form = formBuilder.group({
-      title: [problemService.getTitle(), Validators.required],
-      description: [problemService.getDescription(), Validators.required]
+      title: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+  }
+  
+  ngOnChanges(): void {
+    this.setForm();
+  }
+  
+  protected setForm() {
+    this.form.setValue({
+      title: this.formData.title,
+      description: this.formData.description
     });
     this.title = <FormControl>this.form.controls['title'];
     this.description = <FormControl>this.form.controls['description'];
-    this.dictionary = languageService.dictionary;
-  }
-
-  onNextStep() : boolean {
-    this.problemService.setTitleAndDescription(this.title.value, this.description.value);
-    this.router.navigate(['contribute-problem/solution']);
-    return false;
   }
 }
