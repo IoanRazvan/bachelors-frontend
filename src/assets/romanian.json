@@ -5,9 +5,16 @@
     "contributeProblemHomeButton": "Contribuie",
     "contributeProblemStep": ["Problemă", "Soluție", "Test", "Confirmare"],
     "contributeProblemNextStepButton": "Pasul Următor",
+    "contributeProblemPrevStepButton": "Pasul Anterior",
     "contributeProblemQuestionTitle": "Definirea problemei",
     "contributeProblemQuestionTitleInputLabel": "Titlu",
-    "contributeProblemQuestionTitleInputError": "Campul 'Titlu' este obligatoriu",
+    "contributeProblemQuestionTitleInputError": "Câmpul 'Titlu' este obligatoriu",
     "contributeProblemQuestionDescriptionInputLabel": "Descriere",
-    "contributeProblemQuestionDescriptionInputError": "Campul 'Descriere' este obligatoriu"
+    "contributeProblemQuestionDescriptionInputError": "Câmpul 'Descriere' este obligatoriu",
+    "contributeProblemSolutionTitle": "Soluție",
+    "contributeProblemSolutionInputTitle": "Soluție",
+    "contributePorblemSolutionInputError": "Câmpul 'Soluție' este obligatoriu",
+    "contributeProblemTestcaseTitle": "Test",
+    "contributeProblemTestcaseInputTitle": "Test",
+    "contributePorblemTestcaseInputError": "Câmpul 'Test' este obligatoriu"
 }
