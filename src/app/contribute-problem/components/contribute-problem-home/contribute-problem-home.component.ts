@@ -9,11 +9,7 @@ import { LanguageService } from 'src/app/core/services/language.service';
 export class ContributeProblemHomeComponent {
   dictionary: any;
 
-  constructor(private router: Router, languageService: LanguageService) {
+  constructor(languageService: LanguageService) {
     this.dictionary = languageService.dictionary;
-  }
-
-  onContribute() {
-    this.router.navigate(['/contribute-problem/question']);
   }
 }

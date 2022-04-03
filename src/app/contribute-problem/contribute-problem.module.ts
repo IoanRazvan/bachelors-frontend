@@ -6,7 +6,10 @@ import { StepsModule } from 'primeng/steps';
 import { EditorModule } from 'primeng/editor';
 import { ContributeProblemRoutingModule } from './contribute-problem-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { ContributeProblemFormService } from './services/contribute-problem-form.service';
+import { FormStepLayoutComponent } from './components/form-step-layout/form-step-layout.component';
+import { ContributeProblemFormComponent } from './components/contribute-problem-form/contribute-problem-form.component';
+import { ContributeProblemConfirmComponent } from './components/contribute-problem-confirm/contribute-problem-confirm.component';
+import { ContributeProblemSimpleStepComponent } from './components/contribute-problem-simple-step/contribute-problem-simple-step.component';
 
 
 @NgModule({
@@ -14,15 +17,16 @@ import { ContributeProblemFormService } from './services/contribute-problem-form
     ContributeProblemComponent,
     ContributeProblemHomeComponent,
     ContributeProblemQuestionComponent,
+    FormStepLayoutComponent,
+    ContributeProblemFormComponent,
+    ContributeProblemConfirmComponent,
+    ContributeProblemSimpleStepComponent
   ],
   imports: [
     SharedModule,
     ContributeProblemRoutingModule,
     StepsModule,
     EditorModule,
-  ],
-  providers: [
-    ContributeProblemFormService
   ]
 })
 export class ContributeProblemModule {
