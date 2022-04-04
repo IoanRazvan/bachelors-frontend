@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { LanguageService } from './services/language.service';
+import { LanguageService } from './base/language.base';
 import { RomanianLanguageService } from './services/romanian-language.service';
 
 @NgModule({

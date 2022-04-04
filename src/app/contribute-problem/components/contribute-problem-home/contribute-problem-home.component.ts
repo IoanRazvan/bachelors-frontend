@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LanguageService } from 'src/app/core/services/language.service';
+import { LanguageService } from 'src/app/core/base/language.base';
 
 @Component({
   selector: 'app-contribute-problem-home',

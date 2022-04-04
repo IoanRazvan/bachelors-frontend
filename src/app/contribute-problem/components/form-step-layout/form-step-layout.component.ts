@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { LanguageService } from 'src/app/core/services/language.service';
+import { LanguageService } from 'src/app/core/base/language.base';
 
 @Component({
   selector: 'app-form-step-layout',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
-import { LanguageService } from 'src/app/core/services/language.service';
+import { LanguageService } from 'src/app/core/base/language.base';
 import { environment } from 'src/environments/environment';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { LanguageService } from 'src/app/core/services/language.service';
+import { LanguageService } from 'src/app/core/base/language.base';
 import { StepData } from '../contribute-problem-simple-step/contribute-problem-simple-step.component';
 
 export interface ContributeProblemFormData {

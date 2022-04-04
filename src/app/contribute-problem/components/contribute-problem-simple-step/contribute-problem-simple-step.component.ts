@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { LanguageService } from 'src/app/core/services/language.service';
+import { LanguageService } from 'src/app/core/base/language.base';
 import { FormStepBase } from '../../base/form-step.base';
 
 export interface StepData {
