@@ -5,6 +5,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AuthorizedModule } from './authorized/authorized.module';
 import { ContributeProblemModule } from './contribute-problem/contribute-problem.module';
@@ -21,7 +22,8 @@ import { ContributeProblemModule } from './contribute-problem/contribute-problem
     BrowserModule,
     CommonModule,
     AuthorizedModule,
-    ContributeProblemModule
+    ContributeProblemModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: APP_INITIALIZER,

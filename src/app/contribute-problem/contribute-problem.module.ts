@@ -10,7 +10,7 @@ import { FormStepLayoutComponent } from './components/form-step-layout/form-step
 import { ContributeProblemFormComponent } from './components/contribute-problem-form/contribute-problem-form.component';
 import { ContributeProblemConfirmComponent } from './components/contribute-problem-confirm/contribute-problem-confirm.component';
 import { ContributeProblemSimpleStepComponent } from './components/contribute-problem-simple-step/contribute-problem-simple-step.component';
-
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { ContributeProblemSimpleStepComponent } from './components/contribute-pr
     ContributeProblemRoutingModule,
     StepsModule,
     EditorModule,
+    ToastModule
   ]
 })
 export class ContributeProblemModule {

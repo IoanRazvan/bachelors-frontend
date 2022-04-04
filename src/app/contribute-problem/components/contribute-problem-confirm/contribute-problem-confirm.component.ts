@@ -10,7 +10,10 @@ import { ContributeProblemFormData } from '../contribute-problem-form/contribute
 })
 export class ContributeProblemConfirmComponent {
   @Input() formData!: ContributeProblemFormData;
+  @Input() submitting: boolean = false;
+  @Input() submissionHappend: boolean = false;
   @Output() onPrevStep = new EventEmitter<any>();
+  @Output() onSubmit = new EventEmitter<any>();
   dictionary: any;
 
   constructor(languageService: LanguageService) {

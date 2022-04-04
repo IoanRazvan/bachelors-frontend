@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 import { LanguageService } from 'src/app/core/base/language.base';
 
 @Component({
@@ -9,7 +9,8 @@ import { LanguageService } from 'src/app/core/base/language.base';
 export class ContributeProblemHomeComponent {
   dictionary: any;
 
-  constructor(languageService: LanguageService) {
+  constructor(languageService: LanguageService, keycloakService: KeycloakService) {
     this.dictionary = languageService.dictionary;
+    keycloakService.getToken().then((tok) => console.log(tok));
   }
 }
