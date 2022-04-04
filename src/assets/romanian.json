@@ -16,5 +16,6 @@
     "contributePorblemSolutionInputError": "Câmpul 'Soluție' este obligatoriu",
     "contributeProblemTestcaseTitle": "Test",
     "contributeProblemTestcaseInputTitle": "Test",
-    "contributePorblemTestcaseInputError": "Câmpul 'Test' este obligatoriu"
+    "contributePorblemTestcaseInputError": "Câmpul 'Test' este obligatoriu",
+    "contributeProblemConfirmSubmit": "Adaugă problema"
 }

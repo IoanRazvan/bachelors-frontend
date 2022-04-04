@@ -16,5 +16,6 @@
     "contributePorblemSolutionInputError": "'Solution' field is required",
     "contributeProblemTestcaseTitle": "Testcase",
     "contributeProblemTestcaseInputTitle": "Testcase",
-    "contributePorblemTestcaseInputError": "'Testcase' field is required"
+    "contributePorblemTestcaseInputError": "'Testcase' field is required",
+    "contributeProblemConfirmSubmit": "Submit problem"
 }

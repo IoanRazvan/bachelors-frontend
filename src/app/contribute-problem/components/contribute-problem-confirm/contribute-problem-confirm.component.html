@@ -1,15 +1,25 @@
 <div class="mt-3 col-md-8">
     <h3 class="mt-3 text-muted">Confirmă</h3>
-    <p>Titlu</p>
-    <pre>{{formData.title}}</pre>
-    <p>Descriere</p>
-    <span [innerHTML]="formData.description"></span>
-    <p>Solutie</p>
-    <p>&nbsp;{{formData.solution}}</p>
-    <p>Test</p>
-    <p>{{formData.testcase}}</p>
-    <div class="mb-3">
-        <button class="btn btn-primary me-2" (click)="onPrevStep.emit()">Pasul Anterior</button>
-        <button class="btn btn-primary">Adauga problema</button>
-    </div>
+    <ul>
+        <li>
+            {{dictionary.contributeProblemQuestionTitleInputLabel}}
+            <p>{{formData.title}}</p>
+        </li>
+        <li>
+            {{dictionary.contributeProblemQuestionDescriptionInputLabel}}
+            <span class="description" [innerHTML]="formData.description"></span>
+        </li>
+        <li>
+            {{dictionary.contributeProblemSolutionTitle}}
+            <p>{{formData.solution}}</p>
+        </li>
+        <li>
+            {{dictionary.contributeProblemTestcaseTitle}}
+            <p class="testcase">{{formData.testcase}}</p>
+        </li>
+        <div class="mb-3">
+            <button class="btn btn-primary me-2" (click)="onPrevStep.emit()">{{dictionary.contributeProblemPrevStepButton}}</button>
+            <button class="btn btn-primary">{{dictionary.contributeProblemConfirmSubmit}}</button>
+        </div>
+    </ul>
 </div>
