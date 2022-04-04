@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  signInRedirectUri: 'http://localhost:4200/home'
+  apiRoot: 'http://localhost:8080/api'
 };
 
 /*
