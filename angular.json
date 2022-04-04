@@ -83,7 +83,7 @@
             "development": {
               "browserTarget": "bachelors-frontend:build:development",
               "headers": {
-                "Content-Security-Policy": "default-src 'self' http://localhost:*; script-src 'self' 'sha256-0zZPgsifJ8h8aM+gmSxkrfNtAGUZb7ItVug6/j1UR5g='; style-src 'self' 'sha256-0/Y5pwgNH3TK76pSMja2x9L5s0Gug9u/YwaCmIv3nrc=' 'sha256-vZcgfkHCG2roVHN2ArdGm/4ZKyd/dptBjqe0Cv7+CYQ=' 'sha256-RvAvREUHojDuwHylTVWZp9DhleqLs6ml8G7LpjCF+EY=' 'unsafe-hashes'; img-src 'self' data:"
+                "Content-Security-Policy": "default-src 'self' http://localhost:*; script-src 'self' 'sha256-0zZPgsifJ8h8aM+gmSxkrfNtAGUZb7ItVug6/j1UR5g='; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
               }
             }
           },
