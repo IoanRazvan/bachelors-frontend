@@ -20,7 +20,7 @@
         <div class="mb-3">
             <div *ngIf="submissionHappend then backHomeOpt else submitOpt"></div>
             <ng-template #backHomeOpt>
-                <button class="btn btn-primary" [routerLink]="['/contribute-problem']">Spre Casă</button>
+                <button class="btn btn-primary" [routerLink]="['/contribute-problem']">{{dictionary.contributeProblemBackHomeButton}}</button>
             </ng-template>
             <ng-template #submitOpt>
                 <button class="btn btn-primary me-2" (click)="onPrevStep.emit()">{{dictionary.contributeProblemPrevStepButton}}</button>

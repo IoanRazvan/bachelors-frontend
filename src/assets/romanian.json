@@ -13,9 +13,14 @@
     "contributeProblemQuestionDescriptionInputError": "Câmpul 'Descriere' este obligatoriu",
     "contributeProblemSolutionTitle": "Soluție",
     "contributeProblemSolutionInputTitle": "Soluție",
-    "contributePorblemSolutionInputError": "Câmpul 'Soluție' este obligatoriu",
+    "contributeProblemSolutionInputError": "Câmpul 'Soluție' este obligatoriu",
     "contributeProblemTestcaseTitle": "Test",
     "contributeProblemTestcaseInputTitle": "Test",
-    "contributePorblemTestcaseInputError": "Câmpul 'Test' este obligatoriu",
-    "contributeProblemConfirmSubmit": "Adaugă problema"
+    "contributeProblemTestcaseInputError": "Câmpul 'Test' este obligatoriu",
+    "contributeProblemConfirmSubmit": "Adaugă problema",
+    "toastSuccessSummary": "Succes",
+    "toastErrorSummary": "Eroare",
+    "contributeProblemToastSuccesDetail": "Contribuția a fost adăugată cu succes. Te poți întoarce.",
+    "contributeProblemToastErrorDetail": "Contribuția nu a putut fi adaugata. Incearcă din nou.",
+    "contributeProblemBackHomeButton": "Du-mă înapoi"
 }

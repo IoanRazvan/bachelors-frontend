@@ -29,26 +29,27 @@ export class ContributeProblemFormComponent {
   testStepData : StepData;
   submitting = false;
   submissionHappend = false;
+  dictionary: any;
 
   constructor(languageService: LanguageService, private apiService: ProblemContributionService, private messageService: MessageService) {
-    const dictionary = languageService.dictionary;
-    this.items = dictionary.contributeProblemStep.map((item : string, idx : number) => ({
+    this.dictionary = languageService.dictionary;
+    this.items = this.dictionary.contributeProblemStep.map((item : string, idx : number) => ({
       label: item,
       tabIndex: String(idx)
     }));
     
     this.solutionStepData = {
-      stepTitle: dictionary.contributeProblemSolutionTitle,
+      stepTitle: this.dictionary.contributeProblemSolutionTitle,
       inputName: 'solution',
-      stepErrorMessage: dictionary.contributeProblemSolutionInputError,
-      stepLabel: dictionary.contributeProblemSolutionInputTitle
+      stepErrorMessage: this.dictionary.contributeProblemSolutionInputError,
+      stepLabel: this.dictionary.contributeProblemSolutionInputTitle
     };
 
     this.testStepData = {
-      stepTitle: dictionary.contributeProblemTestcaseTitle,
+      stepTitle: this.dictionary.contributeProblemTestcaseTitle,
       inputName: 'testcase',
-      stepErrorMessage: dictionary.contributeProblemTestcaseInputError,
-      stepLabel: dictionary.contributeProblemTestcaseInputTitle
+      stepErrorMessage: this.dictionary.contributeProblemTestcaseInputError,
+      stepLabel: this.dictionary.contributeProblemTestcaseInputTitle
     };
   }
 
@@ -62,14 +63,14 @@ export class ContributeProblemFormComponent {
     this.apiService.save(this.formData).subscribe({
       next: () => {
         this.messageService.add({
-          severity: 'success', summary: 'Success', detail: 'Contribution added succesfully. You may return to back.'
+          severity: 'success', summary: this.dictionary.toastSuccessSummary, detail: this.dictionary.contributeProblemToastSuccesDetail
         });
         this.submissionHappend = true;
         this.submitCleanup();
       },
       error: () => {
         this.messageService.add({
-          severity: 'error', summary: 'Error', detail: 'Unable to add contribution. You may try again.'
+          severity: 'error', summary: this.dictionary.toastErrorSummary, detail: this.dictionary.contributeProblemToastErrorDetail
         });
         this.submitCleanup();
       }
@@ -77,7 +78,7 @@ export class ContributeProblemFormComponent {
   }
 
   private submitCleanup() {
-    setTimeout(() => this.messageService.clear(), 2000);
+    // setTimeout(() => this.messageService.clear(), 2000);
     this.submitting = false;
   }
 }
