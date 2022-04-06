@@ -2,14 +2,8 @@ import { Component } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
+import { ProblemContribution } from 'src/app/models/problem-contribution.model';
 import { StepData } from '../contribute-problem-simple-step/contribute-problem-simple-step.component';
-
-export interface ContributeProblemFormData {
-  title: string;
-  description: string;
-  solution: string;
-  testcase: string;
-}
 
 @Component({
   selector: 'app-contribute-problem-form',
@@ -19,7 +13,7 @@ export interface ContributeProblemFormData {
 export class ContributeProblemFormComponent {
   items: MenuItem[];
   tabIndex = 0;
-  formData: ContributeProblemFormData = {
+  formData: ProblemContribution = {
     title: '',
     description: '',
     solution: '',
@@ -66,19 +60,14 @@ export class ContributeProblemFormComponent {
           severity: 'success', summary: this.dictionary.toastSuccessSummary, detail: this.dictionary.contributeProblemToastSuccesDetail
         });
         this.submissionHappend = true;
-        this.submitCleanup();
+        this.submitting = false;
       },
       error: () => {
         this.messageService.add({
           severity: 'error', summary: this.dictionary.toastErrorSummary, detail: this.dictionary.contributeProblemToastErrorDetail
         });
-        this.submitCleanup();
+        this.submitting = false;
       }
     });
-  }
-
-  private submitCleanup() {
-    // setTimeout(() => this.messageService.clear(), 2000);
-    this.submitting = false;
   }
 }

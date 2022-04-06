@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { LanguageService } from "../core/base/language.base";
-import { NavItem } from "./models/nav-item.model";
+import { NavItem } from "../models/nav-item.model";
 
 @Component({
     selector: 'app-authorized',
