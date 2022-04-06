@@ -18,8 +18,7 @@ export class ContributeProblemSimpleStepComponent extends FormStepBase implement
   @Input() stepData!: StepData;
   input!: FormControl;
   @Input() override formData: any;
-  @Output() override onNextStep = new EventEmitter<any>();
-  @Output() override onPrevStep = new EventEmitter<any>();
+  @Output() override onStep = new EventEmitter<any>();
 
   constructor(private formBuilder : FormBuilder, languageService: LanguageService) {
     super(languageService);

@@ -3,12 +3,13 @@
     <p-steps [model]="items" [activeIndex]="tabIndex"></p-steps>
 </div>
 <div [ngSwitch]="tabIndex">
-    <app-contribute-problem-question *ngSwitchCase="0" [formData]="formData" (onNextStep)="onStep($event, 1)">
+    <app-contribute-problem-question *ngSwitchCase="0" [formData]="formData" (onStep)="onStep($event, 0)">
     </app-contribute-problem-question>
     <app-contribute-problem-simple-step *ngSwitchCase="1" [stepData]="solutionStepData" [formData]="formData"
-        (onNextStep)="onStep($event, 2)" (onPrevStep)="onStep($event, 0)"></app-contribute-problem-simple-step>
+        (onStep)="onStep($event, 1)"></app-contribute-problem-simple-step>
     <app-contribute-problem-simple-step *ngSwitchCase="2" [stepData]="testStepData" [formData]="formData"
-        (onNextStep)="onStep($event, 3)" (onPrevStep)="onStep($event, 1)"></app-contribute-problem-simple-step>
+        (onStep)="onStep($event, 2)"></app-contribute-problem-simple-step>
     <app-contribute-problem-confirm *ngSwitchCase="3" [formData]="formData" (onPrevStep)="this.tabIndex = 2"
-        [submitting]="submitting" [submissionHappend]="submissionHappend" (onSubmit)="submit()"></app-contribute-problem-confirm>
+        [submitting]="submitting" [submissionHappend]="submissionHappend" (onSubmit)="submit()">
+    </app-contribute-problem-confirm>
 </div>

@@ -11,7 +11,7 @@ export class ContributeProblemQuestionComponent extends FormStepBase implements 
   title!: FormControl;
   description!: FormControl;
   @Input() override formData: any;
-  @Output() override onNextStep = new EventEmitter<any>();
+  @Output() override onStep = new EventEmitter<any>();
   override form: FormGroup;
   
   constructor(formBuilder: FormBuilder, languageService: LanguageService) {

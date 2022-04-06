@@ -47,9 +47,12 @@ export class ContributeProblemFormComponent {
     };
   }
 
-  onStep(event : any, nextTab : number) {
-    this.formData = Object.assign({}, this.formData, event);
-    this.tabIndex = nextTab;
+  onStep(event : any, tab : number) {
+    if (event.stepType === "NEXT")
+      this.tabIndex = tab + 1;
+    else
+      this.tabIndex = tab - 1;
+    this.formData = Object.assign({}, this.formData, event.data);
   }
 
   submit() {

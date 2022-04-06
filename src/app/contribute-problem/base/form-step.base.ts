@@ -1,11 +1,11 @@
 import { LanguageService } from "src/app/core/base/language.base";
+import { StepType } from "src/app/models/step.type";
 
 
 export abstract class FormStepBase {
     form!: any;
     formData: any;
-    onNextStep: any;
-    onPrevStep: any;
+    onStep: any;
     dictionary: any;
 
     constructor(languageService: LanguageService) {
@@ -14,11 +14,7 @@ export abstract class FormStepBase {
 
     protected abstract setForm() : void;
 
-    onNextStepClick() {
-        this.onNextStep.emit(this.form.value);
-    }
-
-    onPrevStepClick() {
-        this.onPrevStep.emit(this.form.value);
+    onStepClick(stepType: StepType) {
+        this.onStep.emit({stepType, data: this.form.value});
     }
 }
