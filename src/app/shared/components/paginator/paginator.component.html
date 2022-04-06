@@ -1,0 +1,13 @@
+<ul class="pagination">
+    <li *ngIf="!pageInfo.first" class="page-item">
+        <a (click)="pageChange.emit(pageInfo.page - 1)" class="page-link">&laquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link">
+            {{pageInfo.page}}
+        </a>
+    </li>
+    <li *ngIf="!pageInfo.last" class="page-item">
+        <a (click)="pageChange.emit(pageInfo.page + 1)" class="page-link">&raquo;</a>
+    </li>
+</ul>
