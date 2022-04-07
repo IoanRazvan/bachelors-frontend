@@ -14,11 +14,15 @@ export class ProblemContributionService {
   constructor(private http: HttpClient) {
   }
 
-  save(problemContribution : ProblemContributionRequest) : Observable<ProblemContributionResponse> {
+  save(problemContribution: ProblemContributionRequest): Observable<ProblemContributionResponse> {
     return <any>this.http.post(this.endpoint, problemContribution);
   }
 
-  get(page: number, size: number) : Observable<Page<ProblemContributionResponse>> {
+  getContributions(page: number, size: number): Observable<Page<ProblemContributionResponse>> {
     return <any>this.http.get(`${this.endpoint}?page=${page}&size=${size}`);
+  }
+
+  getContribution(id: string): Observable<ProblemContributionResponse> {
+    return <any>this.http.get(`${this.endpoint}/${id}`);
   }
 }

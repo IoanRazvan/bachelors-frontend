@@ -22,7 +22,7 @@ export class ContributeProblemService {
     change(page: number, force: boolean = false) {
         const requestedServerPage = Page.convertPageNumber(page, this.clientPageSize, this.serverPageSize);
         if (this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || force) {
-            this.apiService.get(requestedServerPage, this.serverPageSize).subscribe({
+            this.apiService.getContributions(requestedServerPage, this.serverPageSize).subscribe({
                 next: (resp) => {
                     this.currentServerPage = new Page(resp);
                     this.contributions.next({
