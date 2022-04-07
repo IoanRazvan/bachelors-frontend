@@ -1,4 +1,4 @@
-<ul class="pagination">
+<ul *ngIf="shouldRender()" class="pagination">
     <li *ngIf="!pageInfo.first" class="page-item">
         <a (click)="pageChange.emit(pageInfo.page - 1)" class="page-link">&laquo;</a>
     </li>
