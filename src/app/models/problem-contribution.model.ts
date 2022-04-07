@@ -1,10 +1,15 @@
-export interface ProblemContribution {
-    id?: number;
+export interface ProblemContributionRequest {
     title: string;
     description: string;
     solution: string;
     testcase: string;
-    status?: string;
-    statuDetails?: string;
-    createdTime?: string;
+}
+
+export type ProblemContributionStatus = "PENDING" | "ACCEPTED" | "REJECTED"
+
+export interface ProblemContributionResponse extends ProblemContributionRequest {
+    id: number;
+    status: ProblemContributionStatus;
+    statuDetails: string;
+    createdTime: string;
 }
