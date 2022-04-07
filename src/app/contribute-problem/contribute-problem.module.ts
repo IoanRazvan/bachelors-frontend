@@ -13,6 +13,7 @@ import { ContributionsTableComponent } from './components/contributions-table/co
 import { FormStepLayoutComponent } from './components/form-step-layout/form-step-layout.component';
 import { ContributeProblemRoutingModule } from './contribute-problem-routing.module';
 import { ContributeProblemComponent } from './contribute-problem.component';
+import { ContributionViewComponent } from './components/contribution-view/contribution-view.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ContributeProblemComponent } from './contribute-problem.component';
     ContributeProblemFormComponent,
     ContributeProblemConfirmComponent,
     ContributeProblemSimpleStepComponent,
-    ContributionsTableComponent
+    ContributionsTableComponent,
+    ContributionViewComponent
   ],
   imports: [
     SharedModule,
