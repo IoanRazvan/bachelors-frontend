@@ -5,7 +5,7 @@
     <ng-template pTemplate="header">
         <tr class="border-top-0">
             <th scope="col" class="text-muted fw-light border-0"
-                *ngFoFr="let header of dictionary.contributeProblemHomeTableHeaders">{{header}}</th>
+                *ngFor="let header of dictionary.contributeProblemHomeTableHeaders">{{header}}</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-contribution let-rowIndex="rowIndex">
