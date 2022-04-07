@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
-import { ProblemContribution } from 'src/app/models/problem-contribution.model';
+import { ProblemContributionRequest } from 'src/app/models/problem-contribution.model';
 import { StepData } from '../contribute-problem-simple-step/contribute-problem-simple-step.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { StepData } from '../contribute-problem-simple-step/contribute-problem-s
 export class ContributeProblemFormComponent {
   items: MenuItem[];
   tabIndex = 0;
-  formData: ProblemContribution = {
+  formData: ProblemContributionRequest = {
     title: '',
     description: '',
     solution: '',

@@ -22,5 +22,9 @@
     "toastErrorSummary": "Error",
     "contributeProblemToastSuccesDetail": "Contribution added succesfully. You may return to back.",
     "contributeProblemToastErrorDetail": "Unable to add contribution. You may try again",
-    "contributeProblemBackHomeButton": "Take me back"
+    "contributeProblemBackHomeButton": "Take me back",
+    "contributeProblemHomeTableTitle": "Previous Contributions",
+    "contributeProblemHomeTableHeaders": ["Status", "Title", "Created At"],
+    "contributeProblemHomeNoContributions": "Previous contributions will appear here",
+    "contributeProblemHomeFetchError": "Previous contributions could not be loaded."
 }

@@ -22,5 +22,9 @@
     "toastErrorSummary": "Eroare",
     "contributeProblemToastSuccesDetail": "Contribuția a fost adăugată cu succes. Te poți întoarce.",
     "contributeProblemToastErrorDetail": "Contribuția nu a putut fi adaugata. Incearcă din nou.",
-    "contributeProblemBackHomeButton": "Du-mă înapoi"
+    "contributeProblemBackHomeButton": "Du-mă înapoi",
+    "contributeProblemHomeTableTitle": "Contribuții anterioare",
+    "contributeProblemHomeTableHeaders": ["Status", "Titlu", "Creat la"],
+    "contributeProblemHomeNoContributions": "Contribuțiile anterioare vor apărea aici",
+    "contributeProblemHomeFetchError": "Contribuțiile anterioare nu au putut încărcate."
 }

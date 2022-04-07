@@ -1,8 +1,21 @@
+<p-toast></p-toast>
 <div class="row mt-5">
-    <div class="col-6 ">
+    <div class="col-lg-5 mt-5 mb-5 me-auto">
         <p>
             {{dictionary.contributeProblemHomeText}}
         </p>
-        <button type="button" class="btn btn-primary" [routerLink]="['form']">{{dictionary.contributeProblemHomeButton}}</button>
+        <button type="button" class="btn btn-primary"
+            [routerLink]="['form']">{{dictionary.contributeProblemHomeButton}}</button>
+    </div>
+    <div class="col-lg-6 mt-5" [class.align-self-center]="loading || !contributions.length">
+        <app-centered *ngIf="!contributions.length">
+            <p class="text-muted fs-4 fw-light">{{dictionary.contributeProblemHomeNoContributions}}</p>
+        </app-centered>
+        <div *ngIf="loading else fetched" class="row justify-content-center">
+            <div class="spinner-border"></div>
+        </div>
+        <ng-template #fetched>
+            <app-contributions-table *ngIf="contributions.length" [contributions]="contributions" [pageInfo]="pageInfo" (pageChange)="changeContributionsPage($event - 1)"></app-contributions-table>
+        </ng-template>
     </div>
 </div>

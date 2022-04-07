@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { LanguageService } from 'src/app/core/base/language.base';
-import { ProblemContribution } from 'src/app/models/problem-contribution.model';
+import { ProblemContributionRequest } from 'src/app/models/problem-contribution.model';
 
 @Component({
   selector: 'app-contribute-problem-confirm',
@@ -9,7 +9,7 @@ import { ProblemContribution } from 'src/app/models/problem-contribution.model';
   encapsulation: ViewEncapsulation.None
 })
 export class ContributeProblemConfirmComponent {
-  @Input() formData!: ProblemContribution;
+  @Input() formData!: ProblemContributionRequest;
   @Input() submitting: boolean = false;
   @Input() submissionHappend: boolean = false;
   @Output() onPrevStep = new EventEmitter<any>();
