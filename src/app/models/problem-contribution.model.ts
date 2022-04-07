@@ -10,6 +10,6 @@ export type ProblemContributionStatus = "PENDING" | "ACCEPTED" | "REJECTED"
 export interface ProblemContributionResponse extends ProblemContributionRequest {
     id: number;
     status: ProblemContributionStatus;
-    statuDetails: string;
+    statusDetails: string;
     createdTime: string;
 }
