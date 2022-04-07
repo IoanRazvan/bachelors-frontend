@@ -9,11 +9,11 @@ import { ContributeProblemFormComponent } from './components/contribute-problem-
 import { ContributeProblemHomeComponent } from './components/contribute-problem-home/contribute-problem-home.component';
 import { ContributeProblemQuestionComponent } from './components/contribute-problem-question/contribute-problem-question.component';
 import { ContributeProblemSimpleStepComponent } from './components/contribute-problem-simple-step/contribute-problem-simple-step.component';
+import { ContributionViewComponent } from './components/contribution-view/contribution-view.component';
 import { ContributionsTableComponent } from './components/contributions-table/contributions-table.component';
 import { FormStepLayoutComponent } from './components/form-step-layout/form-step-layout.component';
 import { ContributeProblemRoutingModule } from './contribute-problem-routing.module';
 import { ContributeProblemComponent } from './contribute-problem.component';
-import { ContributionViewComponent } from './components/contribution-view/contribution-view.component';
 
 @NgModule({
   declarations: [

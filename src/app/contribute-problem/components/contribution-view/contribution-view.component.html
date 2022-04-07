@@ -1,1 +1,35 @@
-<p>contribution-view works!</p>
+<app-centered>
+    <div *ngIf="loading" class="spinner-border"></div>
+</app-centered>
+  
+<div *ngIf="!loading">
+    <div class="row mt-3">
+        <div class="col-auto">
+            <span class="fs-4 me-2">{{contribution.title}}</span>
+            <span class="badge rounded-pill bg-warning">{{contribution.status}}</span>
+        </div>
+        <div class="col-12">{{contribution.createdTime}}</div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-7">
+            <div class="mb-3">
+                Actiuni: <a href="#" class="me-2 text-decoration-none">Actualizeaza</a><a href="#" class="link-danger text-decoration-none">Sterge</a>
+            </div>
+            <div class="card card-body col-md-9 mb-3 bg-light">
+                <span class="text-muted">
+                    <em>{{contribution.statusDetails || "Nu exista detalii de afisat"}}</em>
+                </span>
+            </div>
+            <div class="description" [innerHTML]="contribution.description">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <p>Solutia propusa</p>
+            <div class="card bg-light card-body shadow-sm text-muted mb-4">
+                {{contribution.solution}}
+            </div>
+            <p>Exemple I/O</p>
+            <div class="card bg-light card-body shadow-sm text-muted mb-3 testcase">{{contribution.testcase}}</div>
+        </div>
+    </div>
+</div>
