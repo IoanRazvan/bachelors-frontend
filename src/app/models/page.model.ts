@@ -19,12 +19,13 @@ export class Page<T> {
 
     convertPage(targetPage: number, targetSize: number) : Page<T> {
         const pageData : any = {};
-        const chunkNumber : number = (targetPage * targetSize) / ((this.page + 1) * this.size);
+        const factor = Math.floor(this.size / targetSize);
+        const chunkNumber : number = targetPage % factor;
         pageData.page = targetPage;
         pageData.size = targetSize;
         pageData.content = this.content.slice(chunkNumber * targetSize, (chunkNumber + 1) * targetSize);
         pageData.first = targetPage === 0;
-        pageData.last = this.last && Page.convertPageNumber(targetPage + 1, targetSize, this.size) !== this.page;
+        pageData.last = this.last && (chunkNumber + 1) * targetSize >= this.content.length;
         return new Page(pageData);
     }
 }
