@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { CenteredComponent } from './components/centered/centered.component';
 
 
 
 @NgModule({
   declarations: [
   
-    PaginatorComponent
+    PaginatorComponent,
+       CenteredComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    PaginatorComponent
+    PaginatorComponent,
+    CenteredComponent
   ]
 })
 export class SharedModule { }
