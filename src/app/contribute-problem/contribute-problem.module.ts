@@ -11,6 +11,8 @@ import { ContributeProblemFormComponent } from './components/contribute-problem-
 import { ContributeProblemConfirmComponent } from './components/contribute-problem-confirm/contribute-problem-confirm.component';
 import { ContributeProblemSimpleStepComponent } from './components/contribute-problem-simple-step/contribute-problem-simple-step.component';
 import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
+import { ContributionsTableComponent } from './components/contributions-table/contributions-table.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import { ToastModule } from 'primeng/toast';
     FormStepLayoutComponent,
     ContributeProblemFormComponent,
     ContributeProblemConfirmComponent,
-    ContributeProblemSimpleStepComponent
+    ContributeProblemSimpleStepComponent,
+    ContributionsTableComponent
   ],
   imports: [
     SharedModule,
     ContributeProblemRoutingModule,
     StepsModule,
     EditorModule,
-    ToastModule
+    ToastModule,
+    TableModule
   ]
 })
 export class ContributeProblemModule {

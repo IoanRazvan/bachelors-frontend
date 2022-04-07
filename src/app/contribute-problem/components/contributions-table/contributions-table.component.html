@@ -1,0 +1,29 @@
+<app-centered>
+    <p class="text-muted fs-4 fw-light">{{dictionary.contributeProblemHomeTableTitle}}</p>
+</app-centered>
+<p-table responsiveLayout="scroll" [value]="contributions">
+    <ng-template pTemplate="header">
+        <tr class="border-top-0">
+            <th scope="col" class="text-muted fw-light border-0"
+                *ngFoFr="let header of dictionary.contributeProblemHomeTableHeaders">{{header}}</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-contribution let-rowIndex="rowIndex">
+        <tr [class.bg-light]="rowIndex % 2 === 0">
+            <td class="border-0">
+                <span [ngSwitch]="contribution.status">
+                    <i *ngSwitchCase="'PENDING'" class="pi pi-clock text-warning"></i>
+                    <i *ngSwitchCase="'ACCEPTED'" class="pi pi-check-circle text-success"></i>
+                    <i *ngSwitchCase="'REJECTED'" class="pi pi-exclamation-circle text-danger"></i>
+                </span>
+            </td>
+            <td class="border-0"><a [routerLink]="['.', contribution.id]"
+                    class="text-decoration-none link-dark">{{contribution.title}}</a></td>
+            <td class="border-0">{{contribution.createdTime}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <app-paginator [pageInfo]="pageInfo" (pageChange)="pageChange.emit($event)">
+        </app-paginator>
+    </ng-template>
+</p-table>
