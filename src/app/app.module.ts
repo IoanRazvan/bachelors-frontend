@@ -1,14 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { AppComponent } from './app.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { AuthorizedModule } from './authorized/authorized.module';
+import { LandingComponent } from './components/landing/landing.component';
 import { ContributeProblemModule } from './contribute-problem/contribute-problem.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CenteredComponent } from './components/centered/centered.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 

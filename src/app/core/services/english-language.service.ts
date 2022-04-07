@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import EnglishLanguage from '../../../assets/english.json'
+import EnglishLanguage from '../../../assets/english.json';
 import { LanguageService } from "../base/language.base";
 
 @Injectable()

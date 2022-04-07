@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ReplaySubject, Subject } from "rxjs";
-import { Page } from "src/app/models/page.model";
 import { ProblemContributionService } from "src/app/core/services/problem-contribution.service";
+import { Page } from "src/app/models/page.model";
 import { ProblemContributionResponse } from "src/app/models/problem-contribution.model";
 import { ServerResponse } from "src/app/models/server-response.model";
 

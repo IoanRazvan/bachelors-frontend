@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { AuthorizedComponent } from './authorized.component';
-import { AuthorizedRoutingModule } from './authorized-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { AuthorizedRoutingModule } from './authorized-routing.module';
+import { AuthorizedComponent } from './authorized.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [

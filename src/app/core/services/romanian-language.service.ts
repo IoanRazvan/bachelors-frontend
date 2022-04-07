@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
+import RomaninaLanguage from '../../../assets/romanian.json';
 import { LanguageService } from "../base/language.base";
-import RomaninaLanguage from '../../../assets/romanian.json'
 
 @Injectable()
 export class RomanianLanguageService extends LanguageService {

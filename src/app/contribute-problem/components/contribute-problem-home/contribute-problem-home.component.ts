@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { PageInfo } from 'src/app/models/page-info.model';
-import { ProblemContributionRequest, ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
+import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 import { ContributeProblemService } from '../../services/contribute-problem.service';
 
 @Component({
