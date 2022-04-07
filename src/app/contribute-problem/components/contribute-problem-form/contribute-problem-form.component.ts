@@ -34,6 +34,7 @@ export class ContributeProblemFormComponent {
     
     this.solutionStepData = {
       stepTitle: this.dictionary.contributeProblemSolutionTitle,
+      stepTip: this.dictionary.contributeProblemSolutionTip,
       inputName: 'solution',
       stepErrorMessage: this.dictionary.contributeProblemSolutionInputError,
       stepLabel: this.dictionary.contributeProblemSolutionInputTitle
@@ -41,6 +42,7 @@ export class ContributeProblemFormComponent {
 
     this.testStepData = {
       stepTitle: this.dictionary.contributeProblemTestcaseTitle,
+      stepTip: this.dictionary.contributeProblemTestcaseTip,
       inputName: 'testcase',
       stepErrorMessage: this.dictionary.contributeProblemTestcaseInputError,
       stepLabel: this.dictionary.contributeProblemTestcaseInputTitle

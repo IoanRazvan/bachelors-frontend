@@ -1,5 +1,5 @@
 <app-form-step-layout [formGroup]="form" [stepTitle]="dictionary.contributeProblemQuestionTitle"
-    [showPrevStepButton]="false" (onStep)="onStepClick($event)">
+    [showPrevStepButton]="false" [stepTip]="dictionary.contributeProblemQuestionTip" (onStep)="onStepClick($event)">
     <div class="mb-3">
         <label for="title" class="form-label"
             [class.is-invalid]="!title.valid && title.dirty">{{dictionary.contributeProblemQuestionTitleInputLabel}}*</label>
