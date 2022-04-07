@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.description p {
+    margin-bottom: 0;
+}
+
+.description p:last-child {
+    margin-bottom: 1rem;
+}
+
+.testcase {
+    white-space: pre-line;
+}

@@ -1,12 +1,10 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { ProblemContributionRequest } from 'src/app/models/problem-contribution.model';
 
 @Component({
   selector: 'app-contribute-problem-confirm',
   templateUrl: './contribute-problem-confirm.component.html',
-  styleUrls: ['contribute-problem-confirm.style.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class ContributeProblemConfirmComponent {
   @Input() formData!: ProblemContributionRequest;
