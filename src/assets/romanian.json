@@ -23,7 +23,7 @@
     "contributeProblemConfirmSubmit": "Adaugă problema",
     "toastSuccessSummary": "Succes",
     "toastErrorSummary": "Eroare",
-    "contributeProblemToastSuccesDetail": "Contribuția a fost adăugată cu succes. Te poți întoarce.",
+    "contributeProblemToastSuccessDetail": "Contribuția a fost adăugată cu succes. Te poți întoarce.",
     "contributeProblemToastErrorDetail": "Contribuția nu a putut fi adaugata. Incearcă din nou.",
     "contributeProblemBackHomeButton": "Du-mă înapoi",
     "contributeProblemHomeTableTitle": "Contribuții anterioare",

@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { EditorModule } from 'primeng/editor';
 import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
@@ -33,7 +35,12 @@ import { ContributeProblemComponent } from './contribute-problem.component';
     StepsModule,
     EditorModule,
     ToastModule,
-    TableModule
+    TableModule,
+    ConfirmPopupModule
+  ],
+  providers: [
+    ConfirmationService,
+    MessageService
   ]
 })
 export class ContributeProblemModule {

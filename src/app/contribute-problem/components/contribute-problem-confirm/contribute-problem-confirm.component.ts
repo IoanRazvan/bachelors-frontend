@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { ProblemContributionRequest } from 'src/app/models/problem-contribution.model';
@@ -10,11 +11,16 @@ export class ContributeProblemConfirmComponent {
   @Input() formData!: ProblemContributionRequest;
   @Input() submitting: boolean = false;
   @Input() submissionHappend: boolean = false;
+  @Input() submitButtonText!: string;
   @Output() onPrevStep = new EventEmitter<any>();
   @Output() onSubmit = new EventEmitter<any>();
   dictionary: any;
 
-  constructor(languageService: LanguageService) {
+  constructor(languageService: LanguageService, private location: Location) {
     this.dictionary = languageService.dictionary;
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

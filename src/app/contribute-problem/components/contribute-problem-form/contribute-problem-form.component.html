@@ -10,6 +10,6 @@
     <app-contribute-problem-simple-step *ngSwitchCase="2" [stepData]="testStepData" [formData]="formData"
         (onStep)="onStep($event, 2)"></app-contribute-problem-simple-step>
     <app-contribute-problem-confirm *ngSwitchCase="3" [formData]="formData" (onPrevStep)="this.tabIndex = 2"
-        [submitting]="submitting" [submissionHappend]="submissionHappend" (onSubmit)="submit()">
+        [submitting]="submitting" [submissionHappend]="submissionHappend" [submitButtonText]="id ? 'Actualizeaza contributia' : 'Adauga contributia'" (onSubmit)="submit()">
     </app-contribute-problem-confirm>
 </div>

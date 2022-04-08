@@ -23,7 +23,7 @@
     "contributeProblemConfirmSubmit": "Submit problem",
     "toastSuccessSummary": "Success",
     "toastErrorSummary": "Error",
-    "contributeProblemToastSuccesDetail": "Contribution added succesfully. You may return to back.",
+    "contributeProblemToastSuccessDetail": "Contribution added succesfully. You may return to back.",
     "contributeProblemToastErrorDetail": "Unable to add contribution. You may try again",
     "contributeProblemBackHomeButton": "Take me back",
     "contributeProblemHomeTableTitle": "Previous Contributions",

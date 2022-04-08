@@ -8,7 +8,8 @@ import { ContributionViewComponent } from "./components/contribution-view/contri
 export const contributeProblemRoutes: Routes = [
     {path: '', pathMatch: 'full', component: ContributeProblemHomeComponent, canActivate: [AuthGuardService]},
     {path: 'form', pathMatch: 'full', component: ContributeProblemFormComponent, canActivate: [AuthGuardService]},
-    {path: ':id', pathMatch: 'full', component: ContributionViewComponent, canActivate: [AuthGuardService]}
+    {path: ':id', pathMatch: 'full', component: ContributionViewComponent, canActivate: [AuthGuardService]},
+    {path: 'form/:id', pathMatch: 'full', component: ContributeProblemFormComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

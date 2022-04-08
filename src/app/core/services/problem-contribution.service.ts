@@ -18,6 +18,14 @@ export class ProblemContributionService {
     return <any>this.http.post(this.endpoint, problemContribution);
   }
 
+  update(id: string, problemContribution: ProblemContributionRequest): Observable<ProblemContributionResponse> {
+    return <any>this.http.put(`${this.endpoint}/${id}`, problemContribution);
+  }
+
+  delete(id: string) : Observable<any> {
+    return <any>this.http.delete(`${this.endpoint}/${id}`);
+  }
+
   getContributions(page: number, size: number): Observable<Page<ProblemContributionResponse>> {
     return <any>this.http.get(`${this.endpoint}?page=${page}&size=${size}`);
   }

@@ -7,8 +7,7 @@ import { ContributeProblemService } from '../../services/contribute-problem.serv
 
 @Component({
   selector: 'app-contribute-problem-home',
-  templateUrl: './contribute-problem-home.component.html',
-  providers: [MessageService]
+  templateUrl: './contribute-problem-home.component.html'
 })
 export class ContributeProblemHomeComponent implements OnInit {
   dictionary: any;
