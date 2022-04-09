@@ -99,7 +99,7 @@ export class ContributeProblemFormComponent implements OnInit {
       },
       error: () => {
         this.messageService.add({
-          severity: 'error', summary: this.dictionary.toastErrorSummary, detail: onErrorDetail
+          severity: 'error', summary: this.dictionary.errorSummary, detail: onErrorDetail
         });
         this.submitting = false;
       }

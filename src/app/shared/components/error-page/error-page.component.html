@@ -1,0 +1,23 @@
+<div *ngIf="errorStatus !== 0">
+    <div *ngIf="errorStatus === 404 then notFound else otherError"></div>
+    <ng-template #notFound>
+        <img class="img-fluid mt-2" src="assets/images/404_error.jpg" alt="not found">
+    </ng-template>
+    <ng-template #otherError>
+        <div class="mt-5">
+            <app-centered>
+                <p-dialog  [visible]="true" [style]="{width: '50vw'}" [breakpoints]="{'960px': '75vw'}" [modal]="true" [closable]="false" [draggable]="false" [resizable]="false">
+                    <ng-template pTemplate="header">
+                        <h4>{{dictionary.errorSummary}}</h4>
+                    </ng-template>
+                    <ng-template pTemplate="content">
+                        <p>{{message}}</p>
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+                        <button class="btn btn-primary" (click)="goBack()">{{dictionary.back}}</button>
+                    </ng-template>
+                </p-dialog>
+            </app-centered>
+        </div>
+    </ng-template>
+</div>

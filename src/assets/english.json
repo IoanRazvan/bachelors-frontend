@@ -22,12 +22,16 @@
     "contributePorblemTestcaseInputError": "'Testcase' field is required",
     "contributeProblemConfirmSubmit": "Submit problem",
     "toastSuccessSummary": "Success",
-    "toastErrorSummary": "Error",
+    "errorSummary": "Error",
     "contributeProblemToastSuccessDetail": "Contribution added succesfully. You may return to back.",
     "contributeProblemToastErrorDetail": "Unable to add contribution. You may try again",
     "contributeProblemBackHomeButton": "Take me back",
     "contributeProblemHomeTableTitle": "Previous Contributions",
     "contributeProblemHomeTableHeaders": ["Status", "Title", "Created At"],
     "contributeProblemHomeNoContributions": "Previous contributions will appear here",
-    "contributeProblemHomeFetchError": "Previous contributions could not be loaded."
+    "contributeProblemHomeFetchError": "Previous contributions could not be loaded.",
+    "errorPageForbiddenStatus": "Not enough rights to perform the operation",
+    "errorPageBadRequestStatus": "The operation being performed is not permitted",
+    "errorPageDefaultStatus": "Something went wrong",
+    "back": "Back"
 }

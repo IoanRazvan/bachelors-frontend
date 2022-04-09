@@ -34,7 +34,7 @@ export class ContributeProblemHomeComponent implements OnInit {
       else {
         this.loading = false;
         this.contributions = [];
-        this.messageService.add({severity: 'error', summary: this.dictionary.toastErrorSummary, detail: this.dictionary.contributeProblemHomeFetchError, sticky: true})
+        this.messageService.add({severity: 'error', summary: this.dictionary.errorSummary, detail: this.dictionary.contributeProblemHomeFetchError, sticky: true})
       }
     });
     this.changeContributionsPage(0, true);

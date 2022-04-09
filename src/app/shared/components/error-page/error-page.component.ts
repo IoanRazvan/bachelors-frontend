@@ -1,0 +1,36 @@
+import { Location } from '@angular/common';
+import { HttpStatusCode } from '@angular/common/http';
+import { Component, Input, OnChanges } from '@angular/core';
+import { LanguageService } from 'src/app/core/base/language.base';
+
+@Component({
+  selector: 'app-error-page',
+  templateUrl: './error-page.component.html'
+})
+export class ErrorPageComponent implements OnChanges {
+  @Input() errorStatus!: number;
+  message!: string;
+  dictionary: any;
+
+  constructor(languageService: LanguageService, private location: Location) {
+    this.dictionary = languageService.dictionary;
+  }
+
+  ngOnChanges(): void {
+    switch(this.errorStatus) {
+      case HttpStatusCode.Forbidden:
+        this.message = this.dictionary.errorPageForbiddenStatus;
+        break;
+      case HttpStatusCode.BadRequest:
+        this.message = this.dictionary.errorPageBadRequestStatus;
+        break;
+      default:
+        this.message = this.dictionary.errorPageDefaultStatus;
+        break;
+    }
+  }
+
+  goBack() {
+    this.location.back();
+  }
+}
