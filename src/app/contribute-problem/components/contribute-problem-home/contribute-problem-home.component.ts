@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { PageInfo } from 'src/app/models/page-info.model';
@@ -9,7 +9,7 @@ import { ContributeProblemService } from '../../services/contribute-problem.serv
   selector: 'app-contribute-problem-home',
   templateUrl: './contribute-problem-home.component.html'
 })
-export class ContributeProblemHomeComponent implements OnInit {
+export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
   dictionary: any;
   contributions: ProblemContributionResponse[] = [];
   pageInfo !: PageInfo;
@@ -43,5 +43,9 @@ export class ContributeProblemHomeComponent implements OnInit {
   changeContributionsPage(page: number, force: boolean = false) {
     this.loading = true;
     this.contributionsService.change(page, force);
+  }
+
+  ngOnDestroy(): void {
+      this.messageService.clear();
   }
 }

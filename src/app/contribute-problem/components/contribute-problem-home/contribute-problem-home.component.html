@@ -11,11 +11,9 @@
         <app-centered *ngIf="!contributions.length">
             <p class="text-muted fs-4 fw-light">{{dictionary.contributeProblemHomeNoContributions}}</p>
         </app-centered>
-        <div *ngIf="loading else fetched" class="row justify-content-center">
-            <div class="spinner-border"></div>
-        </div>
-        <ng-template #fetched>
-            <app-contributions-table *ngIf="contributions.length" [contributions]="contributions" [pageInfo]="pageInfo" (pageChange)="changeContributionsPage($event - 1)"></app-contributions-table>
-        </ng-template>
+        <app-centered *ngIf="loading">
+            <div class="spinner-border text-muted"></div>
+        </app-centered>
+        <app-contributions-table *ngIf="!loading && contributions.length" [contributions]="contributions" [pageInfo]="pageInfo" (pageChange)="changeContributionsPage($event - 1)"></app-contributions-table>
     </div>
 </div>
