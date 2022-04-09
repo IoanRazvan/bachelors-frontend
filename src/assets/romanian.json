@@ -21,10 +21,10 @@
     "contributeProblemTestcaseInputTitle": "Test",
     "contributeProblemTestcaseInputError": "Câmpul 'Test' este obligatoriu",
     "contributeProblemConfirmSubmit": "Adaugă problema",
-    "toastSuccessSummary": "Succes",
+    "successSummary": "Succes",
     "errorSummary": "Eroare",
     "contributeProblemToastSuccessDetail": "Contribuția a fost adăugată cu succes. Te poți întoarce.",
-    "contributeProblemToastErrorDetail": "Contribuția nu a putut fi adaugata. Incearcă din nou.",
+    "contributeProblemToastErrorDetail": "Contribuția nu a putut fi adaugata. Încearcă din nou.",
     "contributeProblemBackHomeButton": "Du-mă înapoi",
     "contributeProblemHomeTableTitle": "Contribuții anterioare",
     "contributeProblemHomeTableHeaders": ["Status", "Titlu", "Creat la"],
@@ -33,5 +33,8 @@
     "errorPageForbiddenStatus": "Drepturi insuficiente pentru a efectua operația",
     "errorPageBadRequestStatus": "Operația încercată nu este permisă",
     "errorPageDefaultStatus": "Ceva nu a funcționat",
-    "back": "Înapoi"
+    "back": "Înapoi",
+    "updateContributionToastSuccessDetail": "Contribuția a fost actualizată cu succes. Te poți întoarce.",
+    "updateContributionToastErrorDetail": "Contribuția nu a putut fi actualizată. Încearcă din nou.",
+    "updateContributionConfirmSubmit": "Actualizează problema"
 }

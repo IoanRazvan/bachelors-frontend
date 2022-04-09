@@ -21,9 +21,9 @@
     "contributeProblemTestcaseInputTitle": "Testcase",
     "contributePorblemTestcaseInputError": "'Testcase' field is required",
     "contributeProblemConfirmSubmit": "Submit problem",
-    "toastSuccessSummary": "Success",
+    "successSummary": "Success",
     "errorSummary": "Error",
-    "contributeProblemToastSuccessDetail": "Contribution added succesfully. You may return to back.",
+    "contributeProblemToastSuccessDetail": "Contribution added succesfully. You may return back.",
     "contributeProblemToastErrorDetail": "Unable to add contribution. You may try again",
     "contributeProblemBackHomeButton": "Take me back",
     "contributeProblemHomeTableTitle": "Previous Contributions",
@@ -33,5 +33,8 @@
     "errorPageForbiddenStatus": "Not enough rights to perform the operation",
     "errorPageBadRequestStatus": "The operation being performed is not permitted",
     "errorPageDefaultStatus": "Something went wrong",
-    "back": "Back"
+    "back": "Back",
+    "updateContributionToastSuccessDetail": "Contribution updated successfully. You may return back.",
+    "updateContributionToastErrorDetail": "Unable to update contribution. You may try again",
+    "updateContributionConfirmSubmit": "Update problem"
 }

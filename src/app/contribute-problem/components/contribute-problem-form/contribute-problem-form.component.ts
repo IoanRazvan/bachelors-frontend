@@ -13,7 +13,9 @@ import { StepData } from '../contribute-problem-simple-step/contribute-problem-s
 })
 export class ContributeProblemFormComponent implements OnInit {
   items: MenuItem[];
-  id ?: string;
+  id?: string;
+  errorStatus: number = 0;
+  loading: boolean = false;
   tabIndex = 0;
   formData: ProblemContributionRequest;
   solutionStepData: StepData;
@@ -24,12 +26,12 @@ export class ContributeProblemFormComponent implements OnInit {
 
   constructor(languageService: LanguageService, private apiService: ProblemContributionService, private messageService: MessageService, private route: ActivatedRoute) {
     this.dictionary = languageService.dictionary;
-    
+
     this.items = this.dictionary.contributeProblemStep.map((item: string, idx: number) => ({
       label: item,
       tabIndex: String(idx)
     }));
-    
+
     this.formData = {
       title: '',
       description: '',
@@ -55,12 +57,19 @@ export class ContributeProblemFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.pipe(filter(({id}) => id)).subscribe(({ id }) => {
-        this.id = id;
-        // TODO handle possible error/not found
-        this.apiService.getContribution(id).subscribe((resp) => {
+    this.route.params.pipe(filter(({ id }) => id)).subscribe(({ id }) => {
+      this.loading = true;
+      this.id = id;
+      this.apiService.getContribution(id).subscribe({
+        next: (resp) => {
           this.formData = resp;
-        });
+          this.loading = false;
+        },
+        error: (err) => {
+          this.errorStatus = err.status || 1;
+          this.loading = false;
+        }
+      });
     });
   }
 
@@ -84,7 +93,7 @@ export class ContributeProblemFormComponent implements OnInit {
   }
 
   updateContribution() {
-    this.handleSubmission(this.apiService.update(<any>this.id, this.formData), this.dictionary.contributeProblemToastSuccessDetail, this.dictionary.contributeProblemToastErrorDetail);
+    this.handleSubmission(this.apiService.update(<any>this.id, this.formData), this.dictionary.updateContributionToastSuccessDetail, this.dictionary.updateContributionToastErrorDetail);
   }
 
   handleSubmission(submitObs: Observable<ProblemContributionResponse>, onSuccessDetail: string, onErrorDetail: string) {
@@ -92,7 +101,7 @@ export class ContributeProblemFormComponent implements OnInit {
     submitObs.subscribe({
       next: () => {
         this.messageService.add({
-          severity: 'success', summary: this.dictionary.toastSuccessSummary, detail: onSuccessDetail
+          severity: 'success', summary: this.dictionary.successSummary, detail: onSuccessDetail
         });
         this.submissionHappend = true;
         this.submitting = false;

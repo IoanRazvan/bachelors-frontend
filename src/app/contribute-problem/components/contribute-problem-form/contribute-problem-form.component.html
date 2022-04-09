@@ -1,15 +1,19 @@
 <p-toast></p-toast>
-<div class="mt-5">
-    <p-steps [model]="items" [activeIndex]="tabIndex"></p-steps>
-</div>
-<div [ngSwitch]="tabIndex">
-    <app-contribute-problem-question *ngSwitchCase="0" [formData]="formData" (onStep)="onStep($event, 0)">
-    </app-contribute-problem-question>
-    <app-contribute-problem-simple-step *ngSwitchCase="1" [stepData]="solutionStepData" [formData]="formData"
-        (onStep)="onStep($event, 1)"></app-contribute-problem-simple-step>
-    <app-contribute-problem-simple-step *ngSwitchCase="2" [stepData]="testStepData" [formData]="formData"
-        (onStep)="onStep($event, 2)"></app-contribute-problem-simple-step>
-    <app-contribute-problem-confirm *ngSwitchCase="3" [formData]="formData" (onPrevStep)="this.tabIndex = 2"
-        [submitting]="submitting" [submissionHappend]="submissionHappend" [submitButtonText]="id ? 'Actualizeaza contributia' : 'Adauga contributia'" (onSubmit)="submit()">
-    </app-contribute-problem-confirm>
+<app-loading-page [loading]="loading"></app-loading-page>
+<app-error-page [errorStatus]="errorStatus"></app-error-page>
+<div *ngIf="!errorStatus && !loading">
+    <div class="mt-5">
+        <p-steps [model]="items" [activeIndex]="tabIndex"></p-steps>
+    </div>
+    <div [ngSwitch]="tabIndex">
+        <app-contribute-problem-question *ngSwitchCase="0" [formData]="formData" (onStep)="onStep($event, 0)">
+        </app-contribute-problem-question>
+        <app-contribute-problem-simple-step *ngSwitchCase="1" [stepData]="solutionStepData" [formData]="formData"
+            (onStep)="onStep($event, 1)"></app-contribute-problem-simple-step>
+        <app-contribute-problem-simple-step *ngSwitchCase="2" [stepData]="testStepData" [formData]="formData"
+            (onStep)="onStep($event, 2)"></app-contribute-problem-simple-step>
+        <app-contribute-problem-confirm *ngSwitchCase="3" [formData]="formData" (onPrevStep)="this.tabIndex = 2"
+            [submitting]="submitting" [submissionHappend]="submissionHappend" [submitButtonText]="id ? dictionary.updateContributionConfirmSubmit : dictionary.contributeProblemConfirmSubmit" (onSubmit)="submit()">
+        </app-contribute-problem-confirm>
+    </div>
 </div>
