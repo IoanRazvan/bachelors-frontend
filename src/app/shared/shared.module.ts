@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CenteredComponent } from './components/centered/centered.component';
+import { LoadingPageComponent } from './components/loading-page/loading-page.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
@@ -10,7 +11,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
   declarations: [
   
     PaginatorComponent,
-       CenteredComponent
+    CenteredComponent,
+    LoadingPageComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     FormsModule,
     ReactiveFormsModule,
     PaginatorComponent,
-    CenteredComponent
+    CenteredComponent,
+    LoadingPageComponent
   ]
 })
 export class SharedModule { }
