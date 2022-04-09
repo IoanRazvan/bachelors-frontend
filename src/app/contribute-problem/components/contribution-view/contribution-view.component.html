@@ -1,43 +1,40 @@
 <p-toast></p-toast>
-<app-centered>
-    <div *ngIf="loading" class="spinner-border"></div>
-</app-centered>
-  
-<div *ngIf="!loading">
+
+<app-loading-page [loading]="loading"></app-loading-page>
+
+<app-error-page [errorStatus]="errorStatus"></app-error-page>
+
+<div *ngIf="!loading && !errorStatus">
     <div class="row mt-3">
         <div class="col-auto">
+            <a routerLink="../" class="pi pi-arrow-circle-left link-secondary text-decoration-none me-2"
+                style="font-size: 1.2rem;"></a>
             <span class="fs-4 me-2">{{contribution.title}}</span>
             <span class="badge rounded-pill bg-warning">{{contribution.status}}</span>
         </div>
         <div class="col-12">{{contribution.createdTime}}</div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-7">
-            <div class="mb-3">
-                <div *ngIf="!wasDeleted else backOpt">
-                    Actiuni:
-                        <a [routerLink]="['../form', contribution.id]" class="me-2 text-decoration-none">Actualizeaza</a>
-                        <p-confirmPopup></p-confirmPopup>
-                        <a href="#" (click)="confirmDelete($event)" class="link-danger text-decoration-none">Sterge</a>
-                </div>
-                <ng-template #backOpt>
-                    <button (click)="goBack()" `class="btn btn-primary">Du-ma inapoi</button>
-                </ng-template>
+        <div class="col-md-7 mt-3">
+            <div *ngIf="!wasDeleted && contribution.status === 'PENDING'" class="mb-3">
+                <span class="me-2">{{dictionary.actions}}:</span>
+                <a [routerLink]="['../form', contribution.id]" class="me-2 text-decoration-none">{{dictionary.update}}</a>
+                <p-confirmPopup></p-confirmPopup>
+                <a href="#" (click)="confirmDelete($event)" class="link-danger text-decoration-none">{{dictionary.delete}} <span
+                        *ngIf="deleting" class="spinner-border spinner-border-sm"></span></a>
             </div>
             <div class="card card-body col-md-9 mb-3 bg-light">
                 <span class="text-muted">
-                    <em>{{contribution.statusDetails || "Nu exista detalii de afisat"}}</em>
+                    <em>{{contribution.statusDetails || dictionary.contributionStatusDetailsDefault}}</em>
                 </span>
             </div>
             <div class="description" [innerHTML]="contribution.description">
             </div>
         </div>
-        <div class="col-md-5">
-            <p>Solutia propusa</p>
+        <div class="col-md-5 mt-3">
+            <p>{{dictionary.proposedSolution}}</p>
             <div class="card bg-light card-body shadow-sm text-muted mb-4">
                 {{contribution.solution}}
             </div>
-            <p>Exemple I/O</p>
+            <p>{{dictionary.inputOutputExamples}}</p>
             <div class="card bg-light card-body shadow-sm text-muted mb-3 testcase">{{contribution.testcase}}</div>
         </div>
     </div>

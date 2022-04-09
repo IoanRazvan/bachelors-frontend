@@ -1,7 +1,7 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { LanguageService } from 'src/app/core/base/language.base';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 
@@ -13,25 +13,27 @@ export class ContributionViewComponent implements OnInit {
   id!: string;
   contribution!: ProblemContributionResponse;
   loading = true;
-  error = false;
+  errorStatus: number = 0;
   wasDeleted = false;
+  deleting = false;
+  dictionary: any;
 
 
-  constructor(private route: ActivatedRoute, private apiService: ProblemContributionService, private confirmationService: ConfirmationService, private messageService: MessageService, private location: Location) {
+  constructor(private route: ActivatedRoute, private apiService: ProblemContributionService, private confirmationService: ConfirmationService, private messageService: MessageService, languageService: LanguageService) {
+    this.dictionary = languageService.dictionary;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
       this.id = id;
-      // TODO handle possible error/not found
       this.apiService.getContribution(id).subscribe({
         next: response => {
-          this.contribution = response;
           this.loading = false;
+          this.contribution = response;
         },
-        error: () => {
-          this.loading = true;
-          this.error = true;
+        error: (err) => {
+          this.loading = false;
+          this.errorStatus = err.status || 1;
         }
       })
     })
@@ -40,26 +42,33 @@ export class ContributionViewComponent implements OnInit {
   confirmDelete(event: any): boolean {
     this.confirmationService.confirm({
       target: event.target,
-      message: 'Esti sigur ca doresti sa stergi contributia?',
+      message: this.dictionary.deleteContributionConfirmMessage,
       icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        this.apiService.delete(this.id).subscribe({
-          next: () => {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Succes',
-              detail: 'Contributia a fost stearsa'
-            });
-            this.wasDeleted = true;
-          },
-          error: () => { }
-        })
-      }
+      accept: () => this.deleteContribution()
     });
     return false;
   }
 
-  goBack() {
-    this.location.back();
+  private deleteContribution() {
+    this.deleting = true;
+    this.apiService.delete(this.id).subscribe({
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: this.dictionary.successSummary,
+          detail: this.dictionary.deleteContributionToastSuccessDetail
+        });
+        this.wasDeleted = true;
+        this.deleting = false;
+      },
+      error: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: this.dictionary.errorSummary,
+          detail: this.dictionary.deleteContributionToastErrorDetail
+        });
+        this.deleting = false;
+      }
+    });
   }
 }

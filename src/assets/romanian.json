@@ -36,5 +36,14 @@
     "back": "Înapoi",
     "updateContributionToastSuccessDetail": "Contribuția a fost actualizată cu succes. Te poți întoarce.",
     "updateContributionToastErrorDetail": "Contribuția nu a putut fi actualizată. Încearcă din nou.",
-    "updateContributionConfirmSubmit": "Actualizează problema"
+    "updateContributionConfirmSubmit": "Actualizează problema",
+    "deleteContributionConfirmMessage": "Ești sigur că dorești să ștergi contribuția?",
+    "deleteContributionToastSuccessDetail": "Contribuția a fost ștearsă cu succes.",
+    "deleteContributionToastErrorDetail": "Contribuția nu a putut fi ștearsă.",
+    "actions": "Acțiuni",
+    "update": "Actualizează",
+    "delete": "Șterge",
+    "contributionStatusDetailsDefault": "Nu există detalii de afișat",
+    "proposedSolution": "Soluția propusă",
+    "inputOutputExamples": "Exemple I/O"
 }

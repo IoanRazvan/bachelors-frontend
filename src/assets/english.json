@@ -36,5 +36,14 @@
     "back": "Back",
     "updateContributionToastSuccessDetail": "Contribution updated successfully. You may return back.",
     "updateContributionToastErrorDetail": "Unable to update contribution. You may try again",
-    "updateContributionConfirmSubmit": "Update problem"
+    "updateContributionConfirmSubmit": "Update problem",
+    "deleteContributionConfirmMessage": "Are you sure you want to delete this contribution?",
+    "deleteContributionToastSuccessDetail": "Contribution deleted successfully.",
+    "deleteContributionToastErrorDetail": "Unable to delete contribution.",
+    "actions": "Actions",
+    "update": "Update",
+    "delete": "Delete",
+    "contributionStatusDetailsDefault": "No details to display",
+    "proposedSolution": "Proposed solution",
+    "inputOutputExamples": "I/O examples"
 }
