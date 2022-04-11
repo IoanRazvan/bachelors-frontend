@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { LanguageService } from "../core/base/language.base";
+import { IdentityService } from "../core/services/identity.service";
 import { NavItem } from "../models/nav-item.model";
 
 @Component({
@@ -9,7 +10,7 @@ import { NavItem } from "../models/nav-item.model";
 export class AuthorizedComponent {
     navItems: NavItem[];
     
-    constructor(languageService: LanguageService) {
+    constructor(languageService: LanguageService, indentityService: IdentityService) {
         const dictionary = languageService.dictionary;
         this.navItems = [{
             type: 'link',
@@ -29,5 +30,12 @@ export class AuthorizedComponent {
             }],
             name: dictionary.navbarOption[2][0]
         }];
+        if (indentityService.hasDeveloperRole()) {
+            this.navItems.push({
+                type: 'link',
+                path: '/manage-contributions',
+                name: <string>dictionary.navbarOption[3]
+            })
+        }
     }
 }

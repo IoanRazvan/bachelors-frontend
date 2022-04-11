@@ -1,6 +1,6 @@
 {
     "landingText": "<strong>Prepare</strong> for practical interviews or just <strong>solve</strong> programming problems for fun using our app!",
-    "navbarOption": ["Home", "Problems", ["Contribute", "Problem"]],
+    "navbarOption": ["Home", "Problems", ["Contribute", "Problem"], "Contributions"],
     "contributeProblemHomeText": "We strive to offer a pleasant and useful experience. A such, we continiously try to  provide relevant problems . If you've come across an interesting problem that is not yet part of our database, we invite you to contribute to the improvement of our platform by opening a contribution request",
     "contributeProblemHomeButton": "Contribute",
     "contributeProblemStep": ["Question", "Solution", "Testcase", "Confirmation"],
