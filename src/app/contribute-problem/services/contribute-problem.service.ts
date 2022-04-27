@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { ReplaySubject, Subject } from "rxjs";
+import { Observable, ReplaySubject, Subject } from "rxjs";
+import { PagedServiceBase } from "src/app/base/paged-service.base";
 import { ProblemContributionService } from "src/app/core/services/problem-contribution.service";
 import { Page } from "src/app/models/page.model";
 import { ProblemContributionResponse } from "src/app/models/problem-contribution.model";
@@ -8,37 +9,21 @@ import { ServerResponse } from "src/app/models/server-response.model";
 @Injectable({
     providedIn: 'root'
 })
-export class ContributeProblemService {
-    private contributions: Subject<ServerResponse<Page<ProblemContributionResponse>>> = new ReplaySubject(1);
-    readonly contributions$ = this.contributions.asObservable();
-    private serverPageSize = 16;
-    private clientPageSize = 8;
-    private currentServerPage!: Page<ProblemContributionResponse>;
+export class ContributeProblemService extends PagedServiceBase {
+    protected override pagesSubject: Subject<ServerResponse<Page<ProblemContributionResponse>>> = new ReplaySubject(1);
+    public override readonly pages$ = this.pagesSubject.asObservable();
+    protected override serverPageSize = 16;
+    protected override clientPageSize = 8;
+    protected override currentServerPage!: Page<ProblemContributionResponse>;
+    protected override resultObservable!: Observable<Page<ProblemContributionResponse>>;
 
 
     constructor(private apiService: ProblemContributionService) {
+        super();
     }
 
-    change(page: number, force: boolean = false) {
-        const requestedServerPage = Page.convertPageNumber(page, this.clientPageSize, this.serverPageSize);
-        if (this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || force) {
-            this.apiService.getContributions(requestedServerPage, this.serverPageSize).subscribe({
-                next: (resp) => {
-                    this.currentServerPage = new Page(resp);
-                    this.contributions.next({
-                        response: this.currentServerPage.convertPage(page, this.clientPageSize),
-                        error: false
-                    })
-                },
-                error: () => this.contributions.next({
-                    error: true
-                })
-            });
-        } else {
-            this.contributions.next({
-                response: this.currentServerPage.convertPage(page, this.clientPageSize),
-                error: false
-            });
-        }
+    override change(page: number, force: boolean = false) {
+        this.resultObservable = this.apiService.getContributions(page, this.serverPageSize);
+        super.change(page, force);
     }
 }

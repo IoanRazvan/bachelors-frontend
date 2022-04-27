@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { PageInfo } from 'src/app/models/page-info.model';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
@@ -14,13 +14,14 @@ export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
   contributions: ProblemContributionResponse[] = [];
   pageInfo !: PageInfo;
   loading = true;
+  subscription!: Subscription;
 
   constructor(languageService: LanguageService, private contributionsService: ContributeProblemService, private messageService: MessageService) {
     this.dictionary = languageService.dictionary;
   }
 
   ngOnInit(): void {
-    this.contributionsService.contributions$.subscribe((res) => {
+    this.subscription = this.contributionsService.pages$.subscribe((res) => {
       if (!res.error) {
         const response = <any>res.response;
         this.loading = false;
@@ -47,5 +48,6 @@ export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       this.messageService.clear();
+      this.subscription.unsubscribe();
   }
 }
