@@ -1,0 +1,15 @@
+<p-toast></p-toast>
+
+<app-loading-page [loading]="loading"></app-loading-page>
+
+<app-error-page [errorStatus]="errorStatus"></app-error-page>
+
+<app-contribution-view *ngIf="!loading && !errorStatus" [contribution]="contribution" [actions]="actions"
+    (onAction)="onActionClick($event)">
+    <p-confirmPopup></p-confirmPopup>
+    <div class="card card-body col-md-9 mb-3 bg-light">
+        <span class="text-muted">
+            <em>{{contribution.statusDetails || dictionary.contributionStatusDetailsDefault}}</em>
+        </span>
+    </div>
+</app-contribution-view>

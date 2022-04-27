@@ -6,6 +6,8 @@ import { CenteredComponent } from './components/centered/centered.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { LoadingPageComponent } from './components/loading-page/loading-page.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { ContributionViewComponent } from './components/contribution-view/contribution-view.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,13 +16,15 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     PaginatorComponent,
     CenteredComponent,
     ErrorPageComponent,
-    LoadingPageComponent
+    LoadingPageComponent,
+    ContributionViewComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DialogModule
+    DialogModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
@@ -29,7 +33,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     PaginatorComponent,
     CenteredComponent,
     ErrorPageComponent,
-    LoadingPageComponent
+    LoadingPageComponent,
+    ContributionViewComponent
   ]
 })
 export class SharedModule { }
