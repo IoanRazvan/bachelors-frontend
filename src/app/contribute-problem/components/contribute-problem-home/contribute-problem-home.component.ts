@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { PageInfo } from 'src/app/models/page-info.model';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
+import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 import { ContributeProblemService } from '../../services/contribute-problem.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
   loading = true;
   subscription!: Subscription;
 
-  constructor(languageService: LanguageService, private contributionsService: ContributeProblemService, private messageService: MessageService) {
+  constructor(languageService: LanguageService, private contributionsService: ContributeProblemService, private messageService: ToastMessageService) {
     this.dictionary = languageService.dictionary;
   }
 
@@ -35,7 +36,7 @@ export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
       else {
         this.loading = false;
         this.contributions = [];
-        this.messageService.add({severity: 'error', summary: this.dictionary.errorSummary, detail: this.dictionary.contributeProblemHomeFetchError, sticky: true})
+        this.messageService.addError(this.dictionary.contributeProblemHomeFetchError, {sticky: true})
       }
     });
     this.changeContributionsPage(0, true);

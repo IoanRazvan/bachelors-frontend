@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MenuItem, MessageService } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 import { filter, Observable } from 'rxjs';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
 import { ProblemContributionRequest, ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
+import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 import { StepData } from '../contribute-problem-simple-step/contribute-problem-simple-step.component';
 
 @Component({
@@ -24,7 +25,7 @@ export class ContributeProblemFormComponent implements OnInit {
   submissionHappend = false;
   dictionary: any;
 
-  constructor(languageService: LanguageService, private apiService: ProblemContributionService, private messageService: MessageService, private route: ActivatedRoute) {
+  constructor(languageService: LanguageService, private apiService: ProblemContributionService, private messageService: ToastMessageService, private route: ActivatedRoute) {
     this.dictionary = languageService.dictionary;
 
     this.items = this.dictionary.contributeProblemStep.map((item: string, idx: number) => ({
@@ -100,16 +101,12 @@ export class ContributeProblemFormComponent implements OnInit {
     this.submitting = true;
     submitObs.subscribe({
       next: () => {
-        this.messageService.add({
-          severity: 'success', summary: this.dictionary.successSummary, detail: onSuccessDetail
-        });
+        this.messageService.addSuccess(onSuccessDetail);
         this.submissionHappend = true;
         this.submitting = false;
       },
       error: () => {
-        this.messageService.add({
-          severity: 'error', summary: this.dictionary.errorSummary, detail: onErrorDetail
-        });
+        this.messageService.addError(onErrorDetail);
         this.submitting = false;
       }
     });
