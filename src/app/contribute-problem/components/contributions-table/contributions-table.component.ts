@@ -5,8 +5,7 @@ import { ProblemContributionResponse } from 'src/app/models/problem-contribution
 
 @Component({
   selector: 'app-contributions-table',
-  templateUrl: './contributions-table.component.html',
-  styleUrls: ['contributions-table.style.css']
+  templateUrl: './contributions-table.component.html'
 })
 export class ContributionsTableComponent {
   @Input() contributions!: ProblemContributionResponse[];
