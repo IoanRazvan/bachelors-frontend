@@ -45,5 +45,7 @@
     "delete": "Șterge",
     "contributionStatusDetailsDefault": "Nu există detalii de afișat",
     "proposedSolution": "Soluția propusă",
-    "inputOutputExamples": "Exemple I/O"
+    "inputOutputExamples": "Exemple I/O",
+    "yes": "Da",
+    "no": "Nu"
 }

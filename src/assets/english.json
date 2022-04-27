@@ -45,5 +45,7 @@
     "delete": "Delete",
     "contributionStatusDetailsDefault": "No details to display",
     "proposedSolution": "Proposed solution",
-    "inputOutputExamples": "I/O examples"
+    "inputOutputExamples": "I/O examples",
+    "yes": "Yes",
+    "no": "No"
 }
