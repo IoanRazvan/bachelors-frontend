@@ -9,6 +9,7 @@ import { AuthorizedModule } from './authorized/authorized.module';
 import { LandingComponent } from './components/landing/landing.component';
 import { ContributeProblemModule } from './contribute-problem/contribute-problem.module';
 import { CoreModule } from './core/core.module';
+import { ManageContributionsModule } from './manage-contributions/manage-contributions.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CoreModule } from './core/core.module';
     CommonModule,
     AuthorizedModule,
     ContributeProblemModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ManageContributionsModule
   ],
   providers: [{
     provide: APP_INITIALIZER,
