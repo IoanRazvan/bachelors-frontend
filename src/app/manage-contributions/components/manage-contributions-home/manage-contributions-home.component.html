@@ -1,0 +1,47 @@
+<app-centered>
+    <h2 class="text-muted fw-normal mt-3">Contributii</h2>
+</app-centered>
+<p-table *ngIf="data" [scrollable]="false" [value]="data" [@removeItemAnimation]="data.length">
+    <ng-template pTemplate="header">
+        <tr class="border-top-0">
+            <th scope="col" class="text-muted fw-light border-0">
+                Status
+            </th>
+            <th scope="col" class="text-muted fw-light border-0">
+                Titlu
+            </th>
+            <th scope="col" class="text-muted fw-light border-0">
+                Creat La
+            </th>
+            <th scope="col" class="text-muted fw-light border-0">
+                Asigneaza
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-contribution let-rowIndex="rowIndex">
+        <tr [class.bg-light]="rowIndex % 2 === 0">
+            <td>
+                <span class="p-column-title">Status</span>
+                <span [ngSwitch]="contribution.status">
+                    <i *ngSwitchCase="'PENDING'" class="pi pi-clock text-warning"></i>
+                    <i *ngSwitchCase="'ACCEPTED'" class="pi pi-check-circle text-success"></i>
+                    <i *ngSwitchCase="'REJECTED'" class="pi pi-exclamation-circle text-danger"></i>
+                </span>
+            </td>
+            <td>
+                <span class="p-column-title">Titlu</span>
+                <a [routerLink]="['.', contribution.id]"
+                    class="text-decoration-none link-dark contribution-link">{{contribution.title}}</a></td>
+            <td>
+                <span class="p-column-title">Creat La</span>
+                <span>{{contribution.createdTime}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Asigneaza</span>
+                <span>
+                    <p-checkbox [formControl]="assign" (click)="onAssign(contribution.id)" [binary]="true"></p-checkbox>
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
