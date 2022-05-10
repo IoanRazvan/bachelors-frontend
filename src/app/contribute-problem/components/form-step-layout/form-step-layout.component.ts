@@ -5,8 +5,7 @@ import { StepType } from 'src/app/models/step.type';
 
 @Component({
   selector: 'app-form-step-layout',
-  templateUrl: './form-step-layout.component.html',
-  styleUrls: ['form-step-layout.component.scss']
+  templateUrl: './form-step-layout.component.html'
 })
 export class FormStepLayoutComponent  {
   @Input() stepTitle !: string;

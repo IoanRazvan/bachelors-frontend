@@ -9,6 +9,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
 import { SubmittedContributionComponent } from './components/submitted-contribution/submitted-contribution.component';
 import { ToastMessageService } from '../shared/services/toast-message.service';
+import { DividerModule } from 'primeng/divider';
 
 
 
@@ -24,7 +25,8 @@ import { ToastMessageService } from '../shared/services/toast-message.service';
     SharedModule,
     TableModule,
     CheckboxModule,
-    ToastModule
+    ToastModule,
+    DividerModule
   ],
   providers: [
     ToastMessageService

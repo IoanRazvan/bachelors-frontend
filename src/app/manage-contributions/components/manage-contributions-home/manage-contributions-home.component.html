@@ -1,6 +1,5 @@
-<app-centered>
-    <h2 class="text-muted fw-normal mt-3">Contributii</h2>
-</app-centered>
+<div class="callout mt-5 callout-info col-10">Pentru a putea trata submisia unui utilizator este nevoie sa o asignezi inainte. Acest pas este necesar pentru a evita situatia cand doi dezvoltatori lucreaza la aceasi submisie. O data asignata, submisia va aparea in tabul <a href="">contributii asignate</a> de unde poate fi acceptata sau refuzata, oferind detalii suplimentare.</div>
+<p-divider></p-divider>
 <p-table *ngIf="data" [scrollable]="false" [value]="data" [@removeItemAnimation]="data.length">
     <ng-template pTemplate="header">
         <tr class="border-top-0">

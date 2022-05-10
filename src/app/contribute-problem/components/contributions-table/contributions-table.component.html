@@ -1,10 +1,7 @@
-<app-centered>
-    <p class="text-muted fs-4 fw-light">{{dictionary.contributeProblemHomeTableTitle}}</p>
-</app-centered>
 <p-table responsiveLayout="scroll" [value]="contributions">
     <ng-template pTemplate="header">
         <tr class="border-top-0">
-            <th scope="col" class="text-muted fw-light border-0"
+            <th scope="col" class="text-muted pt-0 fw-light border-0"
                 *ngFor="let header of dictionary.contributeProblemHomeTableHeaders">{{header}}</th>
         </tr>
     </ng-template>

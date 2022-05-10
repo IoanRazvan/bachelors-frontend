@@ -1,6 +1,6 @@
 {
     "landingText": "<strong>Pregătește-te</strong> de interview-ul tehnic sau pur și simplu <strong>distrează-te </strong> rezolvând probleme de programare folosind aplicația noastră!",
-    "navbarOption": ["Acasă", "Probleme", ["Contribuie", "Problemă"], "Contribuții"],
+    "navbarOption": ["Acasă", "Probleme", "Contribuie", ["Contribuții", "Noi", "Asignate"]],
     "contributeProblemHomeText": " Ne străduim să oferim o experiență cât mai placută și utilă. Astfel, încercăm să punem la dispoziție probleme de actualitate. Dacă ai întâlnit o problemă interesantă ce nu face încă parte din baza de date StealCode, te invităm să contribui la îmbunătățirea platformei prin crearea unei cereri de contribuție.",
     "contributeProblemHomeButton": "Contribuie",
     "contributeProblemStep": ["Problemă", "Soluție", "Test", "Confirmare"],
@@ -26,7 +26,6 @@
     "contributeProblemToastSuccessDetail": "Contribuția a fost adăugată cu succes. Te poți întoarce.",
     "contributeProblemToastErrorDetail": "Contribuția nu a putut fi adaugata. Încearcă din nou.",
     "contributeProblemBackHomeButton": "Du-mă înapoi",
-    "contributeProblemHomeTableTitle": "Contribuții anterioare",
     "contributeProblemHomeTableHeaders": ["Status", "Titlu", "Creat la"],
     "contributeProblemHomeNoContributions": "Contribuțiile anterioare vor apărea aici",
     "contributeProblemHomeFetchError": "Contribuțiile anterioare nu au putut încărcate.",
@@ -47,5 +46,6 @@
     "proposedSolution": "Soluția propusă",
     "inputOutputExamples": "Exemple I/O",
     "yes": "Da",
-    "no": "Nu"
+    "no": "Nu",
+    "wantToContribute": "Dorești să contribui?"
 }

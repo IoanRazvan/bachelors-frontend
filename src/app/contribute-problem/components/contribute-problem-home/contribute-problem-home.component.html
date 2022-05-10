@@ -1,19 +1,23 @@
 <p-toast></p-toast>
-<div class="row mt-5">
-    <div class="col-lg-5 mt-5 mb-5 me-auto">
+<div class="row border-between mt-5 gx-0 justify-content-between" style="height: 80vh">
+    <div class="col-lg-5 mb-5 align-self-center">
+        <h4 class="mb-3">{{dictionary.wantToContribute}}</h4>
         <p>
             {{dictionary.contributeProblemHomeText}}
         </p>
         <button type="button" class="btn btn-primary"
             [routerLink]="['form']">{{dictionary.contributeProblemHomeButton}}</button>
     </div>
-    <div class="col-lg-6 mt-5" [class.align-self-center]="loading || !contributions.length">
+    <div class="col-lg-6" [class.align-self-center]="loading || !contributions.length">
         <app-centered *ngIf="!contributions.length">
-            <p class="text-muted fs-4 fw-light">{{dictionary.contributeProblemHomeNoContributions}}</p>
+            <p class="text-muted fs-3 fw-light">{{dictionary.contributeProblemHomeNoContributions}}</p>
         </app-centered>
         <app-centered *ngIf="loading">
             <div class="spinner-border text-muted"></div>
         </app-centered>
-        <app-contributions-table *ngIf="!loading && contributions.length" [contributions]="contributions" [pageInfo]="pageInfo" (pageChange)="changeContributionsPage($event - 1)"></app-contributions-table>
+        <div class="px-3">
+            <app-contributions-table *ngIf="!loading && contributions.length" [contributions]="contributions"
+                [pageInfo]="pageInfo" (pageChange)="changeContributionsPage($event - 1)"></app-contributions-table>
+        </div>
     </div>
 </div>

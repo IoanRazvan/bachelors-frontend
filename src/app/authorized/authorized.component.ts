@@ -23,18 +23,18 @@ export class AuthorizedComponent {
             name: <string>dictionary.navbarOption[1]
         },
         {
-            type: 'dropdown',
-            path: [{
-                path: '/contribute-problem',
-                name: dictionary.navbarOption[2][1]
-            }],
-            name: dictionary.navbarOption[2][0]
+            type: 'link',
+            path: '/contribute-problem',
+            name: dictionary.navbarOption[2]
         }];
         if (indentityService.hasDeveloperRole()) {
             this.navItems.push({
-                type: 'link',
-                path: '/manage-contributions',
-                name: <string>dictionary.navbarOption[3]
+                type: 'dropdown',
+                path: [
+                    {path: '/manage-contributions', name: dictionary.navbarOption[3][1]},
+                    {path: '/manage-assigned-contributions', name: dictionary.navbarOption[3][2]}
+                ],
+                name: <string>dictionary.navbarOption[3][0]
             })
         }
     }
