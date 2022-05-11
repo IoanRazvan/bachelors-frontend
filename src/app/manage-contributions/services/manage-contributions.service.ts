@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, ReplaySubject, Subject } from "rxjs";
-import { PagedServiceBase } from "src/app/base/paged-service.base";
+import { PagedServiceBase, ResultObservableAdapter } from "src/app/base/paged-service.base";
 import { ContributionsManagementService } from "src/app/core/services/contributions-mananagement.service";
 import { Page } from "src/app/models/page.model";
 import { UnassignedContributionRow } from "src/app/models/problem-contribution.model";
@@ -15,14 +15,18 @@ export class ManageContributionsService extends PagedServiceBase {
     protected override serverPageSize = 16;
     protected override clientPageSize = 8;
     protected override currentServerPage!: Page<UnassignedContributionRow>;
-    protected override resultObservable!: Observable<Page<UnassignedContributionRow>>;
+    protected override service!: ResultObservableAdapter;
     
     constructor(private apiService: ContributionsManagementService) {
         super();
+        this.service = {
+            request(page : number, pageSize: number): Observable<any> {
+                return apiService.getAvailableContributions(page, pageSize);
+            }
+        }
     }
 
     override change(page: number, force?: boolean): void {
-        this.resultObservable = this.apiService.getAvailableContributions(page, this.serverPageSize);
         super.change(page, force);
     }
 

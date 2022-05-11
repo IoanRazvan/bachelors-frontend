@@ -7,10 +7,11 @@ import { SharedModule } from '../shared/shared.module';
 import { TableModule } from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
-import { SubmittedContributionComponent } from './components/submitted-contribution/submitted-contribution.component';
+import { NewContributionComponent } from './components/new-contribution/new-contribution.component';
 import { ToastMessageService } from '../shared/services/toast-message.service';
 import { DividerModule } from 'primeng/divider';
 import { AssignedContributionsComponent } from './components/assigned-contributions/assigned-contributions.component';
+import { UnassignedContributionsTableComponent } from './components/unassigned-contributions-table/unassigned-contributions-table.component';
 
 
 
@@ -18,8 +19,9 @@ import { AssignedContributionsComponent } from './components/assigned-contributi
   declarations: [
     ManageContributionsComponent,
     NewContributionsComponent,
-    SubmittedContributionComponent,
-    AssignedContributionsComponent
+    NewContributionComponent,
+    AssignedContributionsComponent,
+    UnassignedContributionsTableComponent
   ],
   imports: [
     CommonModule,

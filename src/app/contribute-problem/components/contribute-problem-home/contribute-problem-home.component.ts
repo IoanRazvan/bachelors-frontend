@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LanguageService } from 'src/app/core/base/language.base';
-import { PageInfo } from 'src/app/models/page-info.model';
+import { extractPageInfo, PageInfo } from 'src/app/models/page-info.model';
 import { PreviousContributionRow } from 'src/app/models/problem-contribution.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 import { ContributeProblemService } from '../../services/contribute-problem.service';
@@ -13,7 +13,7 @@ import { ContributeProblemService } from '../../services/contribute-problem.serv
 export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
   dictionary: any;
   contributions: PreviousContributionRow[] = [];
-  pageInfo !: PageInfo;
+  pageInfo!: PageInfo;
   loading = true;
   subscription!: Subscription;
 
@@ -25,19 +25,14 @@ export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
     this.subscription = this.contributionsService.pages$.subscribe((res) => {
       if (!res.error) {
         const response = <any>res.response;
-        this.loading = false;
         this.contributions = response.content;
-        this.pageInfo = {
-          last: response.last,
-          first: response.first,
-          page: response.page + 1
-        }
+        this.pageInfo = extractPageInfo(response);
       }
       else {
-        this.loading = false;
         this.contributions = [];
         this.messageService.addError(this.dictionary.contributeProblemHomeFetchError, {sticky: true})
       }
+      this.loading = false;
     });
     this.changeContributionsPage(0, true);
   }

@@ -2,5 +2,5 @@
 
 <app-error-page [errorStatus]="errorStatus"></app-error-page>
 <p-toast></p-toast>
-<app-contribution-view *ngIf="!loading && !errorStatus" [contribution]="contribution" [actions]="actions" (onAction)="onActionClick($event)">
+<app-contribution-view *ngIf="!loading && !errorStatus" [contribution]="contribution" [actions]="actions" (onAction)="onActionClick()">
 </app-contribution-view>

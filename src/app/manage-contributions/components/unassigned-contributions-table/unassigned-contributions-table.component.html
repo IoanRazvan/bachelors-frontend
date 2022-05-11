@@ -1,0 +1,28 @@
+<p-table [scrollable]="true" responsiveLayout="scroll" [value]="data">
+    <ng-template pTemplate="header">
+        <tr class="border-top-0">
+            <th scope="col" class="text-muted fw-light border-0">
+                Contributor
+            </th>
+            <th scope="col" class="text-muted fw-light border-0">
+                Titlu
+            </th>
+            <th scope="col" class="text-muted fw-light border-0">
+                Creat La
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-contribution let-rowIndex="rowIndex">
+        <tr [class.bg-light]="rowIndex % 2 === 0">
+            <td class="border-0">
+                <span>{{contribution.contributorUsername}}</span>
+            </td>
+            <td class="border-0">
+                <a [routerLink]="['.', contribution.id]"
+                    class="text-decoration-none link-dark contribution-link">{{contribution.title}}</a></td>
+            <td class="border-0">
+                <span>{{contribution.createdTime}}</span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
