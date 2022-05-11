@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Page } from "src/app/models/page.model";
-import { ProblemContributionResponse } from "src/app/models/problem-contribution.model";
+import { UnassignedContributionRow } from "src/app/models/problem-contribution.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -14,7 +14,7 @@ export class ContributionsManagementService {
     constructor(private http: HttpClient) {
     }
 
-    getAvailableContributions(page: number, size : number) : Observable<Page<ProblemContributionResponse>> {
+    getAvailableContributions(page: number, size : number) : Observable<Page<UnassignedContributionRow>> {
         return <any>this.http.get(`${this.endpoint}?page=${page}&size=${size}`);
     }
 

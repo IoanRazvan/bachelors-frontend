@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProblemContributionRequest, ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
+import { PreviousContributionRow, ProblemContributionRequest, ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 import { environment } from 'src/environments/environment';
 import { Page } from '../../models/page.model';
 
@@ -26,7 +26,7 @@ export class ProblemContributionService {
     return <any>this.http.delete(`${this.endpoint}/${id}`);
   }
 
-  getContributions(page: number, size: number): Observable<Page<ProblemContributionResponse>> {
+  getContributions(page: number, size: number): Observable<Page<PreviousContributionRow>> {
     return <any>this.http.get(`${this.endpoint}?page=${page}&size=${size}`);
   }
 

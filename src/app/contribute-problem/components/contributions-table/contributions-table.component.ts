@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { PageInfo } from 'src/app/models/page-info.model';
-import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
+import { PreviousContributionRow } from 'src/app/models/problem-contribution.model';
 
 @Component({
   selector: 'app-contributions-table',
   templateUrl: './contributions-table.component.html'
 })
 export class ContributionsTableComponent {
-  @Input() contributions!: ProblemContributionResponse[];
+  @Input() contributions!: PreviousContributionRow[];
   @Input() pageInfo!: PageInfo;
   @Output() pageChange = new EventEmitter<number>();
   dictionary: any;

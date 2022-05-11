@@ -13,3 +13,17 @@ export interface ProblemContributionResponse extends ProblemContributionRequest 
     statusDetails: string;
     createdTime: string;
 }
+
+export interface PreviousContributionRow {
+    id : number;
+    status: ProblemContributionRequest;
+    title: string;
+    createdTime: string;
+}
+
+export interface UnassignedContributionRow {
+    id: number;
+    contributorUsername: string;
+    title: string;
+    createdTime: string;
+}

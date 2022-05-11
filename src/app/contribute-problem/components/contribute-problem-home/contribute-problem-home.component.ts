@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LanguageService } from 'src/app/core/base/language.base';
 import { PageInfo } from 'src/app/models/page-info.model';
-import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
+import { PreviousContributionRow } from 'src/app/models/problem-contribution.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 import { ContributeProblemService } from '../../services/contribute-problem.service';
 
@@ -12,7 +12,7 @@ import { ContributeProblemService } from '../../services/contribute-problem.serv
 })
 export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
   dictionary: any;
-  contributions: ProblemContributionResponse[] = [];
+  contributions: PreviousContributionRow[] = [];
   pageInfo !: PageInfo;
   loading = true;
   subscription!: Subscription;
