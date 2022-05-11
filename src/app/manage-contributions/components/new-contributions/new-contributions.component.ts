@@ -1,12 +1,12 @@
-import { animate, keyframes, query, stagger, style, transition, trigger } from '@angular/animations';
+import { animate, keyframes, query, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 import { ManageContributionsService } from '../../services/manage-contributions.service';
 
 @Component({
-  selector: 'app-manage-contributions-home',
-  templateUrl: './manage-contributions-home.component.html',
+  selector: 'app-new-contributions',
+  templateUrl: './new-contributions.component.html',
   animations: [
     trigger('removeItemAnimation', [
       transition(':leave, * => 0', []),
@@ -21,7 +21,7 @@ import { ManageContributionsService } from '../../services/manage-contributions.
     ])
   ]
 })
-export class ManageContributionsHomeComponent implements OnInit, OnDestroy {
+export class NewContributionsComponent implements OnInit, OnDestroy {
   data: ProblemContributionResponse[] = [];
   assign: FormControl = new FormControl(false);
   tr = false;

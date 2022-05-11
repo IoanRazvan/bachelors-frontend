@@ -32,7 +32,7 @@ export class AuthorizedComponent {
                 type: 'dropdown',
                 path: [
                     {path: '/manage-contributions', name: dictionary.navbarOption[3][1]},
-                    {path: '/manage-assigned-contributions', name: dictionary.navbarOption[3][2]}
+                    {path: '/manage-contributions/assigned', name: dictionary.navbarOption[3][2]}
                 ],
                 name: <string>dictionary.navbarOption[3][0]
             })
