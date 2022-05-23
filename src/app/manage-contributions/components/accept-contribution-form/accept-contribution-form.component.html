@@ -1,0 +1,14 @@
+<app-loading-page [loading]="loading">
+</app-loading-page>
+
+<div *ngIf="!loading">
+    <div class="mt-5">
+        <p-steps [model]="items" [activeIndex]="tabIndex"></p-steps>
+    </div>
+
+    <div [ngSwitch]="tabIndex">
+        <app-contribute-problem-question *ngSwitchCase="0" [formData]="form" (onStep)="onStep($event, 0)">
+        </app-contribute-problem-question>
+        <app-code-step *ngSwitchCase="1" [formData]="form" (onStep)="onStep($event, 1)"></app-code-step>
+    </div>
+</div>

@@ -3,6 +3,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthorizedModule } from './authorized/authorized.module';
@@ -25,7 +26,8 @@ import { ManageContributionsModule } from './manage-contributions/manage-contrib
     AuthorizedModule,
     ContributeProblemModule,
     BrowserAnimationsModule,
-    ManageContributionsModule
+    ManageContributionsModule,
+    MonacoEditorModule.forRoot()
   ],
   providers: [{
     provide: APP_INITIALIZER,

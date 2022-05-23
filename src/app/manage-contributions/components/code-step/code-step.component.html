@@ -1,0 +1,64 @@
+<app-form-step-layout stepTitle="Implementarea Rezolvarii" [extend]="true" [formGroup]="form"
+    (onStep)="onStepClick($event)" [stepTip]="stepTip">
+    <as-split direction="horizontal" class="mb-2" style="height: 570px; min-width: 800px;" (dragEnd)="onResizeEnd()">
+        <as-split-area>
+            <p-tabView styleClass="me-2">
+                <p-tabPanel header="Problema">
+                    <div class="mx-2">
+                        <h5>{{formData.title}}</h5>
+                        <span class="description" [innerHTML]="formData.description"></span>
+                    </div>
+                </p-tabPanel>
+                <p-tabPanel header="Solutie">
+                    <p>{{formData.solution}}</p>
+                </p-tabPanel>
+                <p-tabPanel header="Exemple I/O">
+                    <span class="testcase" [innerHTML]="formData.testcase"></span>
+                </p-tabPanel>
+            </p-tabView>
+        </as-split-area>
+        <as-split-area [minSize]="30">
+            <as-split direction="vertical" (dragEnd)="onResizeEnd()">
+                <as-split-area>
+                    <div class="mx-2" style="height: 100%">
+                        <p-dropdown styleClass="my-3 me-2 rounded-0" [showClear]="false"
+                            (onChange)="onDropdownValueChange()" [options]="options" optionLabel="name" optionValue="id"
+                            formControlName="selectedLanguage"></p-dropdown>
+                        <button class="btn btn-primary rounded-0" (click)="submitCodeForCheck()"
+                            [disabled]="checkingCode">
+                            <span *ngIf="checkingCode" class="spinner-border spinner-border-sm" role="status"
+                                aria-hidden="true"></span>
+                            Check
+                        </button>
+                        <div class="border" style="height: 80%">
+                            <ngx-monaco-editor style="height: 100%"
+                                [formControl]="$any(form.controls[form.value.selectedLanguage])"
+                                (onInit)="onEditorInit($event)" [options]="editorOptions">
+                            </ngx-monaco-editor>
+                        </div>
+                    </div>
+                </as-split-area>
+                <as-split-area>
+                    <p-tabView styleClass="mt-4 ms-2">
+                        <p-tabPanel header="Testcase">
+                            <textarea name="testcase" id="testcase" style="resize: none;" class="form-control rounded-0"
+                                rows="5" formControlName="input"></textarea>
+                        </p-tabPanel>
+                        <p-tabPanel header="Run Results">
+                            <app-centered *ngIf="!error">
+                                <h5 class="fw-normal text-muted">
+                                    You must run your code first.
+                                </h5>
+                            </app-centered>
+                            <h5 *ngIf="error" class="text-danger">
+                                Compile Error
+                            </h5>
+                            <div *ngIf="error" class="aler alert-danger rounded testcase p-2" [innerHTML]="error">
+                            </div>
+                        </p-tabPanel>
+                    </p-tabView>
+                </as-split-area>
+            </as-split>
+        </as-split-area>
+    </as-split>
+</app-form-step-layout>

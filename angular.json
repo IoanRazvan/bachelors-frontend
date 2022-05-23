@@ -24,7 +24,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/monaco-editor",
+                "output": "assets/monaco-editor"
+              }
             ],
             "styles": [
               "src/styles.scss",
@@ -84,7 +89,7 @@
             "development": {
               "browserTarget": "bachelors-frontend:build:development",
               "headers": {
-                "Content-Security-Policy": "default-src 'self' http://localhost:*; script-src 'self' 'sha256-0zZPgsifJ8h8aM+gmSxkrfNtAGUZb7ItVug6/j1UR5g='; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
+                "Content-Security-Policy": "default-src 'self' http://localhost:*; script-src 'self' 'sha256-0zZPgsifJ8h8aM+gmSxkrfNtAGUZb7ItVug6/j1UR5g=' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
               }
             }
           },

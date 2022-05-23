@@ -13,6 +13,13 @@ import { DividerModule } from 'primeng/divider';
 import { AssignedContributionsComponent } from './components/assigned-contributions/assigned-contributions.component';
 import { UnassignedContributionsTableComponent } from './components/unassigned-contributions-table/unassigned-contributions-table.component';
 import { AssignedContributionComponent } from './components/assigned-contribution/assigned-contribution.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { CodeStepComponent } from './components/code-step/code-step.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { AngularSplitModule } from 'angular-split';
+import { AcceptContributionFormComponent } from './components/accept-contribution-form/accept-contribution-form.component';
+import { StepsModule } from 'primeng/steps';
+import {TabViewModule} from 'primeng/tabview';
 import { RefuseContributionFormComponent } from './components/refuse-contribution-form/refuse-contribution-form.component';
 
 
@@ -25,6 +32,8 @@ import { RefuseContributionFormComponent } from './components/refuse-contributio
     AssignedContributionsComponent,
     UnassignedContributionsTableComponent,
     AssignedContributionComponent,
+    CodeStepComponent,
+    AcceptContributionFormComponent,
     RefuseContributionFormComponent
   ],
   imports: [
@@ -34,7 +43,12 @@ import { RefuseContributionFormComponent } from './components/refuse-contributio
     TableModule,
     CheckboxModule,
     ToastModule,
-    DividerModule
+    DividerModule,
+    MonacoEditorModule,
+    DropdownModule,
+    AngularSplitModule,
+    StepsModule,
+    TabViewModule
   ],
   providers: [
     ToastMessageService
