@@ -12,6 +12,8 @@ import { ToastMessageService } from '../shared/services/toast-message.service';
 import { DividerModule } from 'primeng/divider';
 import { AssignedContributionsComponent } from './components/assigned-contributions/assigned-contributions.component';
 import { UnassignedContributionsTableComponent } from './components/unassigned-contributions-table/unassigned-contributions-table.component';
+import { AssignedContributionComponent } from './components/assigned-contribution/assigned-contribution.component';
+import { RefuseContributionFormComponent } from './components/refuse-contribution-form/refuse-contribution-form.component';
 
 
 
@@ -21,7 +23,9 @@ import { UnassignedContributionsTableComponent } from './components/unassigned-c
     NewContributionsComponent,
     NewContributionComponent,
     AssignedContributionsComponent,
-    UnassignedContributionsTableComponent
+    UnassignedContributionsTableComponent,
+    AssignedContributionComponent,
+    RefuseContributionFormComponent
   ],
   imports: [
     CommonModule,

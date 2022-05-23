@@ -1,0 +1,21 @@
+<p-toast></p-toast>
+<h4 class="text-muted mt-3 fw-normal">Refuza contributia</h4>
+<div class="row">
+    <div class="col-md-8">
+        <label for="statusDetails" class="form-label">Detalii <span class="text-danger">*</span></label>
+        <textarea id="statusDetails" [formControl]="statusDetails" class="form-control"
+            [class.is-invalid]="statusDetails.invalid && statusDetails.dirty" rows="7"></textarea>
+        <div class="invalid-feedback">
+            Campul 'Detalii' este obligatoriu
+        </div>
+        <div class="mt-2">
+            <button *ngIf="!contributionWasRefused" class="btn btn-primary" [disabled]="statusDetails.invalid || loading" (click)="onClick()">
+                Refuza
+                <span class="spinner-border spinner-border-sm" *ngIf="loading"></span>
+            </button>
+            <button class="btn btn-primary" *ngIf="contributionWasRefused"[routerLink]="['../..']">
+                Du-ma inapoi
+            </button>
+        </div>
+    </div>
+</div>

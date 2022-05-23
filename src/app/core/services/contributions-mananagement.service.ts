@@ -21,4 +21,10 @@ export class ContributionsManagementService {
     assignContribution(contributionId: string) : Observable<any> {
         return this.http.put(`${this.endpoint}/${contributionId}`, null);
     }
+
+    refuseContribution(contributionId: string, statusDetails: string) : Observable<any> {
+        return this.http.put(`${this.endpoint}/refuse/${contributionId}`, {
+            statusDetails
+        });
+    }
 }
