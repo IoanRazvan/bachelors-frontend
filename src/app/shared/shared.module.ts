@@ -8,6 +8,9 @@ import { LoadingPageComponent } from './components/loading-page/loading-page.com
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { ContributionViewComponent } from './components/contribution-view/contribution-view.component';
 import { RouterModule } from '@angular/router';
+import { ContributeProblemQuestionComponent } from './components/contribute-problem-question/contribute-problem-question.component';
+import { FormStepLayoutComponent } from './components/form-step-layout/form-step-layout.component';
+import { EditorModule } from 'primeng/editor';
 
 
 @NgModule({
@@ -17,14 +20,17 @@ import { RouterModule } from '@angular/router';
     CenteredComponent,
     ErrorPageComponent,
     LoadingPageComponent,
-    ContributionViewComponent
+    ContributionViewComponent,
+    ContributeProblemQuestionComponent,
+    FormStepLayoutComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     DialogModule,
-    RouterModule
+    RouterModule,
+    EditorModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +40,9 @@ import { RouterModule } from '@angular/router';
     CenteredComponent,
     ErrorPageComponent,
     LoadingPageComponent,
-    ContributionViewComponent
+    ContributionViewComponent,
+    ContributeProblemQuestionComponent,
+    FormStepLayoutComponent
   ]
 })
 export class SharedModule { }

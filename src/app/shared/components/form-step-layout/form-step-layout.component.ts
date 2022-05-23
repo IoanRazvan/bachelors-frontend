@@ -12,6 +12,7 @@ export class FormStepLayoutComponent  {
   @Input() formGroup !: FormGroup;
   @Input() showPrevStepButton : boolean = true;
   @Input() stepTip!: string;
+  @Input() extend: boolean = false;
   @Output() onStep = new EventEmitter<StepType>();
   dictionary: any;
 
