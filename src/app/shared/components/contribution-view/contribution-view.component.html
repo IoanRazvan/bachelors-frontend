@@ -3,11 +3,15 @@
         <a routerLink="../" class="pi pi-arrow-circle-left link-secondary text-decoration-none me-2"
             style="font-size: 1.2rem;"></a>
         <span class="fs-4 me-2">{{contribution.title}}</span>
-        <span class="badge rounded-pill bg-warning">{{contribution.status}}</span>
+        <span [ngSwitch]="contribution.status">
+            <span class="badge rounded-pill bg-warning" *ngSwitchCase="'PENDING'">{{contribution.status}}</span>
+            <span class="badge rounded-pill bg-danger" *ngSwitchCase="'REJECTED'">{{contribution.status}}</span>
+            <span class="badge rounded-pill bg-success" *ngSwitchCase="'ACCEPTED'">{{contribution.status}}</span>
+        </span>
     </div>
     <div class="col-12">{{contribution.createdTime}}</div>
     <div class="col-md-7 mt-3">
-        <div *ngIf="actions.length" class="mb-3">
+        <div *ngIf="actions && actions.length" class="mb-3">
             <span class="me-2 col-auto">{{dictionary.actions}}: </span>
             <span class="me-2" *ngFor="let action of actions; let idx = index">
                 <a href="#" (click)="onActionClick($event, idx)" [ngClass]="action.class">
