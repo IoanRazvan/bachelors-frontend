@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Message, MessageService } from "primeng/api";
 import { LanguageService } from "src/app/core/base/language.base";
+import { NotificationType } from "src/app/manage-contributions/services/notifcation.service";
 
 @Injectable()
 export class ToastMessageService {
@@ -26,6 +27,13 @@ export class ToastMessageService {
             detail: message,
             ...options
         });
+    }
+
+    addMessage(message: string, type: NotificationType, options ?: Partial<Message>) {
+        if (type === "SUCCESS")
+            this.addSuccess(message, options);
+        else
+            this.addError(message, options);
     }
 
     clear() {

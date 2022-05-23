@@ -5,7 +5,7 @@
     <div class="row" *ngIf="loading || !data || !data.length" style="height: 62vh">
         <app-centered class="align-self-center">
             <div *ngIf="loading" class="spinner-border"></div>
-            <div *ngIf="!loading && (!data || !data.length)" class="fs-3">Nicio {{loading}} contributie de afisat</div>
+            <div *ngIf="!loading && (!data || !data.length)" class="fs-3">Nicio contributie de afisat</div>
         </app-centered>
     </div>
     <div *ngIf="!loading && data && data.length">
