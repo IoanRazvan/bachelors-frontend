@@ -10,9 +10,9 @@ import { NotificationService } from '../../services/notifcation.service';
 
 @Component({
   selector: 'app-new-contribution',
-  templateUrl: './new-contribution.component.html',
+  templateUrl: './unassigned-contribution.component.html',
 })
-export class NewContributionComponent implements OnInit {
+export class UnassignedContributionComponent implements OnInit {
   id!: string;
   contribution!: ProblemContributionResponse;
   errorStatus: number;

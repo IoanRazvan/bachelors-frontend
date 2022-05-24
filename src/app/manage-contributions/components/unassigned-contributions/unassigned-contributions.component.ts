@@ -7,9 +7,9 @@ import { ManageContributionsService } from '../../services/manage-contributions.
 
 @Component({
   selector: 'app-new-contributions',
-  templateUrl: './new-contributions.component.html'
+  templateUrl: './unassigned-contributions.component.html'
 })
-export class NewContributionsComponent implements OnInit, OnDestroy {
+export class UnassignedContributionsComponent implements OnInit, OnDestroy {
   data!: UnassignedContributionRow[];
   loading: boolean = true;
   pageInfo!: PageInfo;

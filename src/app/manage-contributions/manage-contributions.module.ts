@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ManageContributionsRoutingModule } from './manage-contributions-routing.module';
 import { ManageContributionsComponent } from './manage-contributions.component';
-import { NewContributionsComponent } from './components/new-contributions/new-contributions.component';
+import { UnassignedContributionsComponent } from './components/unassigned-contributions/unassigned-contributions.component';
 import { SharedModule } from '../shared/shared.module';
 import { TableModule } from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
-import { NewContributionComponent } from './components/new-contribution/new-contribution.component';
+import { UnassignedContributionComponent } from './components/unassigned-contribution/unassigned-contribution.component';
 import { ToastMessageService } from '../shared/services/toast-message.service';
 import { DividerModule } from 'primeng/divider';
 import { AssignedContributionsComponent } from './components/assigned-contributions/assigned-contributions.component';
@@ -27,8 +27,8 @@ import { RejectContributionFormComponent } from './components/reject-contributio
 @NgModule({
   declarations: [
     ManageContributionsComponent,
-    NewContributionsComponent,
-    NewContributionComponent,
+    UnassignedContributionsComponent,
+    UnassignedContributionComponent,
     AssignedContributionsComponent,
     UnassignedContributionsTableComponent,
     AssignedContributionComponent,
