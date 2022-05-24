@@ -1,11 +1,26 @@
 <p-toast></p-toast>
 <div class="col-md-10">
-    <div class="callout mt-5 callout-info">Pentru a putea trata submisia unui utilizator este nevoie sa o asignezi inainte. Acest pas este necesar pentru a evita situatia cand doi dezvoltatori lucreaza la aceasi submisie. O data asignata, submisia va aparea in tabul <a [routerLink]="['..', 'assigned']">contributii asignate</a> de unde poate fi acceptata sau refuzata, oferind detalii suplimentare.</div>
+    <div class="callout mt-5 callout-info">Pentru a putea trata submisia unui utilizator este nevoie sa o asignezi
+        inainte. Acest pas este necesar pentru a evita situatia cand doi dezvoltatori lucreaza la aceasi submisie. O
+        data asignata, submisia va aparea in tabul <a [routerLink]="['..', 'assigned']">contributii asignate</a> de unde
+        poate fi acceptata sau refuzata, oferind detalii suplimentare.</div>
     <p-divider></p-divider>
+    <div class="row mb-2">
+        <div class="col-auto me-auto">
+            Creat La: <p-dropdown [options]="sortingOptions" optionValue="value" optionLabel="label"
+                (onChange)="onOrderChange($event)" [(ngModel)]="selectedOption" [tabindex]="1"></p-dropdown>
+        </div>
+        <div class="col-auto">
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input type="text" pInputText placeholder="Cauta dupa titlu" #search >
+            </span>
+        </div>
+    </div>
     <div class="row" *ngIf="loading || !data || !data.length" style="height: 62vh">
         <app-centered class="align-self-center">
             <div *ngIf="loading" class="spinner-border"></div>
-            <div *ngIf="!loading && (!data || !data.length)" class="fs-3">Nicio contributie de afisat</div>
+            <div *ngIf="!loading && (!data || !data.length)" class="fs-3 text-muted">Nicio contributie de afisat</div>
         </app-centered>
     </div>
     <div *ngIf="!loading && data && data.length">

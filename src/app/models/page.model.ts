@@ -1,3 +1,5 @@
+export type SortingType = "ascending" | "descending";
+
 export class Page<T> {
     page: number;
     size: number;
@@ -27,5 +29,16 @@ export class Page<T> {
         pageData.first = targetPage === 0;
         pageData.last = this.last && (chunkNumber + 1) * targetSize >= this.content.length;
         return new Page(pageData);
+    }
+}
+
+export class SortedQueryPage<T> extends Page<T> {
+    sorting: SortingType;
+    query: string;
+
+    constructor(obj : any) {
+        super(obj);
+        this.sorting = obj.sorting;
+        this.query = obj.query;
     }
 }

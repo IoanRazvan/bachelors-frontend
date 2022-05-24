@@ -1,7 +1,5 @@
 <div class="row mt-3">
     <div class="col-auto">
-        <a routerLink="../" class="pi pi-arrow-circle-left link-secondary text-decoration-none me-2"
-            style="font-size: 1.2rem;"></a>
         <span class="fs-4 me-2">{{contribution.title}}</span>
         <span [ngSwitch]="contribution.status">
             <span class="badge rounded-pill bg-warning" *ngSwitchCase="'PENDING'">{{contribution.status}}</span>

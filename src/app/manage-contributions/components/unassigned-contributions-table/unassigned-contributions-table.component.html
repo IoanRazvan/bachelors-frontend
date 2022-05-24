@@ -1,26 +1,27 @@
-<p-table [scrollable]="true" responsiveLayout="scroll" [value]="data">
+<p-table breakpoint="0px" [value]="data">
     <ng-template pTemplate="header">
-        <tr class="border-top-0">
-            <th scope="col" class="text-muted fw-light border-0">
+        <tr class="border-top-0 row">
+            <th scope="col" class="text-muted fw-light border-0 col-3">
                 Contributor
             </th>
-            <th scope="col" class="text-muted fw-light border-0">
+            <th scope="col" class="text-muted fw-light border-0 col-6">
                 Titlu
             </th>
-            <th scope="col" class="text-muted fw-light border-0">
+            <th scope="col" class="text-muted fw-light border-0 col-3">
                 Creat La
             </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-contribution let-rowIndex="rowIndex">
-        <tr [class.bg-light]="rowIndex % 2 === 0">
-            <td class="border-0">
-                <span>{{contribution.contributorUsername}}</span>
+        <tr [class.bg-light]="rowIndex % 2 === 0" class="row">
+            <td class="border-0 col-3">
+                {{contribution.contributorUsername}}
             </td>
-            <td class="border-0">
+            <td class="border-0 text-truncate col-6">
                 <a [routerLink]="['.', contribution.id]"
-                    class="text-decoration-none link-dark contribution-link">{{contribution.title}}</a></td>
-            <td class="border-0">
+                    class="text-decoration-none link-dark contribution-link">{{contribution.title}}</a>
+            </td>
+            <td class="border-0 col-3">
                 <span>{{contribution.createdTime}}</span>
             </td>
         </tr>

@@ -1,8 +1,13 @@
 import { Observable, Subject } from "rxjs";
-import { Page } from "../models/page.model";
+import { Page, SortedQueryPage, SortingType } from "../models/page.model";
+
+export interface QueryAndSorting {
+    query: string;
+    sorting: SortingType;
+}
 
 export interface ResultObservableAdapter {
-    request(page: number, pageSize: number): Observable<any>;
+    request(page: number, pageSize: number, extras?: QueryAndSorting): Observable<any>;
 }
 
 export abstract class PagedServiceBase {
@@ -13,12 +18,12 @@ export abstract class PagedServiceBase {
     protected currentServerPage!: Page<any>;
     protected service !: ResultObservableAdapter;
 
-    change(page: number, force: boolean = false) {
+    change(page: number, force: boolean = false, extras ?: QueryAndSorting) {
         const requestedServerPage = Page.convertPageNumber(page, this.clientPageSize, this.serverPageSize);
-        if (this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || force) {
-            this.service.request(requestedServerPage, this.serverPageSize).subscribe({
+        if (this.isPageNotCached(requestedServerPage, force, extras)) {
+            this.service.request(requestedServerPage, this.serverPageSize, extras).subscribe({
                 next: (resp : any) => {
-                    this.currentServerPage = new Page(resp);
+                    this.currentServerPage = resp.sorting ? new SortedQueryPage(resp) : new Page(resp);
                     this.pagesSubject.next({
                         response: this.currentServerPage.convertPage(page, this.clientPageSize),
                         error: false
@@ -34,5 +39,9 @@ export abstract class PagedServiceBase {
                 error: false
             });
         }
+    }
+
+    isPageNotCached(requestedServerPage: number, force: boolean, _extras ?: QueryAndSorting) : boolean {
+        return this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || force;
     }
 }

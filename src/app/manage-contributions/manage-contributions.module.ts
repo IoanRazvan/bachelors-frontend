@@ -21,6 +21,7 @@ import { AcceptContributionFormComponent } from './components/accept-contributio
 import { StepsModule } from 'primeng/steps';
 import {TabViewModule} from 'primeng/tabview';
 import { RejectContributionFormComponent } from './components/reject-contribution-form/reject-contribution-form.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 
@@ -48,7 +49,8 @@ import { RejectContributionFormComponent } from './components/reject-contributio
     DropdownModule,
     AngularSplitModule,
     StepsModule,
-    TabViewModule
+    TabViewModule,
+    InputTextModule
   ],
   providers: [
     ToastMessageService

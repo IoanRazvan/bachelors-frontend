@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable, ReplaySubject, Subject } from "rxjs";
-import { PagedServiceBase, ResultObservableAdapter } from "src/app/base/paged-service.base";
+import { PagedServiceBase, QueryAndSorting, ResultObservableAdapter } from "src/app/base/paged-service.base";
 import { ContributionsManagementService } from "src/app/core/services/contributions-mananagement.service";
-import { Page } from "src/app/models/page.model";
+import { Page, SortedQueryPage, SortingType } from "src/app/models/page.model";
 import { UnassignedContributionRow } from "src/app/models/problem-contribution.model";
 import { ServerResponse } from "src/app/models/server-response.model";
 
@@ -14,20 +14,34 @@ export class ManageContributionsService extends PagedServiceBase {
     public override readonly pages$ = this.pagesSubject.asObservable();
     protected override serverPageSize = 16;
     protected override clientPageSize = 8;
-    protected override currentServerPage!: Page<UnassignedContributionRow>;
+    protected override currentServerPage!: SortedQueryPage<UnassignedContributionRow>;
     protected override service!: ResultObservableAdapter;
     
-    constructor(private apiService: ContributionsManagementService) {
+    constructor(apiService: ContributionsManagementService) {
         super();
         this.service = {
-            request(page : number, pageSize: number): Observable<any> {
-                return apiService.getAvailableContributions(page, pageSize);
+            request(page : number, pageSize: number, extras?: QueryAndSorting): Observable<any> {
+                return apiService.getAvailableContributions(page, pageSize, <any>extras?.query, <any>extras?.sorting);
             }
         }
     }
 
-    override change(page: number, force?: boolean): void {
-        super.change(page, force);
+    override change(page: number, force?: boolean, extras ?: QueryAndSorting): void {
+        if (!extras)
+            super.change(page, force, {query: this.currentServerPage.query, sorting: this.currentServerPage.sorting})
+        else
+            super.change(page, force, extras)
     }
 
+    setQuery(query: string) {
+        super.change(0, false, {query, sorting: this.currentServerPage.sorting})
+    }
+
+    setSorting(sorting: SortingType) {
+        super.change(0, false, {query: this.currentServerPage.query, sorting});
+    }
+
+    override isPageNotCached(requestedServerPage: number, force: boolean, extras: QueryAndSorting): boolean {
+        return super.isPageNotCached(requestedServerPage, force) || extras.query != this.currentServerPage.query || extras.sorting != this.currentServerPage.sorting;
+    }
 }
