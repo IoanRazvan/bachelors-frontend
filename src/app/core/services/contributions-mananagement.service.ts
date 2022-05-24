@@ -15,15 +15,15 @@ export class ContributionsManagementService {
     }
 
     getAvailableContributions(page: number, size : number) : Observable<Page<UnassignedContributionRow>> {
-        return <any>this.http.get(`${this.endpoint}?page=${page}&size=${size}`);
+        return <any>this.http.get(`${this.endpoint}/unassigned?page=${page}&size=${size}`);
     }
 
     assignContribution(contributionId: string) : Observable<any> {
-        return this.http.put(`${this.endpoint}/${contributionId}`, null);
+        return this.http.put(`${this.endpoint}/assign/${contributionId}`, null);
     }
 
-    refuseContribution(contributionId: string, statusDetails: string) : Observable<any> {
-        return this.http.put(`${this.endpoint}/refuse/${contributionId}`, {
+    rejectContribution(contributionId: string, statusDetails: string) : Observable<any> {
+        return this.http.put(`${this.endpoint}/reject/${contributionId}`, {
             statusDetails
         });
     }

@@ -24,9 +24,9 @@ export class AssignedContributionComponent implements OnInit {
 
   onActionClick(event: ClickEvent) {
     if (event.idx === 0) {
-      this.router.navigate(['/manage-contributions/accept', this.id]);
+      this.router.navigate(['accept'], {relativeTo: this.route});
     } else {
-      this.router.navigate(['/manage-contributions/refuse', this.id]);
+      this.router.navigate(['reject'], {relativeTo: this.route});
     }
   }
 

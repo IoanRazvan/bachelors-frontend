@@ -20,7 +20,7 @@ import { AngularSplitModule } from 'angular-split';
 import { AcceptContributionFormComponent } from './components/accept-contribution-form/accept-contribution-form.component';
 import { StepsModule } from 'primeng/steps';
 import {TabViewModule} from 'primeng/tabview';
-import { RefuseContributionFormComponent } from './components/refuse-contribution-form/refuse-contribution-form.component';
+import { RejectContributionFormComponent } from './components/reject-contribution-form/reject-contribution-form.component';
 
 
 
@@ -34,7 +34,7 @@ import { RefuseContributionFormComponent } from './components/refuse-contributio
     AssignedContributionComponent,
     CodeStepComponent,
     AcceptContributionFormComponent,
-    RefuseContributionFormComponent
+    RejectContributionFormComponent
   ],
   imports: [
     CommonModule,

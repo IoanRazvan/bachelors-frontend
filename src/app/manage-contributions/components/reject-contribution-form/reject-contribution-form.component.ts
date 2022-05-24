@@ -5,18 +5,18 @@ import { ContributionsManagementService } from 'src/app/core/services/contributi
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 
 @Component({
-  selector: 'app-refuse-contribution-form',
-  templateUrl: './refuse-contribution-form.component.html',
+  selector: 'app-reject-contribution-form',
+  templateUrl: './reject-contribution-form.component.html',
 })
-export class RefuseContributionFormComponent implements OnInit {
+export class RejectContributionFormComponent implements OnInit {
   statusDetails: FormControl;
   id!: string;
-  contributionWasRefused: boolean;
+  contributionWasRejected: boolean;
   loading: boolean;
 
   constructor(private route: ActivatedRoute, private service: ContributionsManagementService, private toastService: ToastMessageService) {
     this.statusDetails = new FormControl('', Validators.required);
-    this.contributionWasRefused = false;
+    this.contributionWasRejected = false;
     this.loading = false;
   }
 
@@ -28,10 +28,10 @@ export class RefuseContributionFormComponent implements OnInit {
 
   onClick() {
     this.loading = true;
-    this.service.refuseContribution(this.id, this.statusDetails.value).subscribe({
+    this.service.rejectContribution(this.id, this.statusDetails.value).subscribe({
       next: () => {
         this.loading = false;
-        this.contributionWasRefused = true;
+        this.contributionWasRejected = true;
         this.toastService.addSuccess("Contributia a fost refuzata cu succes");
       },
       error: () => {

@@ -7,7 +7,7 @@ import { NewContributionsComponent } from "./components/new-contributions/new-co
 import { NewContributionComponent } from "./components/new-contribution/new-contribution.component";
 import { AssignedContributionComponent } from "./components/assigned-contribution/assigned-contribution.component";
 import { AcceptContributionFormComponent } from "./components/accept-contribution-form/accept-contribution-form.component";
-import { RefuseContributionFormComponent } from "./components/refuse-contribution-form/refuse-contribution-form.component";
+import { RejectContributionFormComponent } from "./components/reject-contribution-form/reject-contribution-form.component";
 
 export const manageContributionsRoutes : Routes = [
     {path: 'new', component: NewContributionsComponent, canActivate: [AuthGuardService, DevGuardService]},
@@ -15,8 +15,8 @@ export const manageContributionsRoutes : Routes = [
     {path: 'assigned', pathMatch: 'full', component: AssignedContributionsComponent},
     {path: 'new/:id', pathMatch: 'full', component: NewContributionComponent, canActivate: [AuthGuardService, DevGuardService]},
     {path: 'assigned/:id', pathMatch: 'full', component: AssignedContributionComponent, canActivate: [AuthGuardService, DevGuardService]},
-    {path: 'accept/:id', pathMatch: 'full', component: AcceptContributionFormComponent, canActivate: [AuthGuardService, DevGuardService]},
-    {path: 'refuse/:id', pathMatch: 'full', component: RefuseContributionFormComponent, canActivate: [AuthGuardService, DevGuardService]}
+    {path: 'assigned/:id/accept', pathMatch: 'full', component: AcceptContributionFormComponent, canActivate: [AuthGuardService, DevGuardService]},
+    {path: 'assigned/:id/reject', pathMatch: 'full', component: RejectContributionFormComponent, canActivate: [AuthGuardService, DevGuardService]}
 ];
 
 @NgModule({
