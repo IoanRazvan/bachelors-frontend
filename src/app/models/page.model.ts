@@ -7,12 +7,12 @@ export class Page<T> {
     first: boolean;
     last: boolean;
 
-    constructor(obj: any) {
-        this.page = obj.page;
-        this.size = obj.size;
-        this.content = obj.content;
-        this.first = obj.first;
-        this.last = obj.last;
+    constructor(data: any) {
+        this.page = data.page;
+        this.size = data.size;
+        this.content = data.content;
+        this.first = data.first;
+        this.last = data.last;
     }
 
     static convertPageNumber(targetPage: number, targetPageSize: number, inputPageSize: number) : number {
@@ -35,10 +35,20 @@ export class Page<T> {
 export class SortedQueryPage<T> extends Page<T> {
     sorting: SortingType;
     query: string;
+    additional: string;
 
-    constructor(obj : any) {
-        super(obj);
-        this.sorting = obj.sorting;
-        this.query = obj.query;
+    constructor(data : any) {
+        super(data);
+        this.sorting = data.sorting;
+        this.query = data.query;
+        this.additional = data.additional
+    }
+}
+
+export class PageFactory {
+    static of<T>(data: any) : Page<T> {
+        if (data.query || data.sorting)
+            return new SortedQueryPage(data);
+        return new Page(data);
     }
 }

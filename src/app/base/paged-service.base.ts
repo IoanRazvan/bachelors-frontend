@@ -1,14 +1,6 @@
 import { Observable, Subject } from "rxjs";
-import { Page, SortedQueryPage, SortingType } from "../models/page.model";
-
-export interface QueryAndSorting {
-    query: string;
-    sorting: SortingType;
-}
-
-export interface ResultObservableAdapter {
-    request(page: number, pageSize: number, extras?: QueryAndSorting): Observable<any>;
-}
+import { Page, PageFactory } from "../models/page.model";
+import { ResultObservableAdapter, PageServiceExtras } from "../models/page-service.model";
 
 export abstract class PagedServiceBase {
     protected pagesSubject!: Subject<any>;
@@ -18,12 +10,12 @@ export abstract class PagedServiceBase {
     protected currentServerPage!: Page<any>;
     protected service !: ResultObservableAdapter;
 
-    change(page: number, force: boolean = false, extras ?: QueryAndSorting) {
+    change(page: number, extras ?: PageServiceExtras) {
         const requestedServerPage = Page.convertPageNumber(page, this.clientPageSize, this.serverPageSize);
-        if (this.isPageNotCached(requestedServerPage, force, extras)) {
+        if (this.isPageNotCached(requestedServerPage, extras)) {
             this.service.request(requestedServerPage, this.serverPageSize, extras).subscribe({
                 next: (resp : any) => {
-                    this.currentServerPage = resp.sorting ? new SortedQueryPage(resp) : new Page(resp);
+                    this.currentServerPage = PageFactory.of(resp);
                     this.pagesSubject.next({
                         response: this.currentServerPage.convertPage(page, this.clientPageSize),
                         error: false
@@ -41,7 +33,7 @@ export abstract class PagedServiceBase {
         }
     }
 
-    isPageNotCached(requestedServerPage: number, force: boolean, _extras ?: QueryAndSorting) : boolean {
-        return this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || force;
+    isPageNotCached(requestedServerPage: number, extras ?: PageServiceExtras) : boolean {
+        return this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || !!extras?.force
     }
 }

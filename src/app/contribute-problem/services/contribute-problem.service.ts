@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, ReplaySubject, Subject } from "rxjs";
-import { PagedServiceBase, ResultObservableAdapter } from "src/app/base/paged-service.base";
+import { PagedServiceBase } from "src/app/base/paged-service.base";
+import { ResultObservableAdapter } from "src/app/models/page-service.model";
 import { ProblemContributionService } from "src/app/core/services/problem-contribution.service";
 import { Page } from "src/app/models/page.model";
 import { PreviousContributionRow } from "src/app/models/problem-contribution.model";
@@ -18,16 +19,12 @@ export class ContributeProblemService extends PagedServiceBase {
     protected override service!: ResultObservableAdapter;
 
 
-    constructor(private apiService: ProblemContributionService) {
+    constructor(apiService: ProblemContributionService) {
         super();
         this.service = {
             request(page: number, pageSize: number): Observable<any> {
                 return apiService.getContributions(page, pageSize);
             }
         }
-    }
-
-    override change(page: number, force: boolean = false) {
-        super.change(page, force);
     }
 }

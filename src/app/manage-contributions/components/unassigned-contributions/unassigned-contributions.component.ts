@@ -35,7 +35,7 @@ export class UnassignedContributionsComponent implements OnInit, OnDestroy, Afte
       }
       this.loading = false;
     });
-    this.service.change(0, true, { query: '', sorting: 'descending' });
+    this.service.change(0, { query: '', sorting: 'descending', force: true });
   }
 
   ngAfterViewInit(): void {

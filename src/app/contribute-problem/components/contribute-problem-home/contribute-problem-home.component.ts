@@ -39,7 +39,7 @@ export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
   
   changeContributionsPage(page: number, force: boolean = false) {
     this.loading = true;
-    this.contributionsService.change(page, force);
+    this.contributionsService.change(page, {force});
   }
 
   ngOnDestroy(): void {

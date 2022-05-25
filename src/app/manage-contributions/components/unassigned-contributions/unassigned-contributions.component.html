@@ -6,14 +6,17 @@
         poate fi acceptata sau refuzata, oferind detalii suplimentare.</div>
     <p-divider></p-divider>
     <div class="row mb-2">
+        <div class="col-auto align-self-center">
+            Creat La:
+        </div>
         <div class="col-auto me-auto">
-            Creat La: <p-dropdown [options]="sortingOptions" optionValue="value" optionLabel="label"
+            <p-dropdown [options]="sortingOptions" optionValue="value" optionLabel="label"
                 (onChange)="onOrderChange($event)" [(ngModel)]="selectedOption" [tabindex]="1"></p-dropdown>
         </div>
         <div class="col-auto">
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
-                <input type="text" pInputText placeholder="Cauta dupa titlu" #search >
+                <input type="text" pInputText placeholder="Cauta dupa titlu" #search>
             </span>
         </div>
     </div>
