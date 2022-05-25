@@ -1,6 +1,6 @@
 import { Observable, Subject } from "rxjs";
+import { PageServiceExtras, ResultObservableAdapter } from "../models/page-service.model";
 import { Page, PageFactory } from "../models/page.model";
-import { ResultObservableAdapter, PageServiceExtras } from "../models/page-service.model";
 
 export abstract class PagedServiceBase {
     protected pagesSubject!: Subject<any>;

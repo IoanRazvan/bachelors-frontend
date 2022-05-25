@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable, ReplaySubject, Subject } from "rxjs";
 import { PagedServiceBase } from "src/app/base/paged-service.base";
-import { ResultObservableAdapter } from "src/app/models/page-service.model";
 import { ProblemContributionService } from "src/app/core/services/problem-contribution.service";
+import { ResultObservableAdapter } from "src/app/models/page-service.model";
 import { Page } from "src/app/models/page.model";
 import { PreviousContributionRow } from "src/app/models/problem-contribution.model";
 import { ServerResponse } from "src/app/models/server-response.model";

@@ -4,6 +4,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+import { ToastMessageService } from '../shared/services/toast-message.service';
 import { SharedModule } from '../shared/shared.module';
 import { ContributeProblemConfirmComponent } from './components/contribute-problem-confirm/contribute-problem-confirm.component';
 import { ContributeProblemFormComponent } from './components/contribute-problem-form/contribute-problem-form.component';
@@ -12,7 +13,6 @@ import { ContributeProblemSimpleStepComponent } from './components/contribute-pr
 import { PersonalContributionViewComponent } from './components/personal-contribution-view/personal-contribution-view.component';
 import { ContributeProblemRoutingModule } from './contribute-problem-routing.module';
 import { ContributeProblemComponent } from './contribute-problem.component';
-import { ToastMessageService } from '../shared/services/toast-message.service';
 
 @NgModule({
   declarations: [
