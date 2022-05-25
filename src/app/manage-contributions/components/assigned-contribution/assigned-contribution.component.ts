@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LanguageService } from 'src/app/base/language.base';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 import { Action, ClickEvent } from 'src/app/shared/components/contribution-view/contribution-view.component';
@@ -16,10 +17,12 @@ export class AssignedContributionComponent implements OnInit {
   loading: boolean;
   actions!: Action[];
   errorStatus: number;
+  dictionary: any;
 
-  constructor(private route: ActivatedRoute, private router : Router, private service: ProblemContributionService, private notificationService: NotificationService, private messageService: ToastMessageService) {
+  constructor(private route: ActivatedRoute, private router : Router, private service: ProblemContributionService, private notificationService: NotificationService, private messageService: ToastMessageService, languageService: LanguageService) {
     this.loading = true;
     this.errorStatus = 0;
+    this.dictionary = languageService.dictionary;
   }
 
   onActionClick(event: ClickEvent) {
@@ -42,11 +45,11 @@ export class AssignedContributionComponent implements OnInit {
           });
           if (resp.status == "PENDING") {
             this.actions = [{
-              text: 'Accepta',
+              text: this.dictionary.accept,
               class: 'link-success text-decoration-none',
               loading: false
             },{
-              text: 'Refuza',
+              text: this.dictionary.reject,
               class: 'link-danger text-decoration-none',
               loading: false
             }];

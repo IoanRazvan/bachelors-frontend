@@ -1,20 +1,23 @@
 <p-toast></p-toast>
-<h4 class="text-muted mt-3 fw-normal">Respinge contributia</h4>
-<div class="row">
+<h4 class="text-muted mt-3 fw-normal">{{dictionary.rejectContribution}}</h4>
+<div class="row mt-4">
     <div class="col-md-8">
-        <label for="statusDetails" class="form-label">Detalii <span class="text-danger">*</span></label>
+        <div class="mb-3 callout callout-info">
+            {{dictionary.rejectContributionTip}}
+        </div>
+        <label for="statusDetails" class="form-label">{{dictionary.details}} <span class="text-danger">*</span></label>
         <textarea id="statusDetails" [formControl]="statusDetails" class="form-control"
             [class.is-invalid]="statusDetails.invalid && statusDetails.dirty" rows="7"></textarea>
         <div class="invalid-feedback">
-            Campul 'Detalii' este obligatoriu
+            {{dictionary.detailsFieldIsRequired}}
         </div>
         <div class="mt-2">
             <button *ngIf="!contributionWasRejected" class="btn btn-primary" [disabled]="statusDetails.invalid || loading" (click)="onClick()">
-                Respinge
+                {{dictionary.reject}}
                 <span class="spinner-border spinner-border-sm" *ngIf="loading"></span>
             </button>
             <button class="btn btn-primary" *ngIf="contributionWasRejected"[routerLink]="['../..']">
-                Du-ma inapoi
+                {{dictionary.takeMeBack}}
             </button>
         </div>
     </div>

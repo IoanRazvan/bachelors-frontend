@@ -1,11 +1,11 @@
 <p-toast></p-toast>
-<div class="row  mt-5">
+<div class="row mt-5">
     <div class="col-md-10">
         <div class="callout callout-info" [innerHTML]="tip"></div>
         <p-divider></p-divider>
         <div class="row mb-2">
             <div class="col-auto align-self-center">
-                Creat La:
+                {{dictionary.createdAt}}:
             </div>
             <div class="col-auto" [class.me-auto]="!filter">
                 <p-dropdown [options]="sortingOptions" optionValue="value" optionLabel="label"
@@ -26,7 +26,8 @@
         <div class="row" *ngIf="loading || !data || !data.length" style="height: 62vh">
             <app-centered class="align-self-center">
                 <div *ngIf="loading" class="spinner-border"></div>
-                <div *ngIf="!loading && (!data || !data.length)" class="fs-3 text-muted">Nicio contributie de afisat
+                <div *ngIf="!loading && (!data || !data.length)" class="fs-3 text-muted">
+                    {{dictionary.noContributionsToShow}}
                 </div>
             </app-centered>
         </div>

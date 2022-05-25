@@ -2,15 +2,18 @@ import { Subscription } from "rxjs";
 import { ContributionsService } from "../manage-contributions/services/contributions.service";
 import { extractPageInfo, PageInfo } from "../models/page-info.model";
 import { ToastMessageService } from "../shared/services/toast-message.service";
+import { LanguageService } from "./language.base";
 
 export abstract class DeveloperContributionsBase {
     data!: any[];
     loading: boolean;
     pageInfo!: PageInfo;
     serviceSubscription!: Subscription;
+    dictionary: any
 
-    constructor(protected service: ContributionsService, protected messageService: ToastMessageService) {
+    constructor(protected service: ContributionsService, protected messageService: ToastMessageService, languageService: LanguageService) {
         this.loading = true;
+        this.dictionary = languageService.dictionary;
     }
 
     protected setUp() {

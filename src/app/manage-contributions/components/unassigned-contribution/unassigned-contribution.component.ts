@@ -33,7 +33,7 @@ export class UnassignedContributionComponent implements OnInit {
         next: response => {
           this.loading = false;
           this.contribution = response;
-          this.actions = [{ text: 'Asigneaza', class: 'link-primary text-decoration-none', loading: false }];
+          this.actions = [{ text: this.dictionary.assign, class: 'link-primary text-decoration-none', loading: false }];
         },
         error: (err) => {
           this.loading = false;
@@ -48,12 +48,12 @@ export class UnassignedContributionComponent implements OnInit {
     this.contributionManagementService.assignContribution(this.id).subscribe({
       next: () => {
         this.actions = [{ ...this.actions[0], loading: false }];
-        this.notificationService.addNotification('Contributia a fost asignata cu succes', "SUCCESS")
+        this.notificationService.addNotification(this.dictionary.contributionAssignedSuccessfully, "SUCCESS")
         this.router.navigate(['/manage-contributions/assigned', this.id])
       },
       error: () => {
         this.actions = [{ ...this.actions[0], loading: false }];
-        this.messageService.addError('Contributia nu a putut fi asignata');
+        this.messageService.addError(this.dictionary.contributionCouldNotBeAssigned);
       }
     })
   }

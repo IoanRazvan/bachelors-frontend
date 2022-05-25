@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-<app-contributions (dropdownChange)="onOrderChange($event)" (queryChange)="onQueryChange($event)" [tip]="tip"
+<app-contributions (dropdownChange)="onOrderChange($event)" (queryChange)="onQueryChange($event)" [tip]="dictionary.unassignedContributionsTip"
     [data]="data" [loading]="loading">
     <ng-template appContributionsContent="table">
         <app-contributions-table [data]="data" [pageInfo]="pageInfo"

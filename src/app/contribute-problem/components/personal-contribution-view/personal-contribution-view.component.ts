@@ -32,7 +32,7 @@ export class PersonalContributionViewComponent implements OnInit {
           this.loading = false;
           this.contribution = response;
           if (response.status === 'PENDING') {
-            this.actions = [{text: this.dictionary.update, class: 'link-primary text-decoration-none', loading: false}, {text: this.dictionary.delete, class: 'link-danger text-decoration-none', loading: false}]
+            this.actions = [{ text: this.dictionary.update, class: 'link-primary text-decoration-none', loading: false }, { text: this.dictionary.delete, class: 'link-danger text-decoration-none', loading: false }]
           }
         },
         error: (err) => {
@@ -46,7 +46,7 @@ export class PersonalContributionViewComponent implements OnInit {
   onActionClick(event: ClickEvent) {
     switch (event.idx) {
       case 0:
-        this.router.navigate(['../form', this.contribution.id], {relativeTo: this.route});
+        this.router.navigate(['../form', this.contribution.id], { relativeTo: this.route });
         break;
       case 1:
         this.confirmDelete(event.target);
@@ -69,7 +69,7 @@ export class PersonalContributionViewComponent implements OnInit {
   private deleteContribution() {
     this.actions = this.actions.map((val, idx) => {
       if (idx == 1)
-        return {...val, loading: true};
+        return { ...val, loading: true };
       return val;
     });
     this.apiService.delete(this.id).subscribe({
@@ -81,7 +81,7 @@ export class PersonalContributionViewComponent implements OnInit {
         this.messageService.addError(this.dictionary.deleteContributionToastErrorDetail);
         this.actions = this.actions.map((val, idx) => {
           if (idx == 1)
-            return {...val, loading: false};
+            return { ...val, loading: false };
           return val;
         });
       }

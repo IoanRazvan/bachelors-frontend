@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DeveloperContributionsBase } from 'src/app/base/developer-contributions.base';
+import { LanguageService } from 'src/app/base/language.base';
 import { ManageContributionsService } from 'src/app/core/services/manage-contributions.service';
 import { PageServiceExtras } from 'src/app/models/page-service.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
@@ -25,11 +26,9 @@ const contributionsProvider = (apiService : ManageContributionsService) => {
   }]
 })
 export class UnassignedContributionsComponent extends DeveloperContributionsBase implements OnInit, OnDestroy {
-  tip: string;
 
-  constructor(service: ContributionsService, messageService: ToastMessageService) {
-    super(service, messageService);
-    this.tip = `Pentru a putea trata submisia unui utilizator este nevoie sa o asignezi inainte. Acest pas este necesar pentru a evita situatia cand doi dezvoltatori lucreaza la aceasi submisie. O data asignata, submisia va aparea in tabul <a [routerLink]="['..', 'assigned']">contributii asignate</a> de unde poate fi acceptata sau refuzata, oferind detalii suplimentare.`
+  constructor(service: ContributionsService, messageService: ToastMessageService, languageService: LanguageService) {
+    super(service, messageService, languageService);
   }
 
   ngOnInit(): void {

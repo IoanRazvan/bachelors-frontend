@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DeveloperContributionsBase } from 'src/app/base/developer-contributions.base';
+import { LanguageService } from 'src/app/base/language.base';
 import { ManageContributionsService } from 'src/app/core/services/manage-contributions.service';
 import { DropdownOption } from 'src/app/models/dropdown-option.model';
 import { PageServiceExtras } from 'src/app/models/page-service.model';
@@ -30,12 +31,11 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
   showStats: boolean;
   chartData: any;
   chartOptions: any;
-  tip: string;
   statusOptions: DropdownOption<string, string>[];
   selectedStatus: DropdownOption<string, string>;
 
-  constructor(service: ContributionsService, messageService: ToastMessageService, private apiService: ManageContributionsService) {
-    super(service, messageService);
+  constructor(service: ContributionsService, messageService: ToastMessageService, private apiService: ManageContributionsService, languageService: LanguageService) {
+    super(service, messageService, languageService);
     this.showStats = false;
     this.chartOptions = {
       plugins: {
@@ -44,7 +44,7 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
         },
         title: {
           display: true,
-          text: 'Statistici',
+          text: this.dictionary.stats,
           font: {
             size: 16,
           },
@@ -57,8 +57,7 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
         }
       }
     };
-    this.tip = 'Accepta sau respinge contributiile asignate prin intermediul paginilor individuale. Aceptarea unei contributii presupune implementarea solutiei in cele 3 limbaje de programare suportate, iar respingere se poate face numai insotita de motivul pentru care problema este respinsa.';
-    this.statusOptions = [{label: "Toate", value: ''}, {label: "Acceptat", value: "ACCEPTED"}, {label: "Respins", value: "REJECTED"}, {label: "Asteptare", value: "PENDING"}];
+    this.statusOptions = [{label: this.dictionary.all, value: ''}, {label: this.dictionary.accepted, value: "ACCEPTED"}, {label: this.dictionary.rejected, value: "REJECTED"}, {label: this.dictionary.pending, value: "PENDING"}];
     this.selectedStatus = this.statusOptions[0];
   }
 

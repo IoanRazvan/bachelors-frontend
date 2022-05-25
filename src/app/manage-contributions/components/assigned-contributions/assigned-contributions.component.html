@@ -1,4 +1,4 @@
-<app-contributions [tip]="tip" [data]="data" [loading]="loading" (dropdownChange)="onOrderChange($event)"
+<app-contributions [tip]="this.dictionary.assignedContributionsTip" [data]="data" [loading]="loading" (dropdownChange)="onOrderChange($event)"
     (queryChange)="onQueryChange($event)" [showStats]="showStats">
     <ng-template appContributionsContent="filter">
         <div class="col-auto">
