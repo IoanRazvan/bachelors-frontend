@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, Input, OnChanges } from '@angular/core';
-import { LanguageService } from 'src/app/core/base/language.base';
+import { LanguageService } from 'src/app/base/language.base';
 
 @Component({
   selector: 'app-error-page',

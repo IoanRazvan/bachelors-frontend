@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { LanguageService } from 'src/app/core/base/language.base';
+import { LanguageService } from 'src/app/base/language.base';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 
 export interface Action {

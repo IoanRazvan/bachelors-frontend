@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LanguageService } from 'src/app/core/base/language.base';
+import { LanguageService } from 'src/app/base/language.base';
 import { extractPageInfo, PageInfo } from 'src/app/models/page-info.model';
 import { PreviousContributionRow } from 'src/app/models/problem-contribution.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';

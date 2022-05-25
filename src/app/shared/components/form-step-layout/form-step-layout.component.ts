@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { LanguageService } from 'src/app/core/base/language.base';
+import { LanguageService } from 'src/app/base/language.base';
 import { StepType } from 'src/app/models/step.type';
 
 @Component({

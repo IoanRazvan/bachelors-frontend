@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Message, MessageService } from "primeng/api";
-import { LanguageService } from "src/app/core/base/language.base";
+import { LanguageService } from "src/app/base/language.base";
 import { NotificationType } from "src/app/manage-contributions/services/notifcation.service";
 
 @Injectable()

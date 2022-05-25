@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
-import { LanguageService } from 'src/app/core/base/language.base';
+import { LanguageService } from 'src/app/base/language.base';
 
 @Component({
   selector: 'app-landing',

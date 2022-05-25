@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ContributionsManagementService } from 'src/app/core/services/contributions-mananagement.service';
+import { ContributionsManagementService } from 'src/app/core/services/manage-contributions.service';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 
 @Component({

@@ -22,7 +22,7 @@
                 <as-split-area>
                     <div class="mx-2" style="height: 100%">
                         <p-dropdown styleClass="my-3 me-2 rounded-0" [showClear]="false"
-                            (onChange)="onDropdownValueChange()" [options]="options" optionLabel="name" optionValue="id"
+                            (onChange)="onDropdownValueChange()" [options]="options" optionLabel="label" optionValue="value"
                             formControlName="selectedLanguage"></p-dropdown>
                         <button class="btn btn-primary rounded-0" (click)="submitCodeForCheck()"
                             [disabled]="checkingCode">

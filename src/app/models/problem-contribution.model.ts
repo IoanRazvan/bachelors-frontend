@@ -27,3 +27,7 @@ export interface UnassignedContributionRow {
     title: string;
     createdTime: string;
 }
+
+export interface AssignedContributionRow extends UnassignedContributionRow {
+    status: ProblemContributionStatus
+}

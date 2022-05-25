@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LanguageService } from 'src/app/core/base/language.base';
-import { ContributionsManagementService } from 'src/app/core/services/contributions-mananagement.service';
+import { LanguageService } from 'src/app/base/language.base';
+import { ContributionsManagementService } from 'src/app/core/services/manage-contributions.service';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 import { Action } from 'src/app/shared/components/contribution-view/contribution-view.component';

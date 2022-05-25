@@ -1,15 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { LanguageService } from 'src/app/core/base/language.base';
-import { FormStepBase } from '../../base/form-step.base';
-
-export interface StepData {
-  stepTitle: string;
-  stepLabel: string;
-  stepTip: string;
-  stepErrorMessage: string;
-  inputName: string;
-}
+import { LanguageService } from 'src/app/base/language.base';
+import { StepData } from 'src/app/models/step-data.model';
+import { FormStepBase } from '../../../base/form-step.base';
 
 @Component({
   selector: 'app-contribute-problem-simple-step',

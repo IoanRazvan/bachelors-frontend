@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { LanguageService } from "../core/base/language.base";
+import { LanguageService } from "../base/language.base";
 import { IdentityService } from "../core/services/identity.service";
 import { NavItem } from "../models/nav-item.model";
 

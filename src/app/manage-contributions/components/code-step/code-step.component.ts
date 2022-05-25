@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FormStepBase } from 'src/app/contribute-problem/base/form-step.base';
-import { LanguageService } from 'src/app/core/base/language.base';
+import { FormStepBase } from 'src/app/base/form-step.base';
+import { LanguageService } from 'src/app/base/language.base';
 import { RunnerService } from 'src/app/core/services/runner.service';
+import { DropdownOption } from 'src/app/models/dropdown-option.model';
 import { RunnerResult } from 'src/app/models/runner-result.model';
 import { codeZonePresentValidator } from './code-step.validator';
 
@@ -16,7 +17,7 @@ interface Language {
   templateUrl: './code-step.component.html',
 })
 export class CodeStepComponent extends FormStepBase implements OnChanges {
-  options: Language[];
+  options: DropdownOption<string, string>[];
   editorOptions: any;
   editor: any;
   @Input() override formData!: any;
@@ -30,9 +31,9 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
   constructor(languageService: LanguageService, fb: FormBuilder, private service: RunnerService) {
     super(languageService);
     this.options = [
-      { name: 'Javascript', id: 'javascript' },
-      { name: 'C++', id: 'cpp' },
-      { name: 'Java', id: 'java' }
+      { label: 'Javascript', value: 'javascript' },
+      { label: 'C++', value: 'cpp' },
+      { label: 'Java', value: 'java' }
     ];
     this.form = fb.group({
       javascript: ['', codeZonePresentValidator('// starter', '// solution')],

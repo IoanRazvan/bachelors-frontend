@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { filter, Observable } from 'rxjs';
-import { LanguageService } from 'src/app/core/base/language.base';
+import { LanguageService } from 'src/app/base/language.base';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
 import { ProblemContributionRequest, ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
+import { StepData } from 'src/app/models/step-data.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
-import { StepData } from '../contribute-problem-simple-step/contribute-problem-simple-step.component';
 
 @Component({
   selector: 'app-contribute-problem-form',
