@@ -1,0 +1,42 @@
+<p-toast></p-toast>
+<div class="row  mt-5">
+    <div class="col-md-10">
+        <div class="callout callout-info" [innerHTML]="tip"></div>
+        <p-divider></p-divider>
+        <div class="row mb-2">
+            <div class="col-auto align-self-center">
+                Creat La:
+            </div>
+            <div class="col-auto" [class.me-auto]="!filter">
+                <p-dropdown [options]="sortingOptions" optionValue="value" optionLabel="label"
+                    (onChange)="dropdownChange.emit($event.value)" [(ngModel)]="selectedOption" [tabindex]="1">
+                </p-dropdown>
+            </div>
+            <div class="col-auto me-auto" *ngIf="filter">
+                <ng-container [ngTemplateOutlet]="filter">
+                </ng-container>
+            </div>
+            <div class="col-auto">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="text" pInputText placeholder="Cauta dupa titlu" #search>
+                </span>
+            </div>
+        </div>
+        <div class="row" *ngIf="loading || !data || !data.length" style="height: 62vh">
+            <app-centered class="align-self-center">
+                <div *ngIf="loading" class="spinner-border"></div>
+                <div *ngIf="!loading && (!data || !data.length)" class="fs-3 text-muted">Nicio contributie de afisat
+                </div>
+            </app-centered>
+        </div>
+        <div *ngIf="!loading && data && data.length" class="mt-3">
+            <ng-container [ngTemplateOutlet]="table">
+            </ng-container>
+        </div>
+    </div>
+    <div class="col-md-2" *ngIf="widget && showStats">
+        <ng-container [ngTemplateOutlet]="widget">
+        </ng-container>
+    </div>
+</div>

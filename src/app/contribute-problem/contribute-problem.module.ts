@@ -10,7 +10,6 @@ import { ContributeProblemFormComponent } from './components/contribute-problem-
 import { ContributeProblemHomeComponent } from './components/contribute-problem-home/contribute-problem-home.component';
 import { ContributeProblemSimpleStepComponent } from './components/contribute-problem-simple-step/contribute-problem-simple-step.component';
 import { PersonalContributionViewComponent } from './components/personal-contribution-view/personal-contribution-view.component';
-import { ContributionsTableComponent } from './components/contributions-table/contributions-table.component';
 import { ContributeProblemRoutingModule } from './contribute-problem-routing.module';
 import { ContributeProblemComponent } from './contribute-problem.component';
 import { ToastMessageService } from '../shared/services/toast-message.service';
@@ -22,7 +21,6 @@ import { ToastMessageService } from '../shared/services/toast-message.service';
     ContributeProblemFormComponent,
     ContributeProblemConfirmComponent,
     ContributeProblemSimpleStepComponent,
-    ContributionsTableComponent,
     PersonalContributionViewComponent
   ],
   imports: [

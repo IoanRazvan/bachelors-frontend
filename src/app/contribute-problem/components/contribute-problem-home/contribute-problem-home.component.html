@@ -15,9 +15,10 @@
         <app-centered *ngIf="loading">
             <div class="spinner-border text-muted"></div>
         </app-centered>
-        <div class="px-3">
-            <app-contributions-table *ngIf="!loading && contributions.length" [contributions]="contributions"
-                [pageInfo]="pageInfo" (pageChange)="changeContributionsPage($event - 1)"></app-contributions-table>
+        <div class="px-4">
+            <app-contributions-table *ngIf="!loading && contributions.length"
+                [columns]="{status: 'col-2', title: 'col-6', createdTime: 'col-4'}" [data]="contributions"
+                [pageInfo]="pageInfo" (onPageChange)="changeContributionsPage($event - 1)"></app-contributions-table>
         </div>
     </div>
 </div>

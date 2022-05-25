@@ -2,13 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { SortedQueryPage, SortingType } from "src/app/models/page.model";
-import { AssignedContributionRow, ProblemContributionStatus, UnassignedContributionRow } from "src/app/models/problem-contribution.model";
+import { AssignedContributionRow, AssignedContributionStatusCount, ProblemContributionStatus, UnassignedContributionRow } from "src/app/models/problem-contribution.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ContributionsManagementService {
+export class ManageContributionsService {
     private endpoint: string = `${environment.apiRoot}/manage-contributions`
     
     constructor(private http: HttpClient) {
@@ -30,5 +30,9 @@ export class ContributionsManagementService {
         return this.http.put(`${this.endpoint}/reject/${contributionId}`, {
             statusDetails
         });
+    }
+
+    getStatistics(): Observable<AssignedContributionStatusCount[]> {
+        return <any>this.http.get(`${this.endpoint}/statistics`);
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ContributionsManagementService } from 'src/app/core/services/manage-contributions.service';
+import { ManageContributionsService } from 'src/app/core/services/manage-contributions.service';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class RejectContributionFormComponent implements OnInit {
   contributionWasRejected: boolean;
   loading: boolean;
 
-  constructor(private route: ActivatedRoute, private service: ContributionsManagementService, private toastService: ToastMessageService) {
+  constructor(private route: ActivatedRoute, private service: ManageContributionsService, private toastService: ToastMessageService) {
     this.statusDetails = new FormControl('', Validators.required);
     this.contributionWasRejected = false;
     this.loading = false;

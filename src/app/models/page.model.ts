@@ -1,3 +1,5 @@
+import { ProblemContributionStatus } from "./problem-contribution.model";
+
 export type SortingType = "ascending" | "descending";
 
 export class Page<T> {
@@ -35,13 +37,13 @@ export class Page<T> {
 export class SortedQueryPage<T> extends Page<T> {
     sorting: SortingType;
     query: string;
-    additional: string;
+    status: ProblemContributionStatus;
 
     constructor(data : any) {
         super(data);
         this.sorting = data.sorting;
         this.query = data.query;
-        this.additional = data.additional
+        this.status = data.status
     }
 }
 

@@ -1,0 +1,33 @@
+<p-table breakpoint="0px" [value]="data">
+    <ng-template pTemplate="header">
+        <tr class="border-bottom row">
+            <th *ngIf="columns.status" scope="col" [class]="thClasses.concat(columns.status)">Status</th>
+            <th *ngIf="columns.contributorUsername" scope="col" [class]="thClasses.concat(columns.contributorUsername)">Contribuitor</th>
+            <th *ngIf="columns.title" scope="col" [class]="thClasses.concat(columns.title)">Titlu</th>
+            <th *ngIf="columns.createdTime" scope="col" [class]="thClasses.concat(columns.createdTime)">Creat La</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-contribution let-rowIndex="rowIndex">
+        <tr [class.bg-light]="rowIndex % 2 === 1" class="row">
+            <td *ngIf="columns.status" [class]="['border-0', columns.status]">
+                <span [ngSwitch]="contribution.status">
+                    <i *ngSwitchCase="'PENDING'" class="pi pi-clock text-warning"></i>
+                    <i *ngSwitchCase="'ACCEPTED'" class="pi pi-check-circle text-success"></i>
+                    <i *ngSwitchCase="'REJECTED'" class="pi pi-exclamation-circle text-danger"></i>
+                </span>
+            </td>
+            <td *ngIf="columns.contributorUsername" [class]="['border-0', columns.contributorUsername]">
+                {{contribution.contributorUsername}}
+            </td>
+            <td *ngIf="columns.title" [class]="['border-0', 'text-truncate', columns.title]">
+                <a [routerLink]="['.', contribution.id]" class="text-decoration-none contribution-link link-dark">{{contribution.title}}</a>
+            </td>
+            <td *ngIf="columns.createdTime" [class]="['border-0', columns.createdTime]">
+                {{contribution.createdTime}}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <app-paginator [pageInfo]="pageInfo" (pageChange)="onPageChange.emit($event)"></app-paginator>
+    </ng-template>
+</p-table>

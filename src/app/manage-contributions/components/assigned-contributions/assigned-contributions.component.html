@@ -1,7 +1,19 @@
-<div class="col-md-10">
-    <div class="callout callout-info mt-5">
-        Accepta sau respinge contributiile asignate prin intermediul paginilor individuale. Aceptarea unei contributii presupune implementarea solutiei in cele 3 limbaje de programare suportate, iar respingere se poate face numai insotita de motivul pentru care problema este respinsa.
-    </div>
-    <p-divider></p-divider>
-    
-</div>
+<app-contributions [tip]="tip" [data]="data" [loading]="loading" (dropdownChange)="onOrderChange($event)"
+    (queryChange)="onQueryChange($event)" [showStats]="showStats">
+    <ng-template appContributionsContent="filter">
+        <div class="col-auto">
+            <p-dropdown [options]="statusOptions" [(ngModel)]="selectedStatus" (onChange)="onStatusChange($event)">
+            </p-dropdown>
+        </div>
+    </ng-template>
+    <ng-template appContributionsContent="table">
+        <app-contributions-table [data]="data" (onPageChange)="onPageChange($event)" [pageInfo]="pageInfo"
+            [columns]="{contributorUsername: 'col-2', status: 'col-2', title: 'col-5', createdTime: 'col-3'}">
+        </app-contributions-table>
+    </ng-template>
+    <ng-template appContributionsContent="widget">
+        <div class="card card-body">
+            <p-chart type="doughnut" [data]="chartData" [options]="chartOptions"></p-chart>
+        </div>
+    </ng-template>
+</app-contributions>

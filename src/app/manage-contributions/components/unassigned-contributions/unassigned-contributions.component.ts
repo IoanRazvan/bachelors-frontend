@@ -1,63 +1,42 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { debounceTime, fromEvent, Subscription } from 'rxjs';
-import { DropdownOption } from 'src/app/models/dropdown-option.model';
-import { extractPageInfo, PageInfo } from 'src/app/models/page-info.model';
-import { UnassignedContributionRow } from 'src/app/models/problem-contribution.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DeveloperContributionsBase } from 'src/app/base/developer-contributions.base';
+import { ManageContributionsService } from 'src/app/core/services/manage-contributions.service';
+import { PageServiceExtras } from 'src/app/models/page-service.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
-import { UnassignedContributionsService } from '../../services/unassigned-contributions.service';
+import { ContributionsService } from '../../services/contributions.service';
+
+const contributionsProvider = (apiService : ManageContributionsService) => {
+  const service = {
+    request(page: number, pageSize: number, extras?: PageServiceExtras): Observable<any> {
+      return apiService.getUnassignedContributions(page, pageSize, extras?.query, extras?.sorting);
+    }
+  };
+  return new ContributionsService(service);
+}
 
 @Component({
   selector: 'app-new-contributions',
-  templateUrl: './unassigned-contributions.component.html'
+  templateUrl: './unassigned-contributions.component.html',
+  providers: [{
+    provide: ContributionsService,
+    useFactory: contributionsProvider,
+    deps: [ManageContributionsService]
+  }]
 })
-export class UnassignedContributionsComponent implements OnInit, OnDestroy, AfterViewInit {
-  data!: UnassignedContributionRow[];
-  loading: boolean = true;
-  pageInfo!: PageInfo;
-  serviceSubscription!: Subscription;
-  sortingOptions: DropdownOption<string, string>[];
-  selectedOption: DropdownOption<string, string>;
-  @ViewChild("search")
-  search: any;
+export class UnassignedContributionsComponent extends DeveloperContributionsBase implements OnInit, OnDestroy {
+  tip: string;
 
-  constructor(private service: UnassignedContributionsService, private messageService: ToastMessageService) {
-    this.sortingOptions = [{ label: "Descrescator", value: "descending" }, { label: "Crescator", value: "ascending" }];
-    this.selectedOption = this.sortingOptions[0];
+  constructor(service: ContributionsService, messageService: ToastMessageService) {
+    super(service, messageService);
+    this.tip = `Pentru a putea trata submisia unui utilizator este nevoie sa o asignezi inainte. Acest pas este necesar pentru a evita situatia cand doi dezvoltatori lucreaza la aceasi submisie. O data asignata, submisia va aparea in tabul <a [routerLink]="['..', 'assigned']">contributii asignate</a> de unde poate fi acceptata sau refuzata, oferind detalii suplimentare.`
   }
 
   ngOnInit(): void {
-    this.serviceSubscription = this.service.pages$.subscribe((resp) => {
-      if (!resp.error) {
-        this.data = <any>resp.response?.content;
-        this.pageInfo = extractPageInfo(<any>resp.response);
-      } else {
-        this.messageService.addError("Noile contributii nu au putut fi incarcate.")
-      }
-      this.loading = false;
-    });
-    this.service.change(0, { query: '', sorting: 'descending', force: true });
-  }
-
-  ngAfterViewInit(): void {
-    if (this.search) {
-      fromEvent(this.search.nativeElement, "input").pipe(debounceTime(200)).subscribe((event: any) => {
-        this.service.setQuery(event.target.value)
-      })
-    }
-  }
-
-  onPageChange(page: number) {
-    this.loading = true;
-    this.service.change(page - 1);
-  }
-
-  onOrderChange(event: any) {
-    this.loading = true;
-    this.service.setSorting(event.value);
+    this.setUp();
   }
 
   ngOnDestroy(): void {
-    this.messageService.clear();
-    this.serviceSubscription?.unsubscribe();
+    this.cleanup();
   }
 }

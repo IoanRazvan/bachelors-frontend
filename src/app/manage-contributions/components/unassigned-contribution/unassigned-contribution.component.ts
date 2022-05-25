@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LanguageService } from 'src/app/base/language.base';
-import { ContributionsManagementService } from 'src/app/core/services/manage-contributions.service';
+import { ManageContributionsService } from 'src/app/core/services/manage-contributions.service';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
 import { ProblemContributionResponse } from 'src/app/models/problem-contribution.model';
 import { Action } from 'src/app/shared/components/contribution-view/contribution-view.component';
@@ -20,7 +20,7 @@ export class UnassignedContributionComponent implements OnInit {
   actions!: Action[];
   dictionary: any;
 
-  constructor(languageService: LanguageService, private route: ActivatedRoute, private messageService: ToastMessageService, private contributionService: ProblemContributionService, private contributionManagementService: ContributionsManagementService, private router: Router, private notificationService: NotificationService) {
+  constructor(languageService: LanguageService, private route: ActivatedRoute, private messageService: ToastMessageService, private contributionService: ProblemContributionService, private contributionManagementService: ManageContributionsService, private router: Router, private notificationService: NotificationService) {
     this.loading = true;
     this.errorStatus = 0;
     this.dictionary = languageService.dictionary;

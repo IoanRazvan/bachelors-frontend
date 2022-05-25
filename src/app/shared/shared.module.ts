@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { ContributeProblemQuestionComponent } from './components/contribute-problem-question/contribute-problem-question.component';
 import { FormStepLayoutComponent } from './components/form-step-layout/form-step-layout.component';
 import { EditorModule } from 'primeng/editor';
+import { ContributionsTableComponent } from './components/contributions-table/contributions-table.component';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { EditorModule } from 'primeng/editor';
     LoadingPageComponent,
     ContributionViewComponent,
     ContributeProblemQuestionComponent,
-    FormStepLayoutComponent
+    FormStepLayoutComponent,
+    ContributionsTableComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,8 @@ import { EditorModule } from 'primeng/editor';
     ReactiveFormsModule,
     DialogModule,
     RouterModule,
-    EditorModule
+    EditorModule,
+    TableModule
   ],
   exports: [
     CommonModule,
@@ -42,7 +46,8 @@ import { EditorModule } from 'primeng/editor';
     LoadingPageComponent,
     ContributionViewComponent,
     ContributeProblemQuestionComponent,
-    FormStepLayoutComponent
+    FormStepLayoutComponent,
+    ContributionsTableComponent
   ]
 })
 export class SharedModule { }

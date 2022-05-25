@@ -31,3 +31,8 @@ export interface UnassignedContributionRow {
 export interface AssignedContributionRow extends UnassignedContributionRow {
     status: ProblemContributionStatus
 }
+
+export interface AssignedContributionStatusCount {
+    status: ProblemContributionStatus;
+    count: number;
+}
