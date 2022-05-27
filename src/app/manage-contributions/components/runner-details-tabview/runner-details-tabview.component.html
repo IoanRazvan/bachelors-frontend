@@ -1,0 +1,10 @@
+<p-tabView styleClass="mt-4 ms-2" [(activeIndex)]="activePanelIndex">
+    <p-tabPanel [header]="dictionary.input">
+        <textarea name="testcase" id="testcase" style="resize: none;" class="form-control rounded-0"
+            rows="5" [formControl]="$any(input)"></textarea>
+    </p-tabPanel>
+    <p-tabPanel [header]="dictionary.runResults">
+        <app-runner-result-window [runnerResult]="runnerResult" [ranCode]="ranCode" [checkingCode]="checkingCode" [input]="input.value">
+        </app-runner-result-window>
+    </p-tabPanel>
+</p-tabView>

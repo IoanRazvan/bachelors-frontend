@@ -1,0 +1,14 @@
+<p-tabView styleClass="me-2">
+    <p-tabPanel [header]="dictionary.problem">
+        <div class="mx-2">
+            <h5>{{formData.title}}</h5>
+            <span class="description" [innerHTML]="formData.description"></span>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel [header]="dictionary.solution">
+        <p>{{formData.solution}}</p>
+    </p-tabPanel>
+    <p-tabPanel [header]="dictionary.testcase">
+        <span class="testcase" [innerHTML]="formData.testcase"></span>
+    </p-tabPanel>
+</p-tabView>

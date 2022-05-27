@@ -64,7 +64,6 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
   protected override setUp() {
     super.setUp();
     this.apiService.getStatistics().subscribe((resp) => {
-      console.log(resp);
       if (resp.some(statusCount => statusCount.count != 0)) {
         this.showStats = true;
         this.chartData = {
@@ -75,7 +74,6 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
             hoverBackgroundColor: ["#ffcd39", "#b02a37", "#146c43"]
           }]
         };
-        console.log(this.chartData);
       }
     })
   }

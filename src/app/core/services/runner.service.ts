@@ -13,10 +13,11 @@ export class RunnerService {
     constructor(private http: HttpClient) {
     }
 
-    checkProgram(code: string, langId: number) : Observable<RunnerResult> {
+    checkProgram(code: string, langId: number, input : string[]) : Observable<RunnerResult> {
         return <any>this.http.post(`${this.endpoint}`, {
             code,
-            langId
+            langId,
+            input
         });
     }
 }

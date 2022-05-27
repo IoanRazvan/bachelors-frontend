@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { LanguageService } from 'src/app/base/language.base';
 import { ProblemContributionService } from 'src/app/core/services/problem-contribution.service';
 
 @Component({
@@ -13,8 +14,8 @@ export class AcceptContributionFormComponent implements OnInit {
   loading: boolean;
   form: any;
 
-  constructor(private route: ActivatedRoute, private service: ProblemContributionService) {
-    this.items = [{label: 'Problema', tabindex: '0'}, {label: 'Implementare', tabindex: '1'}];
+  constructor(private route: ActivatedRoute, private service: ProblemContributionService, languageService: LanguageService) {
+    this.items = [{label: languageService.dictionary.problem, tabindex: '0'}, {label: languageService.dictionary.implementation, tabindex: '1'}];
     this.tabIndex = 0;
     this.loading = true;
     this.form = {};

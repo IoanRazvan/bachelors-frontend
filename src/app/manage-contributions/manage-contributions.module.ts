@@ -7,6 +7,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { SkeletonModule } from 'primeng/skeleton';
 import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
@@ -18,7 +19,11 @@ import { AssignedContributionComponent } from './components/assigned-contributio
 import { AssignedContributionsComponent } from './components/assigned-contributions/assigned-contributions.component';
 import { CodeStepComponent } from './components/code-step/code-step.component';
 import { ContributionsComponent } from './components/contributions/contributions.component';
+import { EditorAreaComponent } from './components/editor-area/editor-area.component';
+import { ProblemDetailsTabviewComponent } from './components/problem-details-tabview/problem-details-tabview.component';
 import { RejectContributionFormComponent } from './components/reject-contribution-form/reject-contribution-form.component';
+import { RunnerDetailsTabviewComponent } from './components/runner-details-tabview/runner-details-tabview.component';
+import { RunnerResultWindowComponent } from './components/runner-result-window/runner-result-window.component';
 import { UnassignedContributionComponent } from './components/unassigned-contribution/unassigned-contribution.component';
 import { UnassignedContributionsComponent } from './components/unassigned-contributions/unassigned-contributions.component';
 import { ContributionsContentDirective } from './directives/contributions-content.directive';
@@ -38,7 +43,11 @@ import { ManageContributionsComponent } from './manage-contributions.component';
     AcceptContributionFormComponent,
     RejectContributionFormComponent,
     ContributionsComponent,
-    ContributionsContentDirective
+    ContributionsContentDirective,
+    RunnerResultWindowComponent,
+    ProblemDetailsTabviewComponent,
+    RunnerDetailsTabviewComponent,
+    EditorAreaComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +63,8 @@ import { ManageContributionsComponent } from './manage-contributions.component';
     StepsModule,
     TabViewModule,
     InputTextModule,
-    ChartModule
+    ChartModule,
+    SkeletonModule
   ],
   providers: [
     ToastMessageService

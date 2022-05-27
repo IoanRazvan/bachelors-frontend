@@ -1,4 +1,6 @@
 export interface RunnerResult {
     status: number;
-    details: string;
+    error: string;
+    output: string;
+    stdout: string;
 }

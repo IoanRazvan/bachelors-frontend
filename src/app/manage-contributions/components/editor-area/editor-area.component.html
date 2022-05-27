@@ -1,0 +1,18 @@
+<div class="mx-2" style="height: 100%">
+    <div class="row my-3">
+        <div class="col-auto">
+            <p-dropdown styleClass="rounded-0 col-auto" [showClear]="false" [options]="dropdownOptions"
+                optionLabel="label" optionValue="value" [formControl]="$any(dropdownControl)"></p-dropdown>
+        </div>
+        <button class="btn btn-primary rounded-0 col-auto align-self-center" (click)="onCheck.emit()"
+            [disabled]="checkingCode">
+            <span *ngIf="checkingCode" class="spinner-border spinner-border-sm"></span>
+            {{dictionary.check}}
+        </button>
+    </div>
+    <div class="border" style="height: 80%">
+        <ngx-monaco-editor style="height: 100%" [formControl]="$any(editorControl)" (onInit)="onEditorInit.emit($event)"
+            [options]="editorOptions">
+        </ngx-monaco-editor>
+    </div>
+</div>

@@ -1,68 +1,58 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormStepBase } from 'src/app/base/form-step.base';
 import { LanguageService } from 'src/app/base/language.base';
 import { RunnerService } from 'src/app/core/services/runner.service';
-import { DropdownOption } from 'src/app/models/dropdown-option.model';
 import { RunnerResult } from 'src/app/models/runner-result.model';
-import { codeZonePresentValidator } from './code-step.validator';
+import { codeRanWithNoErrorsValidator, codeZonePresentValidator } from './code-step.validator';
 
-interface Language {
-  name: string;
-  id: string;
+enum Errors {
+  COMPILE_ERROR = 1,
+  RUNTIME_ERROR = 2,
+  TIME_LIMIT_EXCEDEED = 3,
+  WRONG_ANSWER = 4
 }
 
 @Component({
   selector: 'app-code-step',
   templateUrl: './code-step.component.html',
 })
-export class CodeStepComponent extends FormStepBase implements OnChanges {
-  options: DropdownOption<string, string>[];
-  editorOptions: any;
-  editor: any;
+export class CodeStepComponent extends FormStepBase implements OnChanges, OnInit {
   @Input() override formData!: any;
   @Output() override onStep: any;
+  editor: any;
   override form: FormGroup;
-  stepTip: string;
-  checkingCode: boolean = false;
-  error: string = "";
-  
+  checkingCode: boolean;
+  runnerResult!: RunnerResult;
+  ranCode: boolean;
+  languageToId: any;
 
   constructor(languageService: LanguageService, fb: FormBuilder, private service: RunnerService) {
     super(languageService);
-    this.options = [
-      { label: 'Javascript', value: 'javascript' },
-      { label: 'C++', value: 'cpp' },
-      { label: 'Java', value: 'java' }
-    ];
     this.form = fb.group({
-      javascript: ['', codeZonePresentValidator('// starter', '// solution')],
-      cpp: ['', codeZonePresentValidator('// starter', '// solution')],
-      java: ['', codeZonePresentValidator('// starter', '// solution')],
+      javascript: ['', codeZonePresentValidator],
+      cpp: ['', codeZonePresentValidator],
+      java: ['', codeZonePresentValidator],
       selectedLanguage: ['javascript'],
       input: [''],
-      output: ['']
+      output: [''],
+      ran: [{javascript: false, cpp: false, java: false}, codeRanWithNoErrorsValidator],
     });
-    this.editorOptions = { theme: 'vs-light', language: 'javascript', minimap: { enabled: false } };
+    this.languageToId = {javascript: 1, cpp: 2, java: 3};
     this.onStep = new EventEmitter();
-    this.stepTip = `Codul de start si solutia trebuie sa fie inconjurate de comentarii <code>// starter</code> respectiv <code>// solution</code>. Exemplu:
-    <pre>
-    // starter
-    int maxSorted(vector<int> & v) {
-        // solution
-        return v[v.size() - 1];
-        // solution
+    this.ranCode = false;
+    this.checkingCode = false;
+  }
+
+  ngOnInit(): void {
+    const languages = ['javascript', 'cpp', 'java'];
+    for (let language of languages) {
+      this.form.controls[language].valueChanges.subscribe(() => this.setRanControlValue(language, false));
     }
-    // starter
-  </pre>`;
   }
 
   ngOnChanges(): void {
     this.setForm();
-    this.editorOptions = {
-      ...this.editorOptions,
-      language: this.formData.selectedLanguage || 'javascript'
-    }
   }
 
   protected setForm(): void {
@@ -72,37 +62,28 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
       java: this.formData.java || '',
       selectedLanguage: this.formData.selectedLanguage || 'javascript',
       input: this.formData.input || '',
-      output: this.formData.output || ''
+      output: this.formData.output || '',
+      ran: this.formData.ran || {javascript: false, cpp: false, java: false}
     });
-  }
-
-  onDropdownValueChange() {
-    this.editorOptions = {
-      ...this.editorOptions,
-      language: this.form.value.selectedLanguage
-    };
   }
 
   submitCodeForCheck() {
     const formValue = this.form.value;
-    console.log(formValue);
-    let langId;
-    switch (formValue.selectedLanguage) {
-      case "javascript":
-        langId = 0;
-        break;
-      case "cpp":
-        langId =  1;
-        break;
-      default:
-        langId = 2;
-        break; 
-    }
+    let langId = this.languageToId[formValue.selectedLanguage];
     this.checkingCode = true;
-    this.service.checkProgram(formValue[formValue.selectedLanguage], langId).subscribe((res : RunnerResult) => {
+    this.service.checkProgram(formValue[formValue.selectedLanguage], langId, [formValue.input]).subscribe((res : RunnerResult) => {
       this.checkingCode = false;
-      this.error = res.details;  
+      this.ranCode = true;
+      this.runnerResult = res;
+      if (this.runnerResult.status === 0)
+        this.setRanControlValue(formValue.selectedLanguage, true);
     })
+  }
+
+  private setRanControlValue(language: string, value: boolean) {
+    const ran = this.form.value.ran;
+    ran[language] = value;
+    this.form.controls['ran'].setValue(ran)
   }
 
   onEditorInit(editor: any) {
