@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { LanguageService } from 'src/app/base/language.base';
-import { RunnerResult } from 'src/app/models/runner-result.model';
+import { CodeRunnerResult } from 'src/app/models/code-runner.model';
 
 @Component({
   selector: 'app-runner-details-tabview',
@@ -10,7 +10,7 @@ import { RunnerResult } from 'src/app/models/runner-result.model';
 export class RunnerDetailsTabviewComponent implements OnChanges {
   @Input() checkingCode !: boolean;
   @Input() ranCode!: boolean;
-  @Input() runnerResult!: RunnerResult;
+  @Input() runnerResult!: CodeRunnerResult;
   @Input() input!: AbstractControl;
   activePanelIndex: number = 0;
   dictionary: any;

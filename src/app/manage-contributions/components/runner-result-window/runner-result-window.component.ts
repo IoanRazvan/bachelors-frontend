@@ -1,13 +1,13 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { LanguageService } from 'src/app/base/language.base';
-import { RunnerResult } from 'src/app/models/runner-result.model';
+import { CodeRunnerResult } from 'src/app/models/code-runner.model';
 
 @Component({
   selector: 'app-runner-result-window',
   templateUrl: './runner-result-window.component.html',
 })
 export class RunnerResultWindowComponent implements OnChanges {
-  @Input() runnerResult!: RunnerResult;
+  @Input() runnerResult!: CodeRunnerResult;
   @Input() ranCode!: boolean;
   @Input() checkingCode!: boolean;
   @Input() input!: string;

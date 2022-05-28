@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { skip } from 'rxjs';
 import { FormStepBase } from 'src/app/base/form-step.base';
 import { LanguageService } from 'src/app/base/language.base';
-import { RunnerService } from 'src/app/core/services/runner.service';
-import { RunnerResult } from 'src/app/models/runner-result.model';
+import { CodeRunnerService } from 'src/app/core/services/code-runner.service';
+import { CodeRunnerResult } from 'src/app/models/code-runner.model';
+import { StepType } from 'src/app/models/step.type';
 import { codeRanWithNoErrorsValidator, codeZonePresentValidator } from './code-step.validator';
 
 enum Errors {
@@ -23,11 +25,11 @@ export class CodeStepComponent extends FormStepBase implements OnChanges, OnInit
   editor: any;
   override form: FormGroup;
   checkingCode: boolean;
-  runnerResult!: RunnerResult;
+  runnerResult!: CodeRunnerResult;
   ranCode: boolean;
   languageToId: any;
 
-  constructor(languageService: LanguageService, fb: FormBuilder, private service: RunnerService) {
+  constructor(languageService: LanguageService, fb: FormBuilder, private service: CodeRunnerService) {
     super(languageService);
     this.form = fb.group({
       javascript: ['', codeZonePresentValidator],
@@ -47,7 +49,7 @@ export class CodeStepComponent extends FormStepBase implements OnChanges, OnInit
   ngOnInit(): void {
     const languages = ['javascript', 'cpp', 'java'];
     for (let language of languages) {
-      this.form.controls[language].valueChanges.subscribe(() => this.setRanControlValue(language, false));
+      this.form.controls[language].valueChanges.pipe(skip(1)).subscribe(() => this.setRanControlValue(language, false));
     }
   }
 
@@ -56,6 +58,7 @@ export class CodeStepComponent extends FormStepBase implements OnChanges, OnInit
   }
 
   protected setForm(): void {
+    console.log(this.formData.ran)
     this.form.setValue({
       javascript: this.formData.javascript || '',
       cpp: this.formData.cpp || '',
@@ -71,7 +74,7 @@ export class CodeStepComponent extends FormStepBase implements OnChanges, OnInit
     const formValue = this.form.value;
     let langId = this.languageToId[formValue.selectedLanguage];
     this.checkingCode = true;
-    this.service.checkProgram(formValue[formValue.selectedLanguage], langId, [formValue.input]).subscribe((res : RunnerResult) => {
+    this.service.checkProgram(formValue[formValue.selectedLanguage], langId, [formValue.input]).subscribe((res : CodeRunnerResult) => {
       this.checkingCode = false;
       this.ranCode = true;
       this.runnerResult = res;
@@ -92,5 +95,10 @@ export class CodeStepComponent extends FormStepBase implements OnChanges, OnInit
 
   onResizeEnd() {
     this.editor?.layout();
+  }
+
+  override onStepClick(stepType: StepType): void {
+      console.log(this.form.value.ran);
+      super.onStepClick(stepType);
   }
 }

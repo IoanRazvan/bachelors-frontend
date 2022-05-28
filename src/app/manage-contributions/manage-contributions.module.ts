@@ -29,6 +29,9 @@ import { UnassignedContributionsComponent } from './components/unassigned-contri
 import { ContributionsContentDirective } from './directives/contributions-content.directive';
 import { ManageContributionsRoutingModule } from './manage-contributions-routing.module';
 import { ManageContributionsComponent } from './manage-contributions.component';
+import { TestcaseStepComponent } from './components/testcase-step/testcase-step.component';
+import { WrongAnswerViewComponent } from './components/wrong-answer-view/wrong-answer-view.component';
+import { AdditionalDetailsStepComponent } from './components/additional-details-step/additional-details-step.component';
 
 
 
@@ -47,7 +50,10 @@ import { ManageContributionsComponent } from './manage-contributions.component';
     RunnerResultWindowComponent,
     ProblemDetailsTabviewComponent,
     RunnerDetailsTabviewComponent,
-    EditorAreaComponent
+    EditorAreaComponent,
+    TestcaseStepComponent,
+    WrongAnswerViewComponent,
+    AdditionalDetailsStepComponent
   ],
   imports: [
     CommonModule,

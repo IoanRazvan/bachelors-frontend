@@ -10,5 +10,6 @@
         <app-contribute-problem-question *ngSwitchCase="0" [formData]="form" (onStep)="onStep($event, 0)">
         </app-contribute-problem-question>
         <app-code-step *ngSwitchCase="1" [formData]="form" (onStep)="onStep($event, 1)"></app-code-step>
+        <app-testcase-step *ngSwitchCase="2" [formData]="form" (onStep)="onStep($event, 2)"></app-testcase-step>
     </div>
 </div>

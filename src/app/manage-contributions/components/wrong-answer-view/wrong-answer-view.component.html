@@ -1,0 +1,19 @@
+<h5 class="text-danger">
+    Wrong Answer
+</h5>
+<p-tabView>
+    <p-tabPanel *ngFor="let badResult of badResults" [header]="headers[badResult.langId - 1]">
+        <label>Input</label>
+        <div class="bg-light border rounded p-1">
+            {{testcases[badResult.wrongAnswerIdx].input}}
+        </div>
+        <label>Expected</label>
+        <div class="bg-light border rounded p-1">
+            {{testcases[badResult.wrongAnswerIdx].output}}
+        </div>
+        <label>Actual</label>
+        <div class="bg-light border rounded p-1" style="min-height: 2rem;">
+            {{badResult.error}}
+        </div>
+    </p-tabPanel>
+</p-tabView>

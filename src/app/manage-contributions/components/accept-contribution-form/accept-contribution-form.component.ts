@@ -15,7 +15,7 @@ export class AcceptContributionFormComponent implements OnInit {
   form: any;
 
   constructor(private route: ActivatedRoute, private service: ProblemContributionService, languageService: LanguageService) {
-    this.items = [{label: languageService.dictionary.problem, tabindex: '0'}, {label: languageService.dictionary.implementation, tabindex: '1'}];
+    this.items = [{label: languageService.dictionary.problem, tabindex: '0'}, {label: languageService.dictionary.implementation, tabindex: '1'}, {label: 'Teste', tabindex: '2'}];
     this.tabIndex = 0;
     this.loading = true;
     this.form = {};

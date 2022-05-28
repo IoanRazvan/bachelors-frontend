@@ -1,0 +1,7 @@
+.hover-visible {
+    display: none;
+}
+
+div:hover > .hover-visible, div:hover + div > .hover-visible, div:hover + div + div > .hover-visible {
+    display: block;
+}
