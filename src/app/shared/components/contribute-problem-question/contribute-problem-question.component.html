@@ -1,29 +1,31 @@
 <app-form-step-layout [formGroup]="form" [stepTitle]="dictionary.problemDefinition"
     [showPrevStepButton]="false" [stepTip]="dictionary.contributeProblemQuestionTip" (onStep)="onStepClick($event)">
-    <div class="mb-3">
-        <label for="title" class="form-label"
-            [class.is-invalid]="!title.valid && title.dirty">{{dictionary.contributeProblemQuestionTitleInputLabel}}*</label>
-        <input [formControlName]="'title'" type="text" class="form-control" id="title">
-        <div class="invalid-feedback">
-            {{dictionary.contributeProblemQuestionTitleInputError}}
+    <ng-template appTemplate="content">
+        <div class="mb-3">
+            <label for="title" class="form-label"
+                [class.is-invalid]="!title.valid && title.dirty">{{dictionary.contributeProblemQuestionTitleInputLabel}} <span class="text-danger">*</span></label>
+            <input [formControlName]="'title'" type="text" class="form-control" id="title">
+            <div class="invalid-feedback">
+                {{dictionary.contributeProblemQuestionTitleInputError}}
+            </div>
         </div>
-    </div>
-    <div>
-        <label class="form-label">{{dictionary.contributeProblemQuestionDescriptionInputLabel}}*</label>
-        <p-editor formControlName="description" [style]="{'height':'320px'}"
-            [class.is-invalid]="!description.valid && description.dirty">
-            <ng-template pTemplate="header">
-                <span class="ql-formats">
-                    <button type="button" class="ql-bold" aria-label="Bold"></button>
-                    <button type="button" class="ql-italic" aria-label="Italic"></button>
-                    <button type="button" class="ql-underline" aria-label="Underline"></button>
-                    <button type="button" class="ql-code" aria-lable="Code"></button>
-                    <button type="button" class="ql-list" value="bullet" aria-label="List"></button>
-                </span>
-            </ng-template>
-        </p-editor>
-        <div class="invalid-feedback">
-            {{dictionary.contributeProblemQuestionDescriptionInputError}}
+        <div>
+            <label class="form-label">{{dictionary.contributeProblemQuestionDescriptionInputLabel}} <span class="text-danger">*</span></label>
+            <p-editor formControlName="description" [style]="{'height':'320px'}"
+                [class.is-invalid]="!description.valid && description.dirty">
+                <ng-template pTemplate="header">
+                    <span class="ql-formats">
+                        <button type="button" class="ql-bold" aria-label="Bold"></button>
+                        <button type="button" class="ql-italic" aria-label="Italic"></button>
+                        <button type="button" class="ql-underline" aria-label="Underline"></button>
+                        <button type="button" class="ql-code" aria-lable="Code"></button>
+                        <button type="button" class="ql-list" value="bullet" aria-label="List"></button>
+                    </span>
+                </ng-template>
+            </p-editor>
+            <div class="invalid-feedback">
+                {{dictionary.contributeProblemQuestionDescriptionInputError}}
+            </div>
         </div>
-    </div>
+    </ng-template>
 </app-form-step-layout>

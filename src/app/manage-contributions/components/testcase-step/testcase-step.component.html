@@ -2,32 +2,34 @@
 <app-form-step-layout stepTitle="Specificarea cazurilor de test" [formGroup]="form" [showPrevStepButton]="true"
     stepTip="Solutiile trebuie sa ruleze corect si sa ofere rezultate consistente" (onStep)="onStepClick($event)"
     [extend]="true">
-    <div>
-        <div class="col-4" style="float: right;">
-            <app-wrong-answer-view *ngIf="badResults && badResults.length" [badResults]="badResults"
-                [testcases]="testcases.value"></app-wrong-answer-view>
-        </div>
-        <div class="col-8 ps-0" formArrayName="testcases">
-            <div class="row mb-3" *ngFor="let testcase of testcases.controls; let idx = index" [formGroup]="$any(testcase)">
-                <div class="col-6 p-float-label">
-                    <textarea [id]="'float-input' + idx" formControlName="input" type="text"
-                        style="width: 100%; resize: none" pInputText></textarea>
-                    <label [for]="'float-input' + idx">Input</label>
-                </div>
-                <div class="col-5 p-float-label">
-                    <textarea [id]="'float-output' + idx" formControlName="output" type="text"
-                        style="width: 100%; resize: none" pInputText></textarea>
-                    <label [for]="'float-output' + idx">Output</label>
-                </div>
-                <div class="col-1 align-self-center" *ngIf="idx !== 0" (click)="onTrashClick(idx)">
-                    <i class="pi pi-trash hover-visible" style="font-size: 1.3rem;"></i>
+    <ng-template appTemplate="content">
+        <div>
+            <div class="col-4" style="float: right;">
+                <app-wrong-answer-view *ngIf="badResults && badResults.length" [languages]="languages" [badResults]="badResults"
+                    [testcases]="testcases.value"></app-wrong-answer-view>
+            </div>
+            <div class="col-8 ps-0" formArrayName="testcases">
+                <div class="row mb-3" *ngFor="let testcase of testcases.controls; let idx = index" [formGroup]="$any(testcase)">
+                    <div class="col-6 p-float-label">
+                        <textarea [id]="'float-input' + idx" formControlName="input" type="text"
+                            style="width: 100%; resize: none" pInputText></textarea>
+                        <label [for]="'float-input' + idx">Input</label>
+                    </div>
+                    <div class="col-5 p-float-label">
+                        <textarea [id]="'float-output' + idx" formControlName="output" type="text"
+                            style="width: 100%; resize: none" pInputText></textarea>
+                        <label [for]="'float-output' + idx">Output</label>
+                    </div>
+                    <div class="col-1 align-self-center" *ngIf="idx !== 0" (click)="onTrashClick(idx)">
+                        <i class="pi pi-trash hover-visible" style="font-size: 1.3rem;"></i>
+                    </div>
                 </div>
             </div>
+            <button class="btn btn-primary-outline shadow-sm border shadow-sm col-auto me-2"
+                (click)="onAddTestClick()"><i class="pi pi-plus"></i> Adaugă Test</button>
+            <button class="btn btn-primary-outline shadow-sm border shadow-sm col-auto" (click)="onCheck()"
+                [disabled]="testcases.invalid || checkingCode">Verifica <span *ngIf="checkingCode"
+                    class="spinner-border spinner-border-sm"></span></button>
         </div>
-        <button class="btn btn-primary-outline shadow-sm border shadow-sm col-auto me-2"
-            (click)="onAddTestClick()"><i class="pi pi-plus"></i> Adaugă Test</button>
-        <button class="btn btn-primary-outline shadow-sm border shadow-sm col-auto" (click)="onCheck()"
-            [disabled]="testcases.invalid || checkingCode">Verifica <span *ngIf="checkingCode"
-                class="spinner-border spinner-border-sm"></span></button>
-    </div>
+    </ng-template>
 </app-form-step-layout>

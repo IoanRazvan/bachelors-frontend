@@ -3,12 +3,13 @@
 </div>
 <div class="mt-3 mb-3" [class.row]="!extend">
     <div [class.col-md-8]="!extend">
-        <ng-content></ng-content>
+        <ng-container [ngTemplateOutlet]="content.templateRef"></ng-container>
         <div class="mt-3">
             <button *ngIf="showPrevStepButton" class="btn btn-primary me-2"
                 (click)="onStep.emit('PREV')">{{dictionary.contributeProblemPrevStepButton}}</button>
-            <button class="btn btn-primary" (click)="onStep.emit('NEXT')"
+            <button *ngIf="!nextButton" class="btn btn-primary" (click)="onStep.emit('NEXT')"
                 [disabled]="formGroup.invalid">{{dictionary.contributeProblemNextStepButton}}</button>
+            <ng-container *ngIf="nextButton" [ngTemplateOutlet]="nextButton.templateRef"></ng-container>
         </div>
     </div>
 </div>

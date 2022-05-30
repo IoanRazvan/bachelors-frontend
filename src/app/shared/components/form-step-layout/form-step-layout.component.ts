@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { LanguageService } from 'src/app/base/language.base';
 import { StepType } from 'src/app/models/step.type';
+import { TemplateDirective } from '../../directives/template.directive';
 
 @Component({
   selector: 'app-form-step-layout',
@@ -14,7 +15,15 @@ export class FormStepLayoutComponent  {
   @Input() stepTip!: string;
   @Input() extend: boolean = false;
   @Output() onStep = new EventEmitter<StepType>();
+  content!: TemplateDirective;
+  nextButton?: TemplateDirective;
   dictionary: any;
+
+  @ContentChildren(TemplateDirective)
+  set templates(list: QueryList<TemplateDirective>) {
+    this.nextButton = list.find(template => template.appTemplate === 'next');
+    this.content = <any>list.find(template => template.appTemplate === 'content');
+  }
 
   constructor(languageService: LanguageService) {
     this.dictionary = languageService.dictionary;

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ContentChildren, EventEmitter, Input, Output,
 import { debounceTime, fromEvent } from 'rxjs';
 import { LanguageService } from 'src/app/base/language.base';
 import { DropdownOption } from 'src/app/models/dropdown-option.model';
-import { ContributionsContentDirective } from '../../directives/contributions-content.directive';
+import { TemplateDirective } from 'src/app/shared/directives/template.directive';
 
 @Component({
   selector: 'app-contributions',
@@ -24,11 +24,11 @@ export class ContributionsComponent implements AfterViewInit {
   filter?: TemplateRef<unknown>;
   dictionary: any;
 
-  @ContentChildren(ContributionsContentDirective) 
-  public set content(list: QueryList<ContributionsContentDirective>) {
-    this.table = <any>list.find(elem => elem.appContributionsContent === 'table')?.templateRef;
-    this.widget = list.find(elem => elem.appContributionsContent === 'widget')?.templateRef;
-    this.filter = list.find(elem => elem.appContributionsContent === 'filter')?.templateRef;
+  @ContentChildren(TemplateDirective) 
+  public set content(list: QueryList<TemplateDirective>) {
+    this.table = <any>list.find(elem => elem.appTemplate === 'table')?.templateRef;
+    this.widget = list.find(elem => elem.appTemplate === 'widget')?.templateRef;
+    this.filter = list.find(elem => elem.appTemplate === 'filter')?.templateRef;
     
   }
 

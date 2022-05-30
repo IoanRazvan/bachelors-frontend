@@ -13,6 +13,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { FormStepLayoutComponent } from './components/form-step-layout/form-step-layout.component';
 import { LoadingPageComponent } from './components/loading-page/loading-page.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { TemplateDirective } from './directives/template.directive';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     ContributionViewComponent,
     ContributeProblemQuestionComponent,
     FormStepLayoutComponent,
-    ContributionsTableComponent
+    ContributionsTableComponent,
+    TemplateDirective,
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     ContributionViewComponent,
     ContributeProblemQuestionComponent,
     FormStepLayoutComponent,
-    ContributionsTableComponent
+    ContributionsTableComponent,
+    TemplateDirective
   ]
 })
 export class SharedModule { }

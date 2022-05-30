@@ -1,17 +1,17 @@
 <app-contributions [tip]="this.dictionary.assignedContributionsTip" [data]="data" [loading]="loading" (dropdownChange)="onOrderChange($event)"
     (queryChange)="onQueryChange($event)" [showStats]="showStats">
-    <ng-template appContributionsContent="filter">
+    <ng-template appTemplate="filter">
         <div class="col-auto">
             <p-dropdown [options]="statusOptions" [(ngModel)]="selectedStatus" (onChange)="onStatusChange($event)">
             </p-dropdown>
         </div>
     </ng-template>
-    <ng-template appContributionsContent="table">
+    <ng-template appTemplate="table">
         <app-contributions-table [data]="data" (onPageChange)="onPageChange($event)" [pageInfo]="pageInfo"
             [columns]="{contributorUsername: 'col-2', status: 'col-2', title: 'col-5', createdTime: 'col-3'}">
         </app-contributions-table>
     </ng-template>
-    <ng-template appContributionsContent="widget">
+    <ng-template appTemplate="widget">
         <div class="card card-body">
             <p-chart type="doughnut" [data]="chartData" [options]="chartOptions"></p-chart>
         </div>

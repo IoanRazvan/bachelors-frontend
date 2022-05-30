@@ -1,22 +1,35 @@
 <app-form-step-layout stepTitle="{{dictionary.solutionImplementation}}" [extend]="true" [formGroup]="form"
     (onStep)="onStepClick($event)" [stepTip]="dictionary.codeStepTip">
-    <as-split direction="horizontal" class="mb-2" style="height: 570px; min-width: 800px;" (dragEnd)="onResizeEnd()">
-        <as-split-area>
-            <app-problem-details-tabview [formData]="formData"></app-problem-details-tabview>
-        </as-split-area>
-        <as-split-area [minSize]="30">
-            <as-split direction="vertical" (dragEnd)="onResizeEnd()">
-                <as-split-area>
-                    <app-editor-area [checkingCode]="checkingCode" [dropdownControl]="form.controls['selectedLanguage']"
-                        [editorControl]="form.controls[form.value.selectedLanguage]" [selectedLanguage]="form.value.selectedLanguage"
-                        (onEditorInit)="onEditorInit($event)" (onCheck)="submitCodeForCheck()"></app-editor-area>
-                </as-split-area>
-                <as-split-area>
-                    <app-runner-details-tabview [checkingCode]="checkingCode" [ranCode]="ranCode"
-                        [runnerResult]="runnerResult" [input]="this.form.controls['input']">
-                    </app-runner-details-tabview>
-                </as-split-area>
-            </as-split>
-        </as-split-area>
-    </as-split>
+    <ng-template appTemplate="content">
+        <as-split direction="horizontal" class="mb-2" style="height: 570px; min-width: 800px;"
+            (dragEnd)="onResizeEnd()">
+            <as-split-area>
+                <app-problem-details-tabview [formData]="formData"></app-problem-details-tabview>
+            </as-split-area>
+            <as-split-area [minSize]="30">
+                <as-split direction="vertical" (dragEnd)="onResizeEnd()">
+                    <as-split-area>
+                        <ng-container *ngIf="!loading else loadingIndicator">
+                            <app-editor-area [checkingCode]="checkingCode"
+                                [dropdownOptions]="dropdownOptions"
+                                [dropdownControl]="form.controls['selectedLanguage']"
+                                [editorControl]="form.controls[form.value.selectedLanguage]"
+                                [selectedLanguage]="form.value.selectedLanguage" (onEditorInit)="onEditorInit($event)"
+                                (onCheck)="submitCodeForCheck()"></app-editor-area>
+                        </ng-container>
+                        <ng-template #loadingIndicator>
+                            <app-centered>
+                                <span class="spinner spinner-border"></span>
+                            </app-centered>
+                        </ng-template>
+                    </as-split-area>
+                    <as-split-area>
+                        <app-runner-details-tabview [checkingCode]="checkingCode" [ranCode]="ranCode"
+                            [runnerResult]="runnerResult" [input]="this.form.controls['input']">
+                        </app-runner-details-tabview>
+                    </as-split-area>
+                </as-split>
+            </as-split-area>
+        </as-split>
+    </ng-template>
 </app-form-step-layout>

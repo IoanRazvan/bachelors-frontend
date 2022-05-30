@@ -26,7 +26,6 @@ import { RunnerDetailsTabviewComponent } from './components/runner-details-tabvi
 import { RunnerResultWindowComponent } from './components/runner-result-window/runner-result-window.component';
 import { UnassignedContributionComponent } from './components/unassigned-contribution/unassigned-contribution.component';
 import { UnassignedContributionsComponent } from './components/unassigned-contributions/unassigned-contributions.component';
-import { ContributionsContentDirective } from './directives/contributions-content.directive';
 import { ManageContributionsRoutingModule } from './manage-contributions-routing.module';
 import { ManageContributionsComponent } from './manage-contributions.component';
 import { TestcaseStepComponent } from './components/testcase-step/testcase-step.component';
@@ -46,7 +45,6 @@ import { AdditionalDetailsStepComponent } from './components/additional-details-
     AcceptContributionFormComponent,
     RejectContributionFormComponent,
     ContributionsComponent,
-    ContributionsContentDirective,
     RunnerResultWindowComponent,
     ProblemDetailsTabviewComponent,
     RunnerDetailsTabviewComponent,

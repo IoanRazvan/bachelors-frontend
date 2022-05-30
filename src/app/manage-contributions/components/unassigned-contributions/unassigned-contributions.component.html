@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 <app-contributions (dropdownChange)="onOrderChange($event)" (queryChange)="onQueryChange($event)" [tip]="dictionary.unassignedContributionsTip"
     [data]="data" [loading]="loading">
-    <ng-template appContributionsContent="table">
+    <ng-template appTemplate="table">
         <app-contributions-table [data]="data" [pageInfo]="pageInfo"
             [columns]="{contributorUsername: 'col-3', title: 'col-6', createdTime: 'col-3'}"
             (onPageChange)="onPageChange($event)"></app-contributions-table>

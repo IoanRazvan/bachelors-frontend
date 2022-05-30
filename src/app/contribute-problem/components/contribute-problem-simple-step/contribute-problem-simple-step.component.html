@@ -1,9 +1,11 @@
 <app-form-step-layout [formGroup]="form" [stepTitle]="stepData.stepTitle"
     [stepTip]="stepData.stepTip" (onStep)="onStepClick($event)">
-    <label for="tetcase" class="form-label">{{stepData.stepLabel}}*</label>
-    <textarea name="testcase" id="testcase" cols="30" rows="10" class="form-control"
-        [formControl]="input" [class.is-invalid]="input.invalid && input.dirty"></textarea>
-    <div class="invalid-feedback">
-        {{stepData.stepErrorMessage}}
-    </div>
+    <ng-template appTemplate="content">
+        <label for="tetcase" class="form-label">{{stepData.stepLabel}} <span class="text-danger">*</span></label>
+        <textarea name="testcase" id="testcase" cols="30" rows="10" class="form-control"
+            [formControl]="input" [class.is-invalid]="input.invalid && input.dirty"></textarea>
+        <div class="invalid-feedback">
+            {{stepData.stepErrorMessage}}
+        </div>
+    </ng-template>
 </app-form-step-layout>
