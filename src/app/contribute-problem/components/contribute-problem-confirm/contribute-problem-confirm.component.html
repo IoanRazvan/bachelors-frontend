@@ -23,12 +23,11 @@
                 <button class="btn btn-primary" (click)="goBack()">{{dictionary.takeMeBack}}</button>
             </ng-template>
             <ng-template #submitOpt>
-                <button class="btn btn-primary me-2" (click)="onPrevStep.emit()">{{dictionary.contributeProblemPrevStepButton}}</button>
+                <button class="btn btn-primary me-2"
+                    (click)="onPrevStep.emit()">{{dictionary.contributeProblemPrevStepButton}}</button>
                 <button [disabled]="submitting" class="btn btn-primary" (click)="onSubmit.emit()">
-                    <span *ngIf="submitting else ready" class="spinner-border spinner-border-sm"></span>
-                    <ng-template #ready>
-                        {{submitButtonText}}
-                    </ng-template>
+                    {{submitButtonText}}
+                    <span *ngIf="submitting" class="spinner-border spinner-border-sm"></span>
                 </button>
             </ng-template>
         </div>
