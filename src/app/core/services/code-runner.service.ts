@@ -13,7 +13,7 @@ export class CodeRunnerService {
     constructor(private http: HttpClient) {
     }
 
-    checkProgram(code: string, langId: number, input : string[]) : Observable<CodeRunnerResult> {
+    checkProgram(code: string, langId: string, input : string[]) : Observable<CodeRunnerResult> {
         const details : CodeDetails = {
             code,
             langId,

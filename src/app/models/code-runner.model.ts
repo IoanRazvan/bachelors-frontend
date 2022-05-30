@@ -9,7 +9,7 @@ export interface CodeRunnerResult {
 
 export interface CodeDetails {
     code: string;
-    langId: number;
+    langId: string;
     input: string[];
     output: string[];
 }

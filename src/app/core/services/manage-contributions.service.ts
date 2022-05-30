@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { SortedQueryPage, SortingType } from "src/app/models/page.model";
 import { AssignedContributionRow, AssignedContributionStatusCount, ProblemContributionStatus, UnassignedContributionRow } from "src/app/models/problem-contribution.model";
+import { Problem } from "src/app/models/problem.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -30,6 +31,10 @@ export class ManageContributionsService {
         return this.http.put(`${this.endpoint}/reject/${contributionId}`, {
             statusDetails
         });
+    }
+
+    acceptContribution(contributionId: string, problem: Problem) : Observable<any> {
+        return this.http.put(`${this.endpoint}/accept/${contributionId}`, problem);
     }
 
     getStatistics(): Observable<AssignedContributionStatusCount[]> {
