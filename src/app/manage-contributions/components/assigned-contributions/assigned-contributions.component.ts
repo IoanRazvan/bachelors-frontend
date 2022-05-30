@@ -70,8 +70,8 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
           labels: resp.map(statusCount => statusCount.status),
           datasets: [{
             data: resp.map(statusCount => statusCount.count),
-            backgroundColor: ["#ffc107", "#dc3545", "#198754"],
-            hoverBackgroundColor: ["#ffcd39", "#b02a37", "#146c43"]
+            backgroundColor: ["#ffc107", "#198754", "#dc3545"],
+            hoverBackgroundColor: ["#ffcd39", "#146c43", "#b02a37"]
           }]
         };
       }
