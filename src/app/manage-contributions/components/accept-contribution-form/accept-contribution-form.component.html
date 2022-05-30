@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <app-loading-page [loading]="loading">
 </app-loading-page>
 
@@ -11,5 +12,6 @@
         </app-contribute-problem-question>
         <app-code-step *ngSwitchCase="1" [formData]="form" (onStep)="onStep($event, 1)"></app-code-step>
         <app-testcase-step *ngSwitchCase="2" [formData]="form" (onStep)="onStep($event, 2)"></app-testcase-step>
+        <app-additional-details-step *ngSwitchCase="3" [formData]="form" (onStep)="onStep($event, 3)" (onSubmit)="onSubmitClick($event)" [submitted]="submitted"></app-additional-details-step>
     </div>
 </div>

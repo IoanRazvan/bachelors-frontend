@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, skip, Subject } from 'rxjs';
+import { skip } from 'rxjs';
 import { FormStepBase } from 'src/app/base/form-step.base';
 import { LanguageService } from 'src/app/base/language.base';
 import { CodeRunnerService } from 'src/app/core/services/code-runner.service';
 import { CodeDetails, CodeRunnerResult } from 'src/app/models/code-runner.model';
+import { ProgrammingLanguage } from 'src/app/models/programming-language.model';
 import { StepData } from 'src/app/models/step-data.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 
@@ -19,6 +20,7 @@ export class TestcaseStepComponent extends FormStepBase implements OnChanges, On
   @Output() override onStep: EventEmitter<StepData>;
   checkingCode: boolean;
   badResults!: CodeRunnerResult[];
+  languages!: ProgrammingLanguage[];
 
   get testcases() {
     return this.form.controls['testcases'] as FormArray;
@@ -44,9 +46,10 @@ export class TestcaseStepComponent extends FormStepBase implements OnChanges, On
   }
 
   ngOnInit(): void {
-      this.testcases.valueChanges.pipe(skip(1)).subscribe(() => {
-        this.passed.setValue(false);
-      })
+    this.languages = this.formData.codeStep.languages;
+    this.testcases.valueChanges.pipe(skip(1)).subscribe(() => {
+      this.passed.setValue(false);
+    })
   }
 
   ngOnChanges(): void {
@@ -69,7 +72,7 @@ export class TestcaseStepComponent extends FormStepBase implements OnChanges, On
     }
   }
 
-  private createNewTestcase(input: string, output: string) : FormGroup {
+  private createNewTestcase(input: string, output: string): FormGroup {
     return this.fb.group({
       input: [input, Validators.required],
       output: [output, Validators.required]
@@ -81,24 +84,23 @@ export class TestcaseStepComponent extends FormStepBase implements OnChanges, On
   }
 
   onTrashClick(idx: number) {
-    this.testcases.removeAt(idx, {emitEvent: false});
+    this.testcases.removeAt(idx, { emitEvent: false });
   }
 
   onCheck() {
     let details: CodeDetails[] = [];
-    const languages = ["javascript", "cpp", "java"];
-    const input = this.testcases.value.map((testcase : any) => testcase.input);
-    const output = this.testcases.value.map((testcase : any) => testcase.output);
-    for (let [idx, language] of languages.entries()) {
+    const input = this.testcases.value.map((testcase: any) => testcase.input);
+    const output = this.testcases.value.map((testcase: any) => testcase.output);
+    for (let language of this.languages) {
       details.push({
-        code: this.formData[language],
-        langId: idx + 1,
+        code: this.formData.codeStep[language.id],
+        langId: language.id,
         input,
         output
       });
     }
     this.checkingCode = true;
-    
+
     this.service.checkSolutionsAgainsTestcases(details).subscribe(results => {
       this.checkingCode = false;
       this.badResults = results.filter(result => result.status !== 0);

@@ -31,6 +31,7 @@ import { ManageContributionsComponent } from './manage-contributions.component';
 import { TestcaseStepComponent } from './components/testcase-step/testcase-step.component';
 import { WrongAnswerViewComponent } from './components/wrong-answer-view/wrong-answer-view.component';
 import { AdditionalDetailsStepComponent } from './components/additional-details-step/additional-details-step.component';
+import { ListboxModule } from 'primeng/listbox';
 
 
 
@@ -68,7 +69,8 @@ import { AdditionalDetailsStepComponent } from './components/additional-details-
     TabViewModule,
     InputTextModule,
     ChartModule,
-    SkeletonModule
+    SkeletonModule,
+    ListboxModule
   ],
   providers: [
     ToastMessageService
