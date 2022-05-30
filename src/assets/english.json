@@ -82,5 +82,16 @@
     "mustRunCodeFirst": "You must run your code first",
     "runResults": "Run Results",
     "implementation": "Implementation",
-    "solutionImplementation": "Solution Implementation"
+    "tests": "Tests",
+    "additional": "Additional",
+    "solutionImplementation": "Solution Implementation",
+    "completeAdditionalData": "Provide additional data",
+    "completeAdditionalDataStepTip": "Choose an appropriate difficulty and select all applicable categories",
+    "difficulty": "Difficulty",
+    "categories": "Categories",
+    "problemAddedSuccessfully": "Problem was added successfully. You can go back",
+    "allTestcasesPassedSuccessfully": "All testcases passed succeessfully",
+    "addTest": "Add test",
+    "testcasesSpecification": "Testcases specification",
+    "testcasesStepTip": "The solutions must run successfully and provide consistent results"
 }

@@ -10,13 +10,6 @@ import { DropdownOption } from 'src/app/models/dropdown-option.model';
 import { StepType } from 'src/app/models/step.type';
 import { codeZonePresentValidator } from './code-step.validator';
 
-enum Errors {
-  COMPILE_ERROR = 1,
-  RUNTIME_ERROR = 2,
-  TIME_LIMIT_EXCEDEED = 3,
-  WRONG_ANSWER = 4
-}
-
 @Component({
   selector: 'app-code-step',
   templateUrl: './code-step.component.html',

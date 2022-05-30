@@ -1,4 +1,5 @@
 <app-error-page [errorStatus]="errorStatus"></app-error-page>
 <app-loading-page [loading]="loading"></app-loading-page>
 <p-toast></p-toast>
-<app-contribution-view *ngIf="!loading && !errorStatus" [contribution]="data" [actions]="actions" (onAction)="onActionClick($event)"></app-contribution-view>
+<app-contribution-view *ngIf="!loading && !errorStatus" [contribution]="data" [actions]="actions"
+    (onAction)="onActionClick($event)"></app-contribution-view>

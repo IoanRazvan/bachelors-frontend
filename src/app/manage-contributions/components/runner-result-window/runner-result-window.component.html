@@ -1,4 +1,4 @@
-<app-centered *ngIf="!ranCode && !checkingCode else runResult" >
+<app-centered *ngIf="!ranCode && !checkingCode else runResult">
     <h5 class="fw-normal text-muted">
         {{dictionary.mustRunCodeFirst}}
     </h5>
@@ -13,7 +13,8 @@
             <h5 class="text-danger">
                 {{errorType}}
             </h5>
-            <div *ngIf="errorDetails" class="alert alert-danger rounded testcase p-2" style="font-family: monospace;" [innerHTML]="errorDetails">
+            <div *ngIf="errorDetails" class="alert alert-danger rounded testcase p-2" style="font-family: monospace;"
+                [innerHTML]="errorDetails">
             </div>
         </div>
         <div *ngIf="runnerResult.status === 0">

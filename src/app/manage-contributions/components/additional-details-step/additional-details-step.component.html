@@ -1,21 +1,21 @@
-<app-form-step-layout stepTitle="Completarea datelor aditionale"
-    stepTip="Se va alege o dificulatea adecvata pentru problema si se vor selecta cateogriile in care poate fi incadratata"
+<app-form-step-layout [stepTitle]="dictionary.completeAdditionalData"
+    [stepTip]="dictionary.completeAdditionalDataStepTip"
     [showPrevStepButton]="!submitted" [formGroup]="form" (onStep)="onStepClick($event)">
     <ng-template appTemplate="content">
-        <label class="mt-3 form-label">Dificultate <span class="text-danger">*</span></label>
+        <label class="mt-3 form-label">{{dictionary.difficulty}} <span class="text-danger">*</span></label>
         <p-listbox [options]="difficulties" formControlName="difficulty">
             <ng-template let-difficulty pTemplate="item">
-                <span [ngClass]="difficultyTextClass(difficulty)">{{difficulty | titlecase}}</span>
+                <span>{{difficulty | titlecase}}</span>
             </ng-template>
         </p-listbox>
-        <label class="mt-3 form-label mb-2">Categorii <span class="text-danger">*</span></label>
+        <label class="mt-3 form-label mb-2">{{dictionary.categories}} <span class="text-danger">*</span></label>
         <p-listbox [options]="categories" formControlName="selectedCategories" optionLabel="categoryName" [checkbox]="true"
             [multiple]="true" [listStyle]="{maxHeight: '200px'}" [filter]="true"></p-listbox>
     </ng-template>
     <ng-template appTemplate="next">
         <button *ngIf="!submitted else takeMeBack" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmitClick()">Adauga</button>
         <ng-template #takeMeBack>
-            <button class="btn btn-primary" [routerLink]="['../..']">Du-ma inapoi</button>
+            <button class="btn btn-primary" [routerLink]="['../..']">{{dictioanry.takeMeBack}</button>
         </ng-template>
     </ng-template>
 </app-form-step-layout>

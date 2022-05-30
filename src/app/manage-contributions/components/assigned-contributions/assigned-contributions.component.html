@@ -1,5 +1,5 @@
-<app-contributions [tip]="this.dictionary.assignedContributionsTip" [data]="data" [loading]="loading" (dropdownChange)="onOrderChange($event)"
-    (queryChange)="onQueryChange($event)" [showStats]="showStats">
+<app-contributions [tip]="this.dictionary.assignedContributionsTip" [data]="data" [loading]="loading"
+    (dropdownChange)="onOrderChange($event)" (queryChange)="onQueryChange($event)" [showStats]="showStats">
     <ng-template appTemplate="filter">
         <div class="col-auto">
             <p-dropdown [options]="statusOptions" [(ngModel)]="selectedStatus" (onChange)="onStatusChange($event)">

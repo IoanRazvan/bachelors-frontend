@@ -105,7 +105,7 @@ export class TestcaseStepComponent extends FormStepBase implements OnChanges, On
       this.checkingCode = false;
       this.badResults = results.filter(result => result.status !== 0);
       if (this.badResults.length === 0) {
-        this.messageService.addSuccess("Toate cazurile de test au trecut cu succes");
+        this.messageService.addSuccess(this.dictionary.allTestcasesPassedSuccessfully);
         this.passed.setValue(true);
       }
     });

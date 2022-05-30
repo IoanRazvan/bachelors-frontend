@@ -18,10 +18,9 @@
             <p class="testcase">{{formData.testcase}}</p>
         </li>
         <div class="mb-3">
-            <div *ngIf="submissionHappend then goBackOpt else submitOpt"></div>
-            <ng-template #goBackOpt>
+            <span *ngIf="submissionHappend else submitOpt">
                 <button class="btn btn-primary" (click)="goBack()">{{dictionary.takeMeBack}}</button>
-            </ng-template>
+            </span>
             <ng-template #submitOpt>
                 <button class="btn btn-primary me-2"
                     (click)="onPrevStep.emit()">{{dictionary.contributeProblemPrevStepButton}}</button>

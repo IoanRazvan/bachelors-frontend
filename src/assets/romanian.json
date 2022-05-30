@@ -83,5 +83,16 @@
     "mustRunCodeFirst": "Codul trebuie rulat înanite",
     "runResults": "Rezultate Rulare",
     "implementation": "Implementare",
-    "solutionImplementation": "Implementarea Soluției"
+    "tests": "Teste",
+    "additional": "Adițional",
+    "solutionImplementation": "Implementarea Soluției",
+    "completeAdditionalData": "Completarea datelor adiționale",
+    "completeAdditionalDataStepTip": "Se va alege o dificultate adecvată pentru problema si se vor selecta categoriile în care poate fi încadrată",
+    "difficulty": "Dificultate",
+    "categories": "Categorii",
+    "problemAddedSuccessfully": "Problem was added successfully. You can go back",
+    "allTestcasesPassedSuccessfully": "Toate cazurile de test au trecut cu succes",
+    "addTest": "Adaugă test",
+    "testcasesSpecification": "Specificarea cazurilor de test",
+    "testcasesStepTip": "Soluțiile trebuie să ruleze corect și să ofere rezultate consistente"
 }

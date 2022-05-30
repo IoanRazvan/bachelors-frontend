@@ -46,17 +46,6 @@ export class AdditionalDetailsStepComponent extends FormStepBase implements OnIn
     });
   }
 
-  difficultyTextClass(difficulty: ProblemDifficulty): string {
-    switch (difficulty) {
-      case 'HARD':
-        return 'text-danger';
-      case 'EASY':
-        return 'text-success';
-      case 'MEDIUM':
-        return 'text-warning';
-    }
-  }
-
   check() {
     console.log(this.form.value);
   }

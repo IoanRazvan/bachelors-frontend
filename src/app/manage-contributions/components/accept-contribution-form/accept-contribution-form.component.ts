@@ -16,13 +16,16 @@ export class AcceptContributionFormComponent implements OnInit {
   tabIndex: number;
   loading: boolean;
   form: any;
-  submitted: boolean = false;
+  submitted: boolean;
   id!: string;
+  dictionary: any;
 
   constructor(private route: ActivatedRoute, private contributionService: ProblemContributionService, languageService: LanguageService, private toastMessage: ToastMessageService, private contributionsManagement: ManageContributionsService) {
-    this.items = [{ label: languageService.dictionary.problem, tabindex: '0' }, { label: languageService.dictionary.implementation, tabindex: '1' }, { label: 'Teste', tabindex: '2' }, { label: 'Aditional', tabindex: '3' }];
+    this.dictionary = languageService.dictionary
+    this.items = [{ label: this.dictionary.problem, tabindex: '0' }, { label: this.dictionary.implementation, tabindex: '1' }, { label: this.dictionary.tests, tabindex: '2' }, { label: this.dictionary.additional, tabindex: '3' }];
     this.tabIndex = 0;
     this.loading = true;
+    this.submitted = false;
     this.form = {};
 
   }
@@ -67,7 +70,7 @@ export class AcceptContributionFormComponent implements OnInit {
     };
 
     this.contributionsManagement.acceptContribution(this.id, problem).subscribe(() => {
-      this.toastMessage.addSuccess("Problema a fost aduagata cu succes. Te pot intoarce");
+      this.toastMessage.addSuccess(this.dictionary.problemAddedSuccessfully);
       this.submitted = true
     });
   }
