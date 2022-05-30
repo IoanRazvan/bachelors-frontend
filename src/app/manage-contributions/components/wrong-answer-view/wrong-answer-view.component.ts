@@ -8,7 +8,6 @@ import { ProgrammingLanguage } from 'src/app/models/programming-language.model';
 })
 export class WrongAnswerViewComponent {
   @Input() badResults!: CodeRunnerResult[];
-  @Input() testcases!: any[];
   @Input() languages!: ProgrammingLanguage[];
 
   get headers() {

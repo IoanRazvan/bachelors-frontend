@@ -32,6 +32,7 @@ import { TestcaseStepComponent } from './components/testcase-step/testcase-step.
 import { WrongAnswerViewComponent } from './components/wrong-answer-view/wrong-answer-view.component';
 import { AdditionalDetailsStepComponent } from './components/additional-details-step/additional-details-step.component';
 import { ListboxModule } from 'primeng/listbox';
+import { DisplayRunnerResultComponent } from './components/display-runner-result/display-runner-result.component';
 
 
 
@@ -52,7 +53,8 @@ import { ListboxModule } from 'primeng/listbox';
     EditorAreaComponent,
     TestcaseStepComponent,
     WrongAnswerViewComponent,
-    AdditionalDetailsStepComponent
+    AdditionalDetailsStepComponent,
+    DisplayRunnerResultComponent
   ],
   imports: [
     CommonModule,

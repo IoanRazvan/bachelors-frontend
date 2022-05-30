@@ -1,0 +1,27 @@
+<h5 [ngClass]="getTitleStyleClass(runnerResult.status)">
+    {{titles[runnerResult.status]}}
+</h5>
+<span [ngSwitch]="true">
+    <ng-container *ngSwitchCase="runnerResult.status === 1 || runnerResult.status === 2 || runnerResult.status === 3">
+        <div *ngIf="runnerResult.error" class="alert alert-danger rounded testcase p-2" style="font-family: monospace;"
+            [innerHTML]="runnerResult.error">
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="runnerResult.status === 0">
+        <div *ngFor="let field of acceptedFields" class="row mb-2">
+            <div class="col-3">
+                {{field.label}}
+            </div>
+            <div class="col-9 rounded bg-light border testcase" [innerHTML]="field.value">
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <ng-container *ngFor="let field of wrongAnswerFields">
+            <label>{{field.label}}</label>
+            <div class="bg-light border rounded p-1" style="min-height: 2rem">
+                {{field.value}}
+            </div>
+        </ng-container>
+    </ng-container>
+</span>

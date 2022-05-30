@@ -47,6 +47,7 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
           text: this.dictionary.stats,
           font: {
             size: 16,
+            weight: 'normal'
           },
           align: 'center',
           padding: {

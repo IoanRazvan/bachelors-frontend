@@ -4,30 +4,11 @@
     </h5>
 </app-centered>
 <ng-template #runResult>
-    <div *ngIf="checkingCode">
-        <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
-        <p-skeleton height="6rem"></p-skeleton>
-    </div>
-    <div *ngIf="!checkingCode">
-        <div *ngIf="runnerResult.status !== 0">
-            <h5 class="text-danger">
-                {{errorType}}
-            </h5>
-            <div *ngIf="errorDetails" class="alert alert-danger rounded testcase p-2" style="font-family: monospace;"
-                [innerHTML]="errorDetails">
-            </div>
-        </div>
-        <div *ngIf="runnerResult.status === 0">
-            <h5 class="text-success">
-                {{dictionary.accepted2}}
-            </h5>
-            <div *ngFor="let field of acceptedFields" class="row mb-2">
-                <div class="col-3">
-                    {{field.label}}
-                </div>
-                <div class="col-9 rounded bg-light border testcase" [innerHTML]="field.value">
-                </div>
-            </div>
-        </div>
-    </div>
+    <ng-container *ngIf="checkingCode">
+        <p-skeleton height="3rem" styleClass="mb-2"></p-skeleton>
+        <p-skeleton height="8rem"></p-skeleton>
+    </ng-container>
+    <ng-container *ngIf="!checkingCode">
+        <app-display-runner-result [runnerResult]="runnerResult" [input]="input"></app-display-runner-result>
+    </ng-container>
 </ng-template>

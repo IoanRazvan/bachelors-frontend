@@ -1,11 +1,11 @@
-<app-form-step-layout [stepTitle]="dictionary.testcasesSpecifcation" [formGroup]="form" [showPrevStepButton]="true"
-    [stepTip]="dictionary.testcasesStepTipe" (onStep)="onStepClick($event)"
+<app-form-step-layout [stepTitle]="dictionary.testcasesSpecification" [formGroup]="form" [showPrevStepButton]="true"
+    [stepTip]="dictionary.testcasesStepTip" (onStep)="onStepClick($event)"
     [extend]="true">
     <ng-template appTemplate="content">
         <div>
             <div class="col-4" style="float: right;">
                 <app-wrong-answer-view *ngIf="badResults && badResults.length" [languages]="languages"
-                    [badResults]="badResults" [testcases]="testcases.value"></app-wrong-answer-view>
+                    [badResults]="badResults"></app-wrong-answer-view>
             </div>
             <div class="col-8 ps-0" formArrayName="testcases">
                 <div class="row mb-3" *ngFor="let testcase of testcases.controls; let idx = index"

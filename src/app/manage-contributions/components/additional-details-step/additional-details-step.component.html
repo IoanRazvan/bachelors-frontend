@@ -15,7 +15,7 @@
     <ng-template appTemplate="next">
         <button *ngIf="!submitted else takeMeBack" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmitClick()">Adauga</button>
         <ng-template #takeMeBack>
-            <button class="btn btn-primary" [routerLink]="['../..']">{{dictioanry.takeMeBack}</button>
+            <button class="btn btn-primary" [routerLink]="['../..']">{{dictionary.takeMeBack}}</button>
         </ng-template>
     </ng-template>
 </app-form-step-layout>

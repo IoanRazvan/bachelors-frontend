@@ -1,10 +1,10 @@
 export interface CodeRunnerResult {
-    status: number;
+    status: RunnerResultStatus;
     error: string;
     output: string;
     stdout: string;
     langId: number;
-    wrongAnswerIdx: number;
+    wrongAnswer: WrongAnswer;
 }
 
 export interface CodeDetails {
@@ -12,4 +12,18 @@ export interface CodeDetails {
     langId: string;
     input: string[];
     output: string[];
+}
+
+export enum RunnerResultStatus {
+    ACCEPTED_ANSWER,
+    COMPILE_ERROR,
+    RUNTIME_ERROR,
+    TIME_LIMIT_EXCEDEED,
+    WRONG_ANSWER
+}
+
+export interface WrongAnswer {
+    input: string;
+    actual: string;
+    expected: string;
 }
