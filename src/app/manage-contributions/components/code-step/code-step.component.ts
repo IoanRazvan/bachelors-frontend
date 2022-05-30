@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { skip } from 'rxjs';
+import { distinctUntilChanged, skip } from 'rxjs';
 import { FormStepBase } from 'src/app/base/form-step.base';
 import { LanguageService } from 'src/app/base/language.base';
 import { CodeRunnerService } from 'src/app/core/services/code-runner.service';
@@ -71,7 +71,7 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
     this.form.addControl('selectedLanguage', new FormControl(dynamicValues.selectedLanguage));
     for (let language of dynamicValues.languages) {
       this.form.addControl(language.id, new FormControl(dynamicValues[language.id] || '', codeZonePresentValidator));
-      this.form.controls[language.id].valueChanges.pipe(skip(1)).subscribe(() => {
+      this.form.controls[language.id].valueChanges.pipe(distinctUntilChanged((val1, val2) => {return val1 === val2;}), skip(1)).subscribe(() => {
         this.chageRanWithNoErrors(language.id, false);
       });
       ranWithNoErrorsObject[language.id] = [dynamicValues.ranWithNoErrors[language.id] || false, Validators.requiredTrue];

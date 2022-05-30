@@ -23,7 +23,7 @@ export class EditorAreaComponent implements OnChanges {
   constructor(languageService: LanguageService) {
     this.onCheck = new EventEmitter();
     this.onEditorInit = new EventEmitter();
-    this.editorOptions = { theme: 'vs-light', language: 'javascript', minimap: { enabled: false } };
+    this.editorOptions = { theme: 'vs-light', minimap: { enabled: false } };
     this.selectedLanguage = 'javascript';
     this.dictionary = languageService.dictionary;
   }

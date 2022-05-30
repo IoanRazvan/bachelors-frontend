@@ -103,3 +103,11 @@ a.contribution-link:hover {
 .p-datatable table {
     width: 100%;
 }
+
+.p-dialog div.p-dialog-header {
+    border-bottom: 0px;
+}
+
+.p-dialog div.p-dialog-footer {
+    border-top: 0px;
+}

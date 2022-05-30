@@ -41,20 +41,6 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
       plugins: {
         legend: {
           display: false,
-        },
-        title: {
-          display: true,
-          text: this.dictionary.stats,
-          font: {
-            size: 16,
-            weight: 'normal'
-          },
-          align: 'center',
-          padding: {
-            top: 10,
-            bottom: 0
-          },
-          position: 'bottom'
         }
       }
     };
