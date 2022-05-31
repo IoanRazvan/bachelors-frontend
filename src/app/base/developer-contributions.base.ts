@@ -26,7 +26,7 @@ export abstract class DeveloperContributionsBase {
             }
             this.loading = false;
         });
-        this.service.change(0, { query: '', sorting: 'descending', force: true, status: '' });
+        this.service.change(0, true, { query: '', sorting: 'descending', status: '' });
     }
 
     onQueryChange(query: string) {

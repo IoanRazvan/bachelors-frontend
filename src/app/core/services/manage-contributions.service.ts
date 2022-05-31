@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { SortedQueryPage, SortingType } from "src/app/models/page.model";
+import { ParamterizedPage, SortingType } from "src/app/models/page.model";
 import { AssignedContributionRow, AssignedContributionStatusCount, ProblemContributionStatus, UnassignedContributionRow } from "src/app/models/problem-contribution.model";
 import { Problem } from "src/app/models/problem.model";
 import { environment } from "src/environments/environment";
@@ -15,12 +15,12 @@ export class ManageContributionsService {
     constructor(private http: HttpClient) {
     }
 
-    getUnassignedContributions(page: number, size : number, query: string = "", sorting: SortingType = "descending") : Observable<SortedQueryPage<UnassignedContributionRow>> {
-        return <any>this.http.get(`${this.endpoint}/unassigned?page=${page}&size=${size}&q=${query}&order=${sorting}`);
+    getUnassignedContributions(page: number, size : number, query: string = "", order: SortingType = "descending") : Observable<ParamterizedPage<UnassignedContributionRow>> {
+        return <any>this.http.get(`${this.endpoint}/unassigned?page=${page}&size=${size}&q=${query}&order=${order}`);
     }
 
-    getAssignedContributions(page: number, size: number, query: string = "", sorting: SortingType = "descending", status: ProblemContributionStatus | '' = '') : Observable<SortedQueryPage<AssignedContributionRow>> {
-        return <any>this.http.get(`${this.endpoint}/assigned?page=${page}&size=${size}&q=${query}&order=${sorting}&status=${status}`);
+    getAssignedContributions(page: number, size: number, query: string = "", order: SortingType = "descending", status: ProblemContributionStatus | '' = '') : Observable<ParamterizedPage<AssignedContributionRow>> {
+        return <any>this.http.get(`${this.endpoint}/assigned?page=${page}&size=${size}&q=${query}&order=${order}&status=${status}`);
     }
 
     assignContribution(contributionId: string) : Observable<any> {

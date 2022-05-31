@@ -3,14 +3,15 @@ import { DeveloperContributionsBase } from 'src/app/base/developer-contributions
 import { LanguageService } from 'src/app/base/language.base';
 import { ManageContributionsService } from 'src/app/core/services/manage-contributions.service';
 import { DropdownOption } from 'src/app/models/dropdown-option.model';
-import { PageServiceExtras } from 'src/app/models/page-service.model';
+import { SortingType } from 'src/app/models/page.model';
+import { ProblemContributionStatus } from 'src/app/models/problem-contribution.model';
 import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 import { ContributionsService } from '../../services/contributions.service';
 
 const contributionsProvider = (apiService: ManageContributionsService) => {
   const service = {
-    request(page : number, size : number, extras : PageServiceExtras) {
-      return apiService.getAssignedContributions(page, size, extras.query, extras.sorting, extras.status);
+    request(page : number, size : number, parameters: {[key: string]: string}) {
+      return apiService.getAssignedContributions(page, size, parameters['query'], <SortingType>parameters['order'], <ProblemContributionStatus>parameters['status']);
     }
   };
   return new ContributionsService(service);

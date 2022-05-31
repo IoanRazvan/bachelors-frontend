@@ -11,6 +11,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { ContributeProblemModule } from './contribute-problem/contribute-problem.module';
 import { CoreModule } from './core/core.module';
 import { ManageContributionsModule } from './manage-contributions/manage-contributions.module';
+import { ProblemsModule } from './problems/problems.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ManageContributionsModule } from './manage-contributions/manage-contrib
     ContributeProblemModule,
     BrowserAnimationsModule,
     ManageContributionsModule,
+    ProblemsModule,
     MonacoEditorModule.forRoot()
   ],
   providers: [{

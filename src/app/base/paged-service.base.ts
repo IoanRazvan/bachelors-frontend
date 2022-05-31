@@ -1,5 +1,5 @@
 import { Observable, Subject } from "rxjs";
-import { PageServiceExtras, ResultObservableAdapter } from "../models/page-service.model";
+import { ResultObservableAdapter } from "../models/page-service.model";
 import { Page, PageFactory } from "../models/page.model";
 
 export abstract class PagedServiceBase {
@@ -10,10 +10,10 @@ export abstract class PagedServiceBase {
     protected currentServerPage!: Page<any>;
     protected service !: ResultObservableAdapter;
 
-    change(page: number, extras ?: PageServiceExtras) {
+    change(page: number, force: boolean = false, paramters ?: {[key: string] : string}) {
         const requestedServerPage = Page.convertPageNumber(page, this.clientPageSize, this.serverPageSize);
-        if (this.isPageNotCached(requestedServerPage, extras)) {
-            this.service.request(requestedServerPage, this.serverPageSize, extras).subscribe({
+        if (this.isPageNotCached(requestedServerPage, force, paramters)) {
+            this.service.request(requestedServerPage, this.serverPageSize, paramters).subscribe({
                 next: (resp : any) => {
                     this.currentServerPage = PageFactory.of(resp);
                     this.pagesSubject.next({
@@ -33,7 +33,7 @@ export abstract class PagedServiceBase {
         }
     }
 
-    isPageNotCached(requestedServerPage: number, extras ?: PageServiceExtras) : boolean {
-        return this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || !!extras?.force
+    isPageNotCached(requestedServerPage: number, force: boolean, _parameters?: {[key: string] : string}) : boolean {
+        return this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || force
     }
 }

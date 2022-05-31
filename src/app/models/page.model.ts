@@ -34,23 +34,19 @@ export class Page<T> {
     }
 }
 
-export class SortedQueryPage<T> extends Page<T> {
-    sorting: SortingType;
-    query: string;
-    status: ProblemContributionStatus;
+export class ParamterizedPage<T> extends Page<T> {
+    parameters: {[key: string] : string};
 
     constructor(data : any) {
         super(data);
-        this.sorting = data.sorting;
-        this.query = data.query;
-        this.status = data.status
+        this.parameters = data.parameters;
     }
 }
 
 export class PageFactory {
     static of<T>(data: any) : Page<T> {
-        if (data.query || data.sorting)
-            return new SortedQueryPage(data);
+        if (data.parameters)
+            return new ParamterizedPage(data);
         return new Page(data);
     }
 }
