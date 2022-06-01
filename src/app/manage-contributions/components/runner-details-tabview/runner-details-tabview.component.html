@@ -4,7 +4,14 @@
             rows="5" [formControl]="$any(input)"></textarea>
     </p-tabPanel>
     <p-tabPanel [header]="dictionary.runResults">
-        <app-runner-result-window [runnerResult]="runnerResult" [ranCode]="ranCode" [checkingCode]="checkingCode" [input]="input.value">
-        </app-runner-result-window>
+        <app-centered *ngIf="!runnerResult && !checkingCode else runResult">
+            <h5 class="fw-normal text-muted">
+                {{dictionary.mustRunCodeFirst}}
+            </h5>
+        </app-centered>
+        <ng-template #runResult>
+            <app-runner-result-window [runnerResult]="runnerResult" [checkingCode]="checkingCode" [input]="input.value">
+            </app-runner-result-window>
+        </ng-template>
     </p-tabPanel>
 </p-tabView>

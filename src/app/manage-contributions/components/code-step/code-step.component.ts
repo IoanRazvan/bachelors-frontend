@@ -21,7 +21,6 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
   override form: FormGroup;
   checkingCode: boolean;
   runnerResult!: CodeRunnerResult;
-  ranCode: boolean;
   loading: boolean;
   dropdownOptions!: DropdownOption<string, string>[];
 
@@ -32,7 +31,6 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
       output: [''],
     });
     this.onStep = new EventEmitter();
-    this.ranCode = false;
     this.checkingCode = false;
     this.loading = true;
   }
@@ -84,7 +82,6 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
     this.checkingCode = true;
     this.runnerService.checkProgram(formValue[formValue.selectedLanguage], formValue.selectedLanguage, [formValue.input]).subscribe((res: CodeRunnerResult) => {
       this.checkingCode = false;
-      this.ranCode = true;
       this.runnerResult = res;
       if (this.runnerResult.status === 0)
         this.chageRanWithNoErrors(formValue.selectedLanguage, true);

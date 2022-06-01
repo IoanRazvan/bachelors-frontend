@@ -10,8 +10,7 @@
                 <as-split direction="vertical" (dragEnd)="onResizeEnd()">
                     <as-split-area>
                         <ng-container *ngIf="!loading else loadingIndicator">
-                            <app-editor-area [checkingCode]="checkingCode"
-                                [dropdownOptions]="dropdownOptions"
+                            <app-editor-area [checkingCode]="checkingCode" [dropdownOptions]="dropdownOptions"
                                 [dropdownControl]="form.controls['selectedLanguage']"
                                 [editorControl]="form.controls[form.value.selectedLanguage]"
                                 [selectedLanguage]="form.value.selectedLanguage" (onEditorInit)="onEditorInit($event)"
@@ -24,8 +23,8 @@
                         </ng-template>
                     </as-split-area>
                     <as-split-area>
-                        <app-runner-details-tabview [checkingCode]="checkingCode" [ranCode]="ranCode"
-                            [runnerResult]="runnerResult" [input]="this.form.controls['input']">
+                        <app-runner-details-tabview [checkingCode]="checkingCode" [runnerResult]="runnerResult"
+                            [input]="this.form.controls['input']">
                         </app-runner-details-tabview>
                     </as-split-area>
                 </as-split>

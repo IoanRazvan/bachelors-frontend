@@ -8,7 +8,6 @@ import { CodeRunnerResult } from 'src/app/models/code-runner.model';
 })
 export class RunnerResultWindowComponent implements OnChanges {
   @Input() runnerResult!: CodeRunnerResult;
-  @Input() ranCode!: boolean;
   @Input() checkingCode!: boolean;
   @Input() input!: string;
   statu2Error: string[];

@@ -9,7 +9,6 @@ import { CodeRunnerResult } from 'src/app/models/code-runner.model';
 })
 export class RunnerDetailsTabviewComponent implements OnChanges {
   @Input() checkingCode !: boolean;
-  @Input() ranCode!: boolean;
   @Input() runnerResult!: CodeRunnerResult;
   @Input() input!: AbstractControl;
   activePanelIndex: number = 0;

@@ -19,11 +19,9 @@ import { AssignedContributionComponent } from './components/assigned-contributio
 import { AssignedContributionsComponent } from './components/assigned-contributions/assigned-contributions.component';
 import { CodeStepComponent } from './components/code-step/code-step.component';
 import { ContributionsComponent } from './components/contributions/contributions.component';
-import { EditorAreaComponent } from './components/editor-area/editor-area.component';
 import { ProblemDetailsTabviewComponent } from './components/problem-details-tabview/problem-details-tabview.component';
 import { RejectContributionFormComponent } from './components/reject-contribution-form/reject-contribution-form.component';
 import { RunnerDetailsTabviewComponent } from './components/runner-details-tabview/runner-details-tabview.component';
-import { RunnerResultWindowComponent } from './components/runner-result-window/runner-result-window.component';
 import { UnassignedContributionComponent } from './components/unassigned-contribution/unassigned-contribution.component';
 import { UnassignedContributionsComponent } from './components/unassigned-contributions/unassigned-contributions.component';
 import { ManageContributionsRoutingModule } from './manage-contributions-routing.module';
@@ -32,7 +30,6 @@ import { TestcaseStepComponent } from './components/testcase-step/testcase-step.
 import { WrongAnswerViewComponent } from './components/wrong-answer-view/wrong-answer-view.component';
 import { AdditionalDetailsStepComponent } from './components/additional-details-step/additional-details-step.component';
 import { ListboxModule } from 'primeng/listbox';
-import { DisplayRunnerResultComponent } from './components/display-runner-result/display-runner-result.component';
 
 
 
@@ -47,14 +44,11 @@ import { DisplayRunnerResultComponent } from './components/display-runner-result
     AcceptContributionFormComponent,
     RejectContributionFormComponent,
     ContributionsComponent,
-    RunnerResultWindowComponent,
     ProblemDetailsTabviewComponent,
     RunnerDetailsTabviewComponent,
-    EditorAreaComponent,
     TestcaseStepComponent,
     WrongAnswerViewComponent,
     AdditionalDetailsStepComponent,
-    DisplayRunnerResultComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +58,6 @@ import { DisplayRunnerResultComponent } from './components/display-runner-result
     CheckboxModule,
     ToastModule,
     DividerModule,
-    MonacoEditorModule,
     DropdownModule,
     AngularSplitModule,
     StepsModule,

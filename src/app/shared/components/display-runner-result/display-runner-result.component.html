@@ -1,5 +1,5 @@
-<h5 [ngClass]="getTitleStyleClass(runnerResult.status)">
-    {{titles[runnerResult.status]}}
+<h5 [class]="runnerResult.status | statusCodeDetails:'class'">
+    {{runnerResult.status | statusCodeDetails:'text'}}
 </h5>
 <span [ngSwitch]="true">
     <ng-container *ngSwitchCase="runnerResult.status === 1 || runnerResult.status === 2 || runnerResult.status === 3">
