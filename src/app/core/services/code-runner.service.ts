@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { CodeDetails, CodeRunnerResult } from "src/app/models/code-runner.model";
+import { CodeDetails, CodeRunnerResult, SubmissionRequest, SubmissionResponse } from "src/app/models/code-runner.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -25,5 +25,9 @@ export class CodeRunnerService {
 
     checkSolutionsAgainsTestcases(details: CodeDetails[]) : Observable<CodeRunnerResult[]> {
         return <any>this.http.post(`${this.endpoint}/check-against-testcases`, details);
+    }
+
+    submitSolution(problemId: number, submission: SubmissionRequest): Observable<SubmissionResponse> {
+        return <any>this.http.post(`${this.endpoint}/submit-solution/${problemId}`, submission);
     }
 }

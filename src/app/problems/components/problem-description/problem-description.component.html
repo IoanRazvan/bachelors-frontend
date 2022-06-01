@@ -1,0 +1,7 @@
+<h5>{{problem.title}}</h5>
+<div class="description" [innerHTML]="problem.description"></div>
+<p-accordion expandIcon="pi pi-chevron-down" collapseIcon="pi pi-chevron-up">
+    <p-accordionTab header="Related Topics">
+        <span class="bg-primary rounded-pill px-2 py-1 me-2 mb-2" *ngFor="let category of problem.categories">{{category.categoryName}}</span>
+    </p-accordionTab>
+</p-accordion>

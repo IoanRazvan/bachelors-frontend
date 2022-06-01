@@ -1,3 +1,5 @@
+import { SubmissionRow } from "./submission.model";
+
 export interface CodeRunnerResult {
     status: RunnerResultStatus;
     error: string;
@@ -26,4 +28,14 @@ export interface WrongAnswer {
     input: string;
     actual: string;
     expected: string;
+}
+
+export interface SubmissionRequest {
+    sourceCode: string;
+    languageId: string;
+}
+
+export interface SubmissionResponse {
+    codeRunnerResult: CodeRunnerResult;
+    submission: SubmissionRow;
 }

@@ -111,3 +111,62 @@ a.contribution-link:hover {
 .p-dialog div.p-dialog-footer {
     border-top: 0px;
 }
+
+ul.p-inputtext.p-chips-multiple-container {
+    border: 0px;
+}
+
+div ul.p-inputtext.p-chips-multiple-container:not(.p-disabled).p-focus {
+    border: 0px;
+    box-shadow: none;
+}
+
+.p-0 ul.p-inputtext.p-chips-multiple-container {
+    padding: 0px;
+}
+
+ul.p-inputtext.p-chips-multiple-container li.p-chips-input-token input {
+    pointer-events: none;
+}
+
+.no-highlight li#p-highlighted-option {
+    background: inherit;
+}
+
+.no-highlight li#p-highlighted-option:hover {
+    background: #e9ecef;
+}
+
+.inline-items .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    display: inline;
+    padding: 0px;
+    margin: 3px;
+    background-color: inherit;
+}
+
+.inline-items .p-dropdown-panel {
+    width: 300px;
+}
+
+.inline-items div.p-dropdown-items-wrapper {
+    overflow: visible;
+}
+
+.inline-items ul.p-dropdown-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+a#p-accordiontab-0 {
+    border-radius: 0;
+    background-color: white;
+    padding: 0.9rem;
+}
+
+div.p-accordion .p-accordion-content {
+    padding: 1rem;
+}
+
+as-split-area.as-split-area.scr {
+    overflow-x: auto;
+}

@@ -1,0 +1,13 @@
+<app-loading-page [loading]="loading"></app-loading-page>
+<as-split *ngIf="!loading" direction="horizontal" class="mt-1" style="height: 34.4rem;" (dragEnd)="onResizeEnd()">
+    <as-split-area class="scr">
+        <app-problem-details-area [checkingCode]="checkingCode" [problem]="problem" [runnerResult]="runnerResult"
+            [submissions]="submissions"></app-problem-details-area>
+    </as-split-area>
+    <as-split-area>
+        <app-editor-area [checkingCode]="checkingCode" [editorControl]="form.controls[form.value.selectedLanguage]"
+            [dropdownControl]="form.controls['selectedLanguage']" [dropdownOptions]="dropdownOptions"
+            [selectedLanguage]="form.value.selectedLanguage" (onCheck)="onCodeCheck()"
+            (onEditorInit)="onEditorInit($event)"></app-editor-area>
+    </as-split-area>
+</as-split>

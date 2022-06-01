@@ -1,0 +1,21 @@
+<p-tabView [activeIndex]="activeIndex">
+    <p-tabPanel header="Problema">
+        <app-problem-description [problem]="problem"></app-problem-description>
+    </p-tabPanel>
+    <p-tabPanel header="Submissions">
+        <div style="min-width: 500px;">
+            <ng-container *ngIf="!runnerResult && !checkingCode && (!submissions || !submissions.length)">
+                <app-centered>
+                    <h5 class="text-muted">
+                        No submissions yet
+                    </h5>
+                </app-centered>
+            </ng-container>
+            <ng-container *ngIf="runnerResult || checkingCode">
+                <app-runner-result-window [checkingCode]="checkingCode" [runnerResult]="runnerResult"></app-runner-result-window>
+                <p-divider></p-divider>
+            </ng-container>
+            <app-submissions-table *ngIf="submissions && submissions.length" [submissions]="submissions"></app-submissions-table>
+        </div>
+    </p-tabPanel>
+</p-tabView>
