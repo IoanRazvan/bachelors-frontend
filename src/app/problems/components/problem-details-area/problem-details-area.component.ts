@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { LanguageService } from 'src/app/base/language.base';
 import { CodeRunnerResult } from 'src/app/models/code-runner.model';
 import { ProblemReponse } from 'src/app/models/problem.model';
 import { SubmissionRow } from 'src/app/models/submission.model';
@@ -13,9 +14,11 @@ export class ProblemDetailsAreaComponent implements OnChanges {
   @Input() problem!: ProblemReponse;
   @Input() submissions!: SubmissionRow[];
   activeIndex: number;
+  dictionary: any;
 
-  constructor() {
+  constructor(languageService: LanguageService) {
     this.activeIndex = 0;
+    this.dictionary = languageService.dictionary;
   }
 
   ngOnChanges(): void {

@@ -10,7 +10,7 @@
     "contributeProblemQuestionTip": "The title should be concise and the description well formulated containing enough details so that the objective of the problem is understood",
     "contributeProblemQuestionTitleInputLabel": "Title",
     "contributeProblemQuestionTitleInputError": "'Title' field is required",
-    "contributeProblemQuestionDescriptionInputLabel": "Description",
+    "description": "Description",
     "contributeProblemQuestionDescriptionInputError": "'Description' field is required",
     "contributeProblemSolutionTitle": "Solution",
     "contributeProblemSolutionTip": "Pseudocode or the general idea behind the solution for the problem",
@@ -93,5 +93,12 @@
     "allTestcasesPassedSuccessfully": "All testcases passed succeessfully",
     "addTest": "Add test",
     "testcasesSpecification": "Testcases specification",
-    "testcasesStepTip": "The solutions must run successfully and provide consistent results"
+    "testcasesStepTip": "The solutions must run successfully and provide consistent results",
+    "submissions": "Submissions",
+    "noSubmissionsYet": "No submissions yet",
+    "realtedTopics": "Related Topics",
+    "timeSubmitted": "Time Submitted",
+    "status": "Status",
+    "runtime": "Runtime",
+    "language": "Language"
 }

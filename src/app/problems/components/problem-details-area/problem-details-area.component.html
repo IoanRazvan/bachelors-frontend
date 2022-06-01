@@ -1,13 +1,13 @@
 <p-tabView [activeIndex]="activeIndex">
-    <p-tabPanel header="Problema">
+    <p-tabPanel [header]="dictionary.description">
         <app-problem-description [problem]="problem"></app-problem-description>
     </p-tabPanel>
-    <p-tabPanel header="Submissions">
+    <p-tabPanel [header]="dictionary.submissions">
         <div style="min-width: 500px;">
             <ng-container *ngIf="!runnerResult && !checkingCode && (!submissions || !submissions.length)">
                 <app-centered>
                     <h5 class="text-muted">
-                        No submissions yet
+                        {{dictionary.noSubmissionsYet}}
                     </h5>
                 </app-centered>
             </ng-container>

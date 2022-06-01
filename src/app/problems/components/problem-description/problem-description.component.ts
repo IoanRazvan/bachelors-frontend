@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { LanguageService } from 'src/app/base/language.base';
 import { ProblemReponse } from 'src/app/models/problem.model';
 
 @Component({
@@ -7,4 +8,9 @@ import { ProblemReponse } from 'src/app/models/problem.model';
 })
 export class ProblemDescriptionComponent {
   @Input() problem!: ProblemReponse;
+  dictionary: any;
+
+  constructor(languageService: LanguageService) {
+    this.dictionary = languageService.dictionary
+  }
 }

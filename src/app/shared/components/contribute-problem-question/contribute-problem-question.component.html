@@ -10,7 +10,7 @@
             </div>
         </div>
         <div>
-            <label class="form-label">{{dictionary.contributeProblemQuestionDescriptionInputLabel}} <span class="text-danger">*</span></label>
+            <label class="form-label">{{dictionary.description}} <span class="text-danger">*</span></label>
             <p-editor formControlName="description" [style]="{'height':'320px'}"
                 [class.is-invalid]="!description.valid && description.dirty">
                 <ng-template pTemplate="header">

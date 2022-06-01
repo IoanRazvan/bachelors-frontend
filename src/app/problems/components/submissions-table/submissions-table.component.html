@@ -1,10 +1,10 @@
 <p-table breakpoint="0px" [value]="submissions">
     <ng-template pTemplate="header">
         <tr class="row">
-            <th [class]="thCommonClasses + ' border-start col-4'" scope="col">Time</th>
-            <th [class]="thCommonClasses + ' col-4'" scope="col">Status</th>
-            <th [class]="thCommonClasses + ' col-2'" scope="col">Runtime</th>
-            <th [class]="thCommonClasses + ' col-2'" scope="col">Language</th>
+            <th [class]="thCommonClasses + ' border-start col-4'" scope="col">{{dictionary.timeSubmitted}}</th>
+            <th [class]="thCommonClasses + ' col-4'" scope="col">{{dictionary.status}}</th>
+            <th [class]="thCommonClasses + ' col-2'" scope="col">{{dictionary.runtime}}</th>
+            <th [class]="thCommonClasses + ' col-2'" scope="col">{{dictionary.language}}</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-submission let-rowIndex="rowIndex">
