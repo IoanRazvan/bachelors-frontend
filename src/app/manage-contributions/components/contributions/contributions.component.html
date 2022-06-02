@@ -17,10 +17,7 @@
                 </ng-container>
             </div>
             <div class="col-auto">
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input type="text" pInputText placeholder="Cauta dupa titlu" #search>
-                </span>
+                <app-live-search placeholder="Cautati dupa titlu" (queryChange)="queryChange.emit($event)"></app-live-search>
             </div>
         </div>
         <div class="row" *ngIf="loading || !data || !data.length" style="height: 62vh">

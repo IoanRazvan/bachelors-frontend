@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef, ViewChild } from '@angular/core';
-import { debounceTime, fromEvent } from 'rxjs';
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef } from '@angular/core';
 import { LanguageService } from 'src/app/base/language.base';
 import { DropdownOption } from 'src/app/models/dropdown-option.model';
 import { TemplateDirective } from 'src/app/shared/directives/template.directive';
@@ -8,15 +7,13 @@ import { TemplateDirective } from 'src/app/shared/directives/template.directive'
   selector: 'app-contributions',
   templateUrl: './contributions.component.html',
 })
-export class ContributionsComponent implements AfterViewInit {
+export class ContributionsComponent {
   @Input() tip!: string;
   @Input() loading!: boolean;
   @Input() data!: any[]
   @Input() showStats!: boolean;
   @Output() dropdownChange!: EventEmitter<string>;
   @Output() queryChange!: EventEmitter<string>;
-  @ViewChild("search")
-  search: any;
   sortingOptions: DropdownOption<string, string>[];
   selectedOption: DropdownOption<string, string>;
   table!: TemplateRef<unknown>;
@@ -38,12 +35,5 @@ export class ContributionsComponent implements AfterViewInit {
     this.dictionary = languageService.dictionary;
     this.sortingOptions = [{ label: this.dictionary.descending, value: "descending" }, { label: this.dictionary.ascending, value: "ascending" }];
     this.selectedOption = this.sortingOptions[0];
-  }
-
-  ngAfterViewInit(): void {
-    if (this.search)
-      fromEvent(this.search.nativeElement, "input").pipe(debounceTime(200)).subscribe((event: any) => {
-        this.queryChange.emit(event.target.value);
-      })
   }
 }

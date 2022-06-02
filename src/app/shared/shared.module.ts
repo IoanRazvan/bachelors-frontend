@@ -21,6 +21,10 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RunnerResultWindowComponent } from './components/runner-result-window/runner-result-window.component';
 import { TemplateDirective } from './directives/template.directive';
 import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
+import { DifficultyDetailsPipe } from './pipes/difficulty-details.pipe';
+import { ProblemStatusDetailsPipe } from './pipes/problem-status-details.pipe';
+import { LiveSearchComponent } from './components/live-search/live-search.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -38,7 +42,10 @@ import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
     EditorAreaComponent,
     StatusCodeDetailsPipe,
     RunnerResultWindowComponent,
-    DisplayRunnerResultComponent
+    DisplayRunnerResultComponent,
+    DifficultyDetailsPipe,
+    ProblemStatusDetailsPipe,
+    LiveSearchComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +57,8 @@ import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
     TableModule,
     DropdownModule,
     MonacoEditorModule,
-    SkeletonModule
+    SkeletonModule,
+    InputTextModule
   ],
   exports: [
     CommonModule,
@@ -68,7 +76,10 @@ import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
     EditorAreaComponent,
     StatusCodeDetailsPipe,
     RunnerResultWindowComponent,
-    DisplayRunnerResultComponent
+    DisplayRunnerResultComponent,
+    DifficultyDetailsPipe,
+    ProblemStatusDetailsPipe,
+    LiveSearchComponent
   ]
 })
 export class SharedModule { }
