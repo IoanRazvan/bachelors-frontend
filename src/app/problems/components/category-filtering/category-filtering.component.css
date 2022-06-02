@@ -1,0 +1,45 @@
+.category-filtering .p-multiselect-panel .p-multiselect-items:not(.p-multiselect-virtualscroll) {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.category-filtering .p-multiselect-items-wrapper {
+    overflow: visible;
+}
+
+.category-filtering .p-multiselect-panel .p-multiselect-items .p-multiselect-item:not(.p-highlight):not(.p-disabled) {
+    display: inline;
+    padding: 0;
+    margin: 0.2rem;
+    background-color: inherit;
+}
+
+.category-filtering .p-multiselect-items-wrapper {
+    overflow: visible;
+}
+
+.category-filtering .p-multiselect-panel .p-multiselect-items .p-multiselect-item .p-checkbox {
+    display: none;
+}
+
+.category-filtering .p-multiselect-panel .p-multiselect-items .p-multiselect-item.p-highlight {
+    background-color: inherit;
+    padding: 0;
+    box-sizing: initial;
+    margin: 0.2rem;
+}
+
+.category-filtering.badge.btn.btn-outline-primary {
+    color: #0d6efd;
+}
+
+.category-filtering.badge.btn.btn-outline-primary:hover {
+    color: white;
+}
+
+.category-filtering.btn.btn-primary:focus {
+    box-shadow: none;
+    transition: none;
+}

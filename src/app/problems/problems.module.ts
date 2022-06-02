@@ -17,6 +17,10 @@ import { ProblemDescriptionComponent } from './components/problem-description/pr
 import { SkeletonModule } from 'primeng/skeleton';
 import { DividerModule } from 'primeng/divider';
 import { ProblemDetailsAreaComponent } from './components/problem-details-area/problem-details-area.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DifficultyFilterComponent } from './components/difficulty-filter/difficulty-filter.component';
+import { StatusFilteringComponent } from './components/status-filtering/status-filtering.component';
+import { CategoryFilteringComponent } from './components/category-filtering/category-filtering.component';
 
 
 @NgModule({
@@ -27,7 +31,10 @@ import { ProblemDetailsAreaComponent } from './components/problem-details-area/p
     SolveProblemComponent,
     SubmissionsTableComponent,
     ProblemDescriptionComponent,
-    ProblemDetailsAreaComponent
+    ProblemDetailsAreaComponent,
+    DifficultyFilterComponent,
+    StatusFilteringComponent,
+    CategoryFilteringComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +47,8 @@ import { ProblemDetailsAreaComponent } from './components/problem-details-area/p
     TabViewModule,
     AccordionModule,
     SkeletonModule,
-    DividerModule
+    DividerModule,
+    MultiSelectModule
   ]
 })
 export class ProblemsModule { }
