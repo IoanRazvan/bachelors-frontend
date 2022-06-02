@@ -1,0 +1,9 @@
+.problem-description a#p-accordiontab-0 {
+    border-radius: 0;
+    background-color: white;
+    padding: 0.9rem;
+}
+
+.problem-description .p-accordion .p-accordion-content {
+    padding: 1rem;
+}
