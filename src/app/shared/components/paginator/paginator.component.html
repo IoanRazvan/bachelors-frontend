@@ -1,13 +1,13 @@
-<ul *ngIf="shouldRender()" class="pagination">
-    <li *ngIf="!pageInfo.first" class="page-item">
-        <a (click)="pageChange.emit(pageInfo.page - 1)" class="page-link">&laquo;</a>
+<ul *ngIf="shouldRender()" class="pagination mt-2">
+    <li *ngIf="!pageInfo.first" class="page-item me-2">
+        <a (click)="pageChange.emit(pageInfo.page - 1)" class="page-link rounded"><i class="pi pi-chevron-left" style="font-size: 0.5rem;"></i></a>
     </li>
     <li class="page-item">
-        <a class="page-link">
+        <a class="page-link rounded">
             {{pageInfo.page}}
         </a>
     </li>
-    <li *ngIf="!pageInfo.last" class="page-item">
-        <a (click)="pageChange.emit(pageInfo.page + 1)" class="page-link">&raquo;</a>
+    <li *ngIf="!pageInfo.last" class="page-item ms-2">
+        <a (click)="pageChange.emit(pageInfo.page + 1)" class="page-link rounded"><i class="pi pi-chevron-right" style="font-size: 0.5rem;"></i></a>
     </li>
 </ul>
