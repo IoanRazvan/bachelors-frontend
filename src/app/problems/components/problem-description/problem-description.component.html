@@ -1,7 +1,10 @@
-<h5>{{problem.title}}</h5>
+<h5>{{problem.id}}. {{problem.title}}</h5>
+<div [class]="problem.difficulty | difficultyDetails:'class'">{{problem.difficulty | titlecase}}
+</div>
 <div class="description" [innerHTML]="problem.description"></div>
 <p-accordion class="problem-description" expandIcon="pi pi-chevron-down" collapseIcon="pi pi-chevron-up">
     <p-accordionTab class="problem-description" [header]="dictionary.relatedTopics">
-        <span class="bg-primary rounded-pill px-2 py-1 me-2 mb-2" *ngFor="let category of problem.categories">{{category.categoryName}}</span>
+        <span class="bg-primary rounded-pill px-2 py-1 me-2 mb-2"
+            *ngFor="let category of problem.categories">{{category.categoryName}}</span>
     </p-accordionTab>
 </p-accordion>

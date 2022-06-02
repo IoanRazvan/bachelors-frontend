@@ -30,6 +30,7 @@ export interface ProblemReponse {
     id: number;
     title: string;
     description: string;
+    difficulty: ProblemDifficulty;
     starters: ProblemStarter[];
     categories: Category[];
 }

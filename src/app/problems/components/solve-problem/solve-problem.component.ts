@@ -39,10 +39,10 @@ export class SolveProblemComponent implements OnInit {
         });
         formGroup['selectedLanguage'] = this.dropdownOptions[0].value;
         this.form = this.fb.group(formGroup);
+        this.loading = false;
       });
 
       this.submissionService.getSubmissions(id).subscribe((resp) => {
-        this.loading = false;
         this.submissions = resp;
       });
     })

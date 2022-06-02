@@ -10,9 +10,11 @@ import { ProblemReponse } from 'src/app/models/problem.model';
 })
 export class ProblemDescriptionComponent {
   @Input() problem!: ProblemReponse;
+  lists: string[]
   dictionary: any;
 
   constructor(languageService: LanguageService) {
-    this.dictionary = languageService.dictionary
+    this.dictionary = languageService.dictionary;
+    this.lists = ['To Do', 'Favorite', 'Need better impl'];
   }
 }
