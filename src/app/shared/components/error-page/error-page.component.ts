@@ -1,11 +1,13 @@
 import { Location } from '@angular/common';
 import { HttpStatusCode } from '@angular/common/http';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
 import { LanguageService } from 'src/app/base/language.base';
 
 @Component({
   selector: 'app-error-page',
-  templateUrl: './error-page.component.html'
+  templateUrl: './error-page.component.html',
+  styleUrls: ['error-page.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ErrorPageComponent implements OnChanges {
   @Input() errorStatus!: number;

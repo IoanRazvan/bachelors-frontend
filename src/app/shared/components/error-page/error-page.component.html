@@ -6,7 +6,7 @@
     <ng-template #otherError>
         <div class="mt-5">
             <app-centered>
-                <p-dialog  [visible]="true" [style]="{width: '50vw'}" [breakpoints]="{'960px': '75vw'}" [modal]="true" [closable]="false" [draggable]="false" [resizable]="false">
+                <p-dialog class="error-page" [visible]="true" [style]="{width: '50vw'}" [breakpoints]="{'960px': '75vw'}" [modal]="true" [closable]="false" [draggable]="false" [resizable]="false">
                     <ng-template pTemplate="header">
                         <h4>{{dictionary.errorSummary}}</h4>
                     </ng-template>
