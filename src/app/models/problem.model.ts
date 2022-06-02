@@ -22,7 +22,7 @@ export interface ProblemTestcase {
 export interface ProblemRow {
     id: number;
     title: string;
-    difficulty: string;
+    difficulty: ProblemStatus;
     status: string;
 }
 
@@ -39,3 +39,5 @@ export interface ProblemStarter {
     languageName: string;
     sourceCode: string;
 }
+
+export type ProblemStatus = "Todo" | "Solved" | "Attempted";
