@@ -21,6 +21,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { DifficultyFilterComponent } from './components/difficulty-filter/difficulty-filter.component';
 import { StatusFilteringComponent } from './components/status-filtering/status-filtering.component';
 import { CategoryFilteringComponent } from './components/category-filtering/category-filtering.component';
+import { ListAddDropdownComponent } from './components/list-add-dropdown/list-add-dropdown.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CategoryFilteringComponent } from './components/category-filtering/cate
     ProblemDetailsAreaComponent,
     DifficultyFilterComponent,
     StatusFilteringComponent,
-    CategoryFilteringComponent
+    CategoryFilteringComponent,
+    ListAddDropdownComponent
   ],
   imports: [
     CommonModule,
