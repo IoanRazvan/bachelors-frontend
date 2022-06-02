@@ -10,7 +10,7 @@ export abstract class PagedServiceBase {
     protected currentServerPage!: Page<any>;
     protected service !: ResultObservableAdapter;
 
-    change(page: number, force: boolean = false, paramters ?: {[key: string] : string}) {
+    change(page: number, force: boolean = false, paramters ?: {[key: string] : any}) {
         const requestedServerPage = Page.convertPageNumber(page, this.clientPageSize, this.serverPageSize);
         if (this.isPageNotCached(requestedServerPage, force, paramters)) {
             this.service.request(requestedServerPage, this.serverPageSize, paramters).subscribe({
@@ -33,7 +33,7 @@ export abstract class PagedServiceBase {
         }
     }
 
-    isPageNotCached(requestedServerPage: number, force: boolean, _parameters?: {[key: string] : string}) : boolean {
+    isPageNotCached(requestedServerPage: number, force: boolean, _parameters?: {[key: string] : any}) : boolean {
         return this.currentServerPage == null || requestedServerPage != this.currentServerPage.page || force
     }
 }

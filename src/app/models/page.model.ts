@@ -1,5 +1,3 @@
-import { ProblemContributionStatus } from "./problem-contribution.model";
-
 export type SortingType = "ascending" | "descending";
 
 export class Page<T> {
