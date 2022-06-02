@@ -1,0 +1,16 @@
+ul.p-inputtext.p-chips-multiple-container {
+    border: 0px;
+}
+
+div ul.p-inputtext.p-chips-multiple-container:not(.p-disabled).p-focus {
+    border: 0px;
+    box-shadow: none;
+}
+
+.p-0 ul.p-inputtext.p-chips-multiple-container {
+    padding: 0px;
+}
+
+ul.p-inputtext.p-chips-multiple-container li.p-chips-input-token input {
+    pointer-events: none;
+}

@@ -1,41 +1,22 @@
 <div class="row mt-3">
-    <div class="col-auto">
-        <p-dropdown styleClass="no-highlight" [options]="difficulties" [(ngModel)]="selectedDifficulty" placeholder="Difficulty" (onChange)="onDifficultyChange()">
-            <ng-template let-difficulty pTemplate="item">
-                <span [class]="getDifficultyClass(difficulty)">{{difficulty}} <i class="pi pi-check" *ngIf="difficulty === selectedDifficulty"></i></span>
-            </ng-template>
-            <ng-template let-difficulty pTemplate="selectedItem">
-                Difficulty
-            </ng-template>
-        </p-dropdown>
+    <div class="col-auto align-self-center">
+        <app-difficulty-filter [control]="selectedDifficulty" (onChange)="onFilteringElementChange()">
+        </app-difficulty-filter>
     </div>
-    <div class="col-auto">
-        <p-dropdown styleClass="no-highlight" [options]="status" [(ngModel)]="selectedStatus" placeholder="Status" (onChange)="onStatusChange()">
-            <ng-template let-status pTemplate="item">
-                <i [class]="getStatusClass(status) + ' me-2 ps-0'"></i><span class="text-dark">{{status}}</span>
-            </ng-template>
-            <ng-template let-difficulty pTemplate="selectedItem">
-                Status
-            </ng-template>
-        </p-dropdown>
+    <div class="col-auto align-self-center">
+        <app-status-filtering [control]="selectedStatus" (onChange)="onFilteringElementChange()"></app-status-filtering>
     </div>
-    <div class="col-auto me-auto">
-        <p-dropdown styleClass="inline-items no-highlight" [options]="tags" [(ngModel)]="selectedStatus" placeholder="Tags" (onChange)="onStatusChange()" scrollHeight="1000px">
-            <ng-template let-status pTemplate="item">
-                <span class="text-dark badge rounded-pill bg-primary p-2 mb-1">{{status}}</span>
-            </ng-template>
-            <ng-template let-difficulty pTemplate="selectedItem">
-                Tags
-            </ng-template>
-        </p-dropdown>
+    <div class="col-auto align-self-center me-auto">
+        <app-category-filtering [control]="selectedCategories" [categories]="categories"
+            (onChange)="onFilteringElementChange()"></app-category-filtering>
     </div>
     <div class="col-4">
-        <span class="p-input-icon-left" style="width: 100%">
-            <i class="pi pi-search"></i>
-            <input type="text" style="width: 100%" pInputText placeholder="Title">
-        </span>
+        <app-live-search placeholder="Title" (queryChange)="onSearch($event)"></app-live-search>
     </div>
 </div>
-<div class="row mt-3">
-    <p-chips styleClass="col-auto p-0" [(ngModel)]="chips" [tabindex]="-1" (onRemove)="onRemove($event)" (keydown)="onChange()"></p-chips>
+<div class="row mt-1">
+    <p-chips styleClass="col-auto p-0" [(ngModel)]="chips" [tabindex]="-1" (onRemove)="onRemove($event)"
+        (keydown)="onChange()"></p-chips>
 </div>
+<app-loading-page [loading]="loading"></app-loading-page>
+<app-problems-table *ngIf="!loading" [problems]="problems"></app-problems-table>

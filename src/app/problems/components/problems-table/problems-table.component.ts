@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProblemRow } from 'src/app/models/problem.model';
 
 @Component({
   selector: 'app-problems-table',
   templateUrl: './problems-table.component.html',
 })
-export class ProblemsTableComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class ProblemsTableComponent {
+  @Input() problems!: ProblemRow[];
 }

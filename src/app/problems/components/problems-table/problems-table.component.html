@@ -1,1 +1,24 @@
-<p>problems-table works!</p>
+<div style="min-width: 500px;">
+    <p-table breakpoint="0px" [value]="problems">
+        <ng-template pTemplate="header">
+            <tr class="row">
+                <th class="border-top-0 col-2" scope="col">Stare</th>
+                <th class="border-top-0 col-8" scope="col">Titlu</th>
+                <th class="border-top-0 col-2" scope="col">Dificultate</th>
+            </tr>
+        </ng-template>
+        <ng-template let-problem pTemplate="body" let-rowIndex="rowIndex">
+            <tr class="row" [class.bg-light]="rowIndex % 2 === 1">
+                <td class="border-top-0 col-2"><i [class]="problem.status | problemStatusDetails:'class'"></i></td>
+                <td class="border-top-0 col-8 text-truncate">
+                    <a [routerLink]="['.', problem.id]" class="link-dark contribution-link text-decoration-none">
+                        {{problem.title}}
+                    </a>
+                </td>
+                <td [class]="'border-top-0 col-2 ' + (problem.difficulty | difficultyDetails:'class')">
+                    {{problem.difficulty | titlecase}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
