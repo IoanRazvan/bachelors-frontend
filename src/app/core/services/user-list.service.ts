@@ -8,7 +8,7 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
 })
 export class UserListService {
-    private endpoint: string = `${environment.apiRoot}/list`;
+    private endpoint: string = `${environment.apiRoot}/user-list`;
 
     constructor(private http : HttpClient) {
     }
