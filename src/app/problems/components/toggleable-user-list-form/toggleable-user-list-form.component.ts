@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserListService } from 'src/app/core/services/user-list.service';
-import { UserListResponse, UserListRow } from 'src/app/models/user-list.model';
+import { UserListResponse } from 'src/app/models/user-list.model';
 
 @Component({
   selector: 'app-toggleable-user-list-form',

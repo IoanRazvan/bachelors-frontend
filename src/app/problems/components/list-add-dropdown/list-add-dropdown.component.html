@@ -1,6 +1,8 @@
+<p-toast></p-toast>
 <p-overlayPanel styleClass="list-add-dropdown" #op>
     <ng-template pTemplate>
-        <p-listbox [options]="lists" [(ngModel)]="selectedLists" [showToggleAll]="false" [checkbox]="true" [multiple]="true" optionLabel="listTitle">
+        <p-listbox [options]="lists" [(ngModel)]="selectedLists" [showToggleAll]="false" [checkbox]="true"
+            [multiple]="true" optionLabel="listTitle" (onClick)="onListClicked($event)">
             <ng-template pTemplate="footer">
                 <app-toggleable-user-list-form (onAdded)="addList($event)"></app-toggleable-user-list-form>
             </ng-template>

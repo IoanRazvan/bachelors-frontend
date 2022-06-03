@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { ServerResponse } from "src/app/models/server-response.model";
-import { ParamterizedPage } from "src/app/models/page.model";
-import { ProblemRow, ProblemStatus } from "src/app/models/problem.model";
-import { PagedServiceBase } from '../../base/paged-service.base'
 import { Subject } from "rxjs";
-import { ResultObservableAdapter } from "src/app/models/page-service.model";
 import { ProblemService } from "src/app/core/services/problem.service";
 import { ProblemDifficulty } from "src/app/models/category.model";
+import { ResultObservableAdapter } from "src/app/models/page-service.model";
+import { ParamterizedPage } from "src/app/models/page.model";
+import { ProblemRow, ProblemStatus } from "src/app/models/problem.model";
+import { ServerResponse } from "src/app/models/server-response.model";
+import { PagedServiceBase } from '../../base/paged-service.base';
 
 @Injectable({
     providedIn: 'root'
