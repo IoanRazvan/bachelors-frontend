@@ -1,1 +1,8 @@
-<p>list-add-dropdown works!</p>
+<p-multiSelect styleClass="p-0" placeholder="Add to list" [options]="lists" optionLabel="listTitle" [(ngModel)]="selectedLists" [showHeader]="false">
+    <ng-template pTemplate="selectedItems">Add to list</ng-template>
+    <ng-template pTemplate="footer">
+        <div class="p-1">
+            <button class="btn btn-outline-primary" style="width: 100%;">Create new list</button>
+        </div>
+    </ng-template>
+</p-multiSelect>
