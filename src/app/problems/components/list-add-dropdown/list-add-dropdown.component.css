@@ -1,0 +1,18 @@
+.list-add-dropdown .p-listbox {
+    width: 12rem;
+}
+
+.list-add-dropdown.p-overlaypanel .p-overlaypanel-content {
+    padding: 0;
+    border: none;
+}
+
+.list-add-dropdown.p-overlaypanel {
+    border: none;
+    margin-top: 0 !important;
+}
+
+.list-add-dropdown.p-overlaypanel::after,
+.list-add-dropdown.p-overlaypanel::before {
+    content: none !important;
+}

@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserListService } from 'src/app/core/services/user-list.service';
-import { UserListRow } from 'src/app/models/user-list.model';
+import { UserListResponse, UserListRow } from 'src/app/models/user-list.model';
 
 @Component({
   selector: 'app-list-add-dropdown',
   templateUrl: './list-add-dropdown.component.html',
+  styleUrls: ['list-add-dropdown.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ListAddDropdownComponent implements OnInit {
   lists!: UserListRow[];
@@ -25,4 +28,7 @@ export class ListAddDropdownComponent implements OnInit {
     })
   }
 
+  addList(list: UserListResponse) {
+    this.lists = this.lists.concat(Object.assign({}, {containsProblem: false}, list));
+  }
 }

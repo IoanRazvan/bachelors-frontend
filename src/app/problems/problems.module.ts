@@ -22,6 +22,9 @@ import { DifficultyFilterComponent } from './components/difficulty-filter/diffic
 import { StatusFilteringComponent } from './components/status-filtering/status-filtering.component';
 import { CategoryFilteringComponent } from './components/category-filtering/category-filtering.component';
 import { ListAddDropdownComponent } from './components/list-add-dropdown/list-add-dropdown.component';
+import { ToggleableUserListFormComponent } from './components/toggleable-user-list-form/toggleable-user-list-form.component';
+import { ListboxModule } from 'primeng/listbox';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { ListAddDropdownComponent } from './components/list-add-dropdown/list-ad
     DifficultyFilterComponent,
     StatusFilteringComponent,
     CategoryFilteringComponent,
-    ListAddDropdownComponent
+    ListAddDropdownComponent,
+    ToggleableUserListFormComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +54,9 @@ import { ListAddDropdownComponent } from './components/list-add-dropdown/list-ad
     AccordionModule,
     SkeletonModule,
     DividerModule,
-    MultiSelectModule
+    MultiSelectModule,
+    ListboxModule,
+    OverlayPanelModule
   ]
 })
 export class ProblemsModule { }
