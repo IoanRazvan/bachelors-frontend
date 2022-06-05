@@ -14,6 +14,6 @@ export class SubmissionService {
     }
 
     getSubmissions(problemId: number) : Observable<SubmissionRow[]> {
-        return <any>this.http.get(`${this.endpoint}/${problemId}`);
+        return <any>this.http.get(`${this.endpoint}/problem/${problemId}`);
     }
 }
