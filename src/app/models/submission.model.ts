@@ -6,11 +6,25 @@ export interface SubmissionRow {
     languageId: string;
 }
 
-export interface PassingSubmission {
-    runtime: number;
+export interface Submission {
+    id: number;
+    timestamp: string;
+    statusCode: number;
+    sourceCode: string;
+    languageId: string;
 }
 
-export interface FailedSubmission {
+export interface PassingSubmission extends Submission {
+    runtime: number;
+    acceptedDistribution: AcceptedSubmissionDistributionBin[];
+}
+
+export interface AcceptedSubmissionDistributionBin {
+    runtime: number;
+    count: number;
+}
+
+export interface FailedSubmission extends Submission {
     error: string;
     input: string;
     output: string;

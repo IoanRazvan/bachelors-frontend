@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { LanguageService } from 'src/app/base/language.base';
 
 @Pipe({
   name: 'statusCodeDetails'
@@ -6,13 +7,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StatusCodeDetailsPipe implements PipeTransform {
   details: any[]
 
-  constructor() {
+  constructor(languageService: LanguageService) {
     this.details = [
-      {text: 'Accepted Answer', class: 'text-success'},
-      {text: 'Compile Error', class: 'text-danger'},
-      {text: 'Runtime Error', class: 'text-danger'},
-      {text: 'Time Limit Exceeded', class: 'text-danger'},
-      {text: 'Wrong Answer', class: 'text-danger'}
+      {text: languageService.dictionary.acceptedAnswer, class: 'text-success'},
+      {text: languageService.dictionary.compileError, class: 'text-danger'},
+      {text: languageService.dictionary.runtimeError, class: 'text-danger'},
+      {text: languageService.dictionary.timeLimitExceeded, class: 'text-danger'},
+      {text: languageService.dictionary.wrongAnswer, class: 'text-danger'}
     ];
   }
 

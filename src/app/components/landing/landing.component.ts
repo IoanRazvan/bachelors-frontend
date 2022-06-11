@@ -15,7 +15,7 @@ export class LandingComponent {
 
   onSignIn() {
     this.keycloakService.login({
-      redirectUri: window.location.origin + '/home'
+      redirectUri: window.location.origin + '/problems'
     });
   }
 }

@@ -12,7 +12,9 @@
             <td [class]="tdCommonClasses + ' border-start col-4 ' + getRowIdxClass(rowIndex)">{{submission.timestamp |
                 date:'short'}}</td>
             <td [class]="tdCommonClasses + ' col-4 ' + getRowIdxClass(rowIndex)">
-                <span [class]="submission.statusCode | statusCodeDetails:'class'">{{submission.statusCode | statusCodeDetails:'text'}}</span>
+                <a [routerLink]="['submission', submission.id]"
+                    [class]="(submission.statusCode | statusCodeDetails:'class') + ' underline-on-hover'">
+                    {{submission.statusCode | statusCodeDetails:'text'}}</a>
             </td>
             <td [class]="tdCommonClasses + ' col-2 ' + getRowIdxClass(rowIndex)">
                 <span *ngIf="submission.statusCode === 0">{{submission.runtime}} ms</span>

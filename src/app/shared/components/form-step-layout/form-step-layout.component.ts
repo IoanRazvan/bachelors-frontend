@@ -1,4 +1,4 @@
-import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef } from '@angular/core';
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { LanguageService } from 'src/app/base/language.base';
 import { StepType } from 'src/app/models/step.type';

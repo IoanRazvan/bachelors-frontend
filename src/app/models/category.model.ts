@@ -4,3 +4,5 @@ export interface Category {
 }
 
 export type ProblemDifficulty = "HARD" | "MEDIUM" | "EASY"
+
+export const PROBLEM_DIFFICULTIES : ProblemDifficulty[] = ["HARD", "MEDIUM", "EASY"];

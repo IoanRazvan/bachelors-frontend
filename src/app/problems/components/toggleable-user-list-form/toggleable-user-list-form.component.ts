@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { LanguageService } from 'src/app/base/language.base';
 import { UserListService } from 'src/app/core/services/user-list.service';
 import { UserListResponse } from 'src/app/models/user-list.model';
 
@@ -12,12 +13,14 @@ export class ToggleableUserListFormComponent {
   control: FormControl;
   submitting: boolean;
   @Output() onAdded: EventEmitter<UserListResponse>;
+  dictionary: any;
 
-  constructor(private service: UserListService) {
+  constructor(private service: UserListService, languageService: LanguageService) {
     this.submitting = false;
     this.formOpen = false;
     this.control = new FormControl('', Validators.required);
     this.onAdded = new EventEmitter();
+    this.dictionary = languageService.dictionary;
   }
 
   toggleForm() {

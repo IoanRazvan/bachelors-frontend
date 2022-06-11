@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PartialObserver } from 'rxjs';
+import { LanguageService } from 'src/app/base/language.base';
 import { UserListProblemService } from 'src/app/core/services/user-list-problem.service';
 import { UserListService } from 'src/app/core/services/user-list.service';
 import { UserListResponse, UserListRow } from 'src/app/models/user-list.model';
@@ -17,8 +18,10 @@ export class ListAddDropdownComponent implements OnInit {
   problemId!: number;
   selectedLists!: UserListRow[];
   lastUpdate!: UserListRow[];
+  dictionary: any;
 
-  constructor(private userListService: UserListService, private route: ActivatedRoute, private userListProblemService: UserListProblemService, private messageService: ToastMessageService) {
+  constructor(private userListService: UserListService, private route: ActivatedRoute, private userListProblemService: UserListProblemService, private messageService: ToastMessageService, languageService: LanguageService) {
+    this.dictionary = languageService.dictionary;
   }
 
   ngOnInit(): void {

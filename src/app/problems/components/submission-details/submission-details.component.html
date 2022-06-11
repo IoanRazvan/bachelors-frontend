@@ -1,0 +1,21 @@
+<app-loading-page [loading]="loading"></app-loading-page>
+<ng-container *ngIf="!loading">
+    <ng-container *ngIf="submission.statusCode === 0" >
+        <div class="mt-3">{{dictionary.status}}:
+            <span [class]="submission.statusCode | statusCodeDetails:'class'">{{submission.statusCode |
+                statusCodeDetails:'text'}}</span>
+            </div>
+            <span class="text-muted"> {{$any(submission).runtime}} ms</span>
+        <p-chart  type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
+    </ng-container>
+    <div class="mt-3" *ngIf="submission.statusCode !== 0">
+        <app-display-runner-result [runnerResult]="runnerResult"></app-display-runner-result>
+    </div>
+    <p-divider></p-divider>
+    <div class="mt-3">{{dictionary.submitted}}: <span class="text-muted">{{submission.timestamp | date}}</span></div>
+    <div class="text-muted">{{dictionary.language | lowercase}}: {{submission.languageId}}</div>
+    <div class="height" style="height: 25rem;">
+        <ngx-monaco-editor style="height: 100%" class="border mt-3" [ngModel]="submission.sourceCode" [options]="editorOptions">
+        </ngx-monaco-editor>
+    </div>
+</ng-container>

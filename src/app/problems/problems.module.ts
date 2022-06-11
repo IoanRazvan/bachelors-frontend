@@ -26,6 +26,10 @@ import { SubmissionsTableComponent } from './components/submissions-table/submis
 import { ToggleableUserListFormComponent } from './components/toggleable-user-list-form/toggleable-user-list-form.component';
 import { ProblemsRoutingModule } from './problems-routing.module';
 import { ProblemsComponent } from './problems.component';
+import { SubmissionDetailsComponent } from './components/submission-details/submission-details.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { ChartModule } from 'primeng/chart';
+import { ChipsFilterComponent } from './components/chips-filter/chips-filter.component';
 
 
 @NgModule({
@@ -41,7 +45,9 @@ import { ProblemsComponent } from './problems.component';
     StatusFilteringComponent,
     CategoryFilteringComponent,
     ListAddDropdownComponent,
-    ToggleableUserListFormComponent
+    ToggleableUserListFormComponent,
+    SubmissionDetailsComponent,
+    ChipsFilterComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +64,9 @@ import { ProblemsComponent } from './problems.component';
     MultiSelectModule,
     ListboxModule,
     OverlayPanelModule,
-    ToastModule
+    ToastModule,
+    MonacoEditorModule,
+    ChartModule
   ]
 })
 export class ProblemsModule { }

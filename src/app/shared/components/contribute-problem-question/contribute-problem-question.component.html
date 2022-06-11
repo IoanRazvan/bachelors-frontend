@@ -3,7 +3,7 @@
     <ng-template appTemplate="content">
         <div class="mb-3">
             <label for="title" class="form-label"
-                [class.is-invalid]="!title.valid && title.dirty">{{dictionary.contributeProblemQuestionTitleInputLabel}} <span class="text-danger">*</span></label>
+                [class.is-invalid]="!title.valid && title.dirty">{{dictionary.title}} <span class="text-danger">*</span></label>
             <input [formControlName]="'title'" type="text" class="form-control" id="title">
             <div class="invalid-feedback">
                 {{dictionary.contributeProblemQuestionTitleInputError}}

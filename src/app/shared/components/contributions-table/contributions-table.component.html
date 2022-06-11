@@ -16,7 +16,7 @@
                     <i *ngSwitchCase="'REJECTED'" class="pi pi-exclamation-circle text-danger"></i>
                 </span>
             </td>
-            <td *ngIf="columns.contributorUsername" [class]="['border-0', columns.contributorUsername]">
+            <td *ngIf="columns.contributorUsername" [class]="['border-0', 'text-truncate', columns.contributorUsername]">
                 {{contribution.contributorUsername}}
             </td>
             <td *ngIf="columns.title" [class]="['border-0', 'text-truncate', columns.title]">

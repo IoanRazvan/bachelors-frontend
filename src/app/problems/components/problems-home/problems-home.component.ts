@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { KeycloakService } from 'keycloak-angular';
 import { Subscription } from 'rxjs';
+import { LanguageService } from 'src/app/base/language.base';
 import { CategoryService } from 'src/app/core/services/category.service';
-import { Category } from 'src/app/models/category.model';
-import { ProblemRow, ProblemStatus } from 'src/app/models/problem.model';
+import { Category, PROBLEM_DIFFICULTIES } from 'src/app/models/category.model';
+import { ProblemRow, PROBLEM_STATUSES } from 'src/app/models/problem.model';
 import { ProblemPagedService } from '../../services/problems-paged.service';
 
 @Component({
@@ -14,7 +14,6 @@ import { ProblemPagedService } from '../../services/problems-paged.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ProblemsHomeComponent implements OnInit, OnDestroy {
-  status : ProblemStatus[];
   categories!: Category[];
   selectedDifficulty : FormControl;
   selectedStatus : FormControl;
@@ -23,15 +22,15 @@ export class ProblemsHomeComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   problems !: ProblemRow[];
   loading: boolean;
+  dictionary: any;
 
-  constructor(private problemService: ProblemPagedService, private categoryService: CategoryService, key: KeycloakService) {
-    key.getToken().then(tok => console.log(tok));
+  constructor(private problemService: ProblemPagedService, private categoryService: CategoryService, languageService: LanguageService) {
     this.selectedDifficulty = new FormControl(undefined);
     this.selectedStatus = new FormControl(undefined);
-    this.status = ['Todo', 'Solved', 'Attempted'];
     this.selectedCategories = new FormControl([]);
     this.chips = [];
     this.loading = true;
+    this.dictionary = languageService.dictionary
   }
 
   ngOnInit(): void {
@@ -55,7 +54,6 @@ export class ProblemsHomeComponent implements OnInit, OnDestroy {
       this.chips.push(this.selectedDifficulty.value);
     if (this.selectedStatus.value)
       this.chips.push(this.selectedStatus.value);
-    console.log(this.selectedCategories.value.map((category : Category) => category.categoryName))
     this.chips.push(...this.selectedCategories.value.map((category : Category) => category.categoryName));
     this.loading = true;
     this.problemService.setParameters({'difficulty': this.selectedDifficulty.value, 'status': this.selectedStatus.value, 'categories': this.selectedCategories.value.map((category : Category) => category.id)})
@@ -63,9 +61,9 @@ export class ProblemsHomeComponent implements OnInit, OnDestroy {
 
   onRemove(event: any) {
     this.loading = false;
-    if (['EASY', 'HARD', 'MEDIUM'].indexOf(event.value) != -1)
+    if (PROBLEM_DIFFICULTIES.indexOf(event.value) != -1)
       this.selectedDifficulty.setValue(undefined);
-    else if (['Todo', 'Solved', 'Attempted'].indexOf(event.value) != -1)
+    else if (PROBLEM_STATUSES.indexOf(event.value) != -1)
       this.selectedStatus.setValue(undefined);
     else
       this.selectedCategories.setValue(this.selectedCategories.value.filter((category: Category) => category.categoryName !== event.value))
@@ -76,9 +74,5 @@ export class ProblemsHomeComponent implements OnInit, OnDestroy {
   onSearch(query: string) {
     this.loading = true;
     this.problemService.setQuery(query);
-  }
-
-  onChange() {
-    return false;
   }
 }

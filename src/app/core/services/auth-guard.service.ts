@@ -16,7 +16,7 @@ export class AuthGuardService extends KeycloakAuthGuard {
                 redirectUri: window.location.origin + state.url
             });
         } else if (this.authenticated && state.url === '/') {
-            return this.router.parseUrl('home');
+            return this.router.parseUrl('problems');
         }
         return true;
     }

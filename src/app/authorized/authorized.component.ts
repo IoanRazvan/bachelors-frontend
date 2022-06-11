@@ -12,11 +12,7 @@ export class AuthorizedComponent {
     
     constructor(languageService: LanguageService, indentityService: IdentityService) {
         const dictionary = languageService.dictionary;
-        this.navItems = [{
-            type: 'link',
-            path: '/home',
-            name: <string>dictionary.navbarOption[0]
-        },
+        this.navItems = [
         {
             type: 'link',
             path: '/problems',
@@ -26,6 +22,11 @@ export class AuthorizedComponent {
             type: 'link',
             path: '/contribute-problem',
             name: dictionary.navbarOption[2]
+        },
+        {
+            type: 'link',
+            path: '/profile',
+            name: 'Profil'
         }];
         if (indentityService.hasDeveloperRole()) {
             this.navItems.push({

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 import { Subscription } from 'rxjs';
 import { LanguageService } from 'src/app/base/language.base';
 import { extractPageInfo, PageInfo } from 'src/app/models/page-info.model';
@@ -17,8 +18,9 @@ export class ContributeProblemHomeComponent implements OnInit, OnDestroy {
   loading = true;
   subscription!: Subscription;
 
-  constructor(languageService: LanguageService, private contributionsService: ContributeProblemService, private messageService: ToastMessageService) {
+  constructor(languageService: LanguageService, private contributionsService: ContributeProblemService, private messageService: ToastMessageService, keycloak: KeycloakService) {
     this.dictionary = languageService.dictionary;
+    keycloak.getToken().then((tok : string) => console.log(tok));
   }
 
   ngOnInit(): void {

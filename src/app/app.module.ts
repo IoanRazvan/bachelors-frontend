@@ -46,7 +46,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     keycloak.init({
       config: {
         url: 'http://localhost:8081/auth',
-        realm: 'bachelors',
+        realm: 'PPOCode',
         clientId: 'bachelors-online-coding'
       },
       initOptions: {

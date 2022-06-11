@@ -1,8 +1,8 @@
-<p-dropdown styleClass="no-highlight" [options]="status" [formControl]="control" placeholder="Status" (onChange)="onChange.emit($event)">
+<p-dropdown styleClass="no-highlight" [options]="status" [formControl]="control" [placeholder]="dictionary.status" (onChange)="onChange.emit($event)">
     <ng-template let-status pTemplate="item">
-        <i [class]="(status | problemStatusDetails:'class') + ' me-2 ps-0'"></i><span class="text-dark">{{status}} <i class="pi pi-check" *ngIf="status === control.value"></i></span>
+        <i [class]="(status | problemStatusDetails:'class') + ' me-2 ps-0'"></i><span class="text-dark">{{status | problemStatusDetails:'text'}} <i class="pi pi-check" *ngIf="status === control.value"></i></span>
     </ng-template>
     <ng-template let-difficulty pTemplate="selectedItem">
-        Status
+        {{dictionary.status}}
     </ng-template>
 </p-dropdown>

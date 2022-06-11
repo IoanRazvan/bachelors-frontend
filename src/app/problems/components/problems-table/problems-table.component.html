@@ -16,7 +16,7 @@
                     </a>
                 </td>
                 <td [class]="'border-top-0 col-2 ' + (problem.difficulty | difficultyDetails:'class')">
-                    {{problem.difficulty | titlecase}}
+                    {{problem.difficulty | difficultyDetails:'text'}}
                 </td>
             </tr>
         </ng-template>

@@ -1,8 +1,8 @@
-<p-dropdown styleClass="no-highlight" [options]="difficulties" [formControl]="$any(control)" placeholder="Difficulty" (onChange)="onChange.emit($event)">
+<p-dropdown styleClass="no-highlight" [options]="difficulties" [formControl]="$any(control)" [placeholder]="dictionary.difficulty" (onChange)="onChange.emit($event)">
     <ng-template let-difficulty pTemplate="item">
-        <span [class]="difficulty | difficultyDetails:'class'">{{difficulty | titlecase}} <i class="pi pi-check" *ngIf="difficulty === control.value"></i></span>
+        <span [class]="difficulty | difficultyDetails:'class'">{{difficulty | difficultyDetails:'text'}} <i class="pi pi-check" *ngIf="difficulty === control.value"></i></span>
     </ng-template>
     <ng-template let-difficulty pTemplate="selectedItem">
-        Difficulty
+        {{dictionary.difficulty}}
     </ng-template>
 </p-dropdown>

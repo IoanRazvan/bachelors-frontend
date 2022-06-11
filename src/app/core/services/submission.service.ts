@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { SubmissionRow } from "src/app/models/submission.model";
+import { Submission, SubmissionRow } from "src/app/models/submission.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -15,5 +15,9 @@ export class SubmissionService {
 
     getSubmissions(problemId: number) : Observable<SubmissionRow[]> {
         return <any>this.http.get(`${this.endpoint}/problem/${problemId}`);
+    }
+
+    getSubmission(submissionId: number) : Observable<Submission> {
+        return <any>this.http.get(`${this.endpoint}/${submissionId}`);
     }
 }

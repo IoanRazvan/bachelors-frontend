@@ -1,8 +1,8 @@
-<p-multiSelect styleClass="category-filtering" [options]="categories" optionLabel="categoryName" [formControl]="control" placeholder="Tags" [showToggleAll]="false" (onChange)="onChange.emit($event)" scrollHeight="1000px">
+<p-multiSelect styleClass="category-filtering" [options]="categories" optionLabel="categoryName" [formControl]="control" [placeholder]="dictionary.categories" [showToggleAll]="false" (onChange)="onChange.emit($event)" scrollHeight="1000px">
     <ng-template let-category pTemplate="item">
         <button [class]="categoryClass(category)">{{category.categoryName}}</button>
     </ng-template>
     <ng-template let-difficulty pTemplate="selectedItems">
-        Tags
+        {{dictionary.categories}}
     </ng-template>
 </p-multiSelect>

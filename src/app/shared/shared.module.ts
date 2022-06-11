@@ -6,6 +6,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
+import { InputTextModule } from 'primeng/inputtext';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TableModule } from 'primeng/table';
 import { CenteredComponent } from './components/centered/centered.component';
@@ -16,15 +17,14 @@ import { DisplayRunnerResultComponent } from './components/display-runner-result
 import { EditorAreaComponent } from './components/editor-area/editor-area.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { FormStepLayoutComponent } from './components/form-step-layout/form-step-layout.component';
+import { LiveSearchComponent } from './components/live-search/live-search.component';
 import { LoadingPageComponent } from './components/loading-page/loading-page.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RunnerResultWindowComponent } from './components/runner-result-window/runner-result-window.component';
 import { TemplateDirective } from './directives/template.directive';
-import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
 import { DifficultyDetailsPipe } from './pipes/difficulty-details.pipe';
 import { ProblemStatusDetailsPipe } from './pipes/problem-status-details.pipe';
-import { LiveSearchComponent } from './components/live-search/live-search.component';
-import { InputTextModule } from 'primeng/inputtext';
+import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
 
 
 @NgModule({

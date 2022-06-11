@@ -1,6 +1,6 @@
 <ul class="nav mt-2 shadow-sm">
     <li class="navbar-brand ms-3">
-        StealCode
+        PPOCode
     </li>
     <li *ngFor="let item of navItems" [class.dropwdown]="item.type === 'dropdown'" class="nav-item">
         <div *ngIf="item.type === 'link' then link else dropdown"></div>

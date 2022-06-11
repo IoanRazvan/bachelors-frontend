@@ -1,6 +1,6 @@
 <h5>{{problem.id}}. {{problem.title}}</h5>
 <div class="row">
-    <div [class]="'col-auto ' + (problem.difficulty | difficultyDetails:'class')">{{problem.difficulty | titlecase}}
+    <div [class]="'col-auto ' + (problem.difficulty | difficultyDetails:'class')">{{problem.difficulty | difficultyDetails:'text'}}
     </div>
     <div class="col-auto">
         <app-list-add-dropdown></app-list-add-dropdown>

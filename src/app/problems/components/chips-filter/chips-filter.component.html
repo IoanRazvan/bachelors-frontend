@@ -1,0 +1,6 @@
+<p-chips styleClass="col-auto p-0" [(ngModel)]="chips" [tabindex]="-1" (onRemove)="onRemove.emit($event)"
+(keydown)="onChange()">
+<ng-template pTemplate="chip" let-value>
+    {{getChipValue(value)}}
+</ng-template>
+</p-chips>

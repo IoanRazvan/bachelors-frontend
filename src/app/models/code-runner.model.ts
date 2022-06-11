@@ -5,7 +5,7 @@ export interface CodeRunnerResult {
     error: string;
     output: string;
     stdout: string;
-    langId: number;
+    langId: string;
     wrongAnswer: WrongAnswer;
 }
 

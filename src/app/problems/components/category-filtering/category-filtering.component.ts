@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { LanguageService } from 'src/app/base/language.base';
 import { Category } from 'src/app/models/category.model';
 
 @Component({
@@ -12,9 +13,11 @@ export class CategoryFilteringComponent {
   @Input() control!: FormControl;
   @Input() categories!: Category[];
   @Output() onChange: EventEmitter<any>;
+  dictionary: any;
 
-  constructor() {
+  constructor(languageService: LanguageService) {
     this.onChange = new EventEmitter();
+    this.dictionary = languageService.dictionary;
   }
 
   categoryClass(category: Category): string {

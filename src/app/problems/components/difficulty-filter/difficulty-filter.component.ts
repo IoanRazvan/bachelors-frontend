@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { ProblemDifficulty } from 'src/app/models/category.model';
+import { LanguageService } from 'src/app/base/language.base';
+import { ProblemDifficulty, PROBLEM_DIFFICULTIES } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-difficulty-filter',
@@ -10,9 +11,11 @@ export class DifficultyFilterComponent  {
   @Output() onChange: EventEmitter<any>;
   @Input() control!: AbstractControl;
   difficulties: ProblemDifficulty[];
+  dictionary: any;
   
-  constructor() {
-    this.difficulties = ['EASY', 'MEDIUM', 'HARD'];
+  constructor(languageService: LanguageService) {
+    this.difficulties = PROBLEM_DIFFICULTIES;
     this.onChange = new EventEmitter();
+    this.dictionary = languageService.dictionary;
   }
 }

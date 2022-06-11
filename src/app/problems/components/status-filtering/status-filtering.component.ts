@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ProblemStatus } from 'src/app/models/problem.model';
+import { LanguageService } from 'src/app/base/language.base';
+import { ProblemStatus, PROBLEM_STATUSES } from 'src/app/models/problem.model';
 
 @Component({
   selector: 'app-status-filtering',
@@ -10,9 +11,11 @@ export class StatusFilteringComponent {
   @Input() control!: FormControl;
   @Output() onChange: EventEmitter<any>;
   status: ProblemStatus[];
+  dictionary: any;
 
-  constructor() {
-    this.status  = ['Todo', 'Attempted', 'Solved'];
+  constructor(languageService: LanguageService) {
+    this.status  = PROBLEM_STATUSES;
     this.onChange = new EventEmitter();
+    this.dictionary = languageService.dictionary;
   }
 }

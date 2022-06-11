@@ -1,19 +1,18 @@
 <div class="p-1" *ngIf="!formOpen">
-    <button class="btn btn-outline-primary" type="button" style="width: 100%;" (click)="toggleForm()">Create new
-        list</button>
+    <button class="btn btn-outline-primary" type="button" style="width: 100%;" (click)="toggleForm()">{{dictionary.createList}}</button>
 </div>
 <div class="px-1" *ngIf="formOpen">
     <div class="row gx-0">
         <div class="col-12 pb-0 pt-0">
-            <input type="text" pInputText style="width: 100%" [formControl]="control" placeholder="Title">
+            <input type="text" pInputText style="width: 100%" [formControl]="control" [placeholder]="dictionary.title">
         </div>
         <div class="col-6 pe-1">
-            <button class="btn btn-primary" style="width: 100%" (click)="toggleForm()">Cancel</button>
+            <button class="btn btn-primary" style="width: 100%" (click)="toggleForm()">{{dictionary.cancel}}</button>
         </div>
         <div class="col-6 ps-0">
             <button class="btn btn-primary" style="width: 100%" (click)="onAddClick()"
                 [disabled]="submitting || control.invalid">
-                Add
+                {{dictionary.add}}
                 <span *ngIf="submitting" class="spinner-border spinner-border-sm"></span>
             </button>
         </div>

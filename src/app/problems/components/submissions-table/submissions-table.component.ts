@@ -5,6 +5,7 @@ import { SubmissionRow } from 'src/app/models/submission.model';
 @Component({
   selector: 'app-submissions-table',
   templateUrl: './submissions-table.component.html',
+  styleUrls: ['submissions-table.component.css']
 })
 export class SubmissionsTableComponent {
   @Input() submissions!: SubmissionRow[];
