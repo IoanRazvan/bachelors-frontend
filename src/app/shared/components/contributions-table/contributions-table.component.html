@@ -1,10 +1,10 @@
 <p-table breakpoint="0px" [value]="data">
     <ng-template pTemplate="header">
         <tr class="border-bottom row">
-            <th *ngIf="columns.status" scope="col" [class]="thClasses.concat(columns.status)">Status</th>
-            <th *ngIf="columns.contributorUsername" scope="col" [class]="thClasses.concat(columns.contributorUsername)">Contribuitor</th>
-            <th *ngIf="columns.title" scope="col" [class]="thClasses.concat(columns.title)">Titlu</th>
-            <th *ngIf="columns.createdTime" scope="col" [class]="thClasses.concat(columns.createdTime)">Creat La</th>
+            <th *ngIf="columns.status" scope="col" [class]="thClasses.concat(columns.status)">{{dictionary.status}}</th>
+            <th *ngIf="columns.contributorUsername" scope="col" [class]="thClasses.concat(columns.contributorUsername)">{{dictionary.contributor}}</th>
+            <th *ngIf="columns.title" scope="col" [class]="thClasses.concat(columns.title)">{{dictionary.title}}</th>
+            <th *ngIf="columns.createdTime" scope="col" [class]="thClasses.concat(columns.createdTime)">{{dictionary.createdAt}}</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-contribution let-rowIndex="rowIndex">

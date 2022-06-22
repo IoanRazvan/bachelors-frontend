@@ -20,5 +20,8 @@
                 </td>
             </tr>
         </ng-template>
+        <ng-template pTemplate="footer">
+            <app-paginator [pageInfo]="pageInfo" (pageChange)="pageChange.emit($event)"></app-paginator>
+        </ng-template>
     </p-table>
 </div>

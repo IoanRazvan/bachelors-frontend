@@ -118,5 +118,6 @@
     "cancel": "Cancel",
     "submitted": "Submitted",
     "count": "Count",
-    "runtimeDistribution": "Runtime Distribution"
+    "runtimeDistribution": "Runtime Distribution",
+    "contributor": "Contributor"
 }

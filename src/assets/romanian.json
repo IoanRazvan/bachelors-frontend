@@ -1,5 +1,5 @@
 {
-    "landingText": "<strong>Pregătește-te</strong> de interview-ul tehnic sau pur și simplu <strong>distrează-te </strong> rezolvând probleme de programare folosind aplicația noastră!",
+    "landingText": "<strong>Pregătește-te</strong> de interviul tehnic sau pur și simplu <strong>distrează-te </strong> rezolvând probleme de programare folosind aplicația noastră!",
     "navbarOption": ["Acasă", "Probleme", "Contribuie", ["Contribuții", "Noi", "Asignate"]],
     "contributeProblemHomeText": " Ne străduim să oferim o experiență cât mai placută și utilă. Astfel, încercăm să punem la dispoziție probleme de actualitate. Dacă ai întâlnit o problemă interesantă ce nu face încă parte din baza de date StealCode, te invităm să contribui la îmbunătățirea platformei prin crearea unei cereri de contribuție.",
     "contributeProblemHomeButton": "Contribuie",
@@ -119,5 +119,6 @@
     "cancel": "Anulează",
     "submitted": "Trimis",
     "count": "Număr",
-    "runtimeDistribution": "Distribuție de Execuție"
+    "runtimeDistribution": "Distribuție de Execuție",
+    "contributor": "Contributor"
 }

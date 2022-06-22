@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PageInfo } from 'src/app/models/page-info.model';
 import { ProblemRow } from 'src/app/models/problem.model';
 
 @Component({
@@ -7,4 +8,10 @@ import { ProblemRow } from 'src/app/models/problem.model';
 })
 export class ProblemsTableComponent {
   @Input() problems!: ProblemRow[];
+  @Input() pageInfo!: PageInfo;
+  @Output() pageChange!: EventEmitter<number>;
+
+  constructor() {
+    this.pageChange = new EventEmitter();
+  }
 }

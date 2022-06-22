@@ -13,7 +13,7 @@ export abstract class PagedServiceBase {
     change(page: number, force: boolean = false, paramters ?: {[key: string] : any}) {
         const requestedServerPage = Page.convertPageNumber(page, this.clientPageSize, this.serverPageSize);
         if (this.isPageNotCached(requestedServerPage, force, paramters)) {
-            this.service.request(requestedServerPage, this.serverPageSize, paramters).subscribe({
+            this.service.request(requestedServerPage, this.serverPageSize, paramters || this.currentServerPage).subscribe({
                 next: (resp : any) => {
                     this.currentServerPage = PageFactory.of(resp);
                     this.pagesSubject.next({

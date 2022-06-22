@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { LanguageService } from 'src/app/base/language.base';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { Category, PROBLEM_DIFFICULTIES } from 'src/app/models/category.model';
+import { extractPageInfo, PageInfo } from 'src/app/models/page-info.model';
 import { ProblemRow, PROBLEM_STATUSES } from 'src/app/models/problem.model';
 import { ProblemPagedService } from '../../services/problems-paged.service';
 
@@ -21,6 +22,7 @@ export class ProblemsHomeComponent implements OnInit, OnDestroy {
   chips : any[];
   subscription!: Subscription;
   problems !: ProblemRow[];
+  pageInfo !: PageInfo;
   loading: boolean;
   dictionary: any;
 
@@ -38,7 +40,10 @@ export class ProblemsHomeComponent implements OnInit, OnDestroy {
       this.categories = resp;
     });
     this.subscription = this.problemService.pages$.subscribe((resp) => {
-      this.problems = <any>resp.response?.content;
+      if (!resp.error) {
+        this.problems = <any>resp.response?.content;
+        this.pageInfo = extractPageInfo(<any>resp?.response);
+      }
       this.loading = false;
     })
     this.problemService.change(0, true, {});
@@ -74,5 +79,10 @@ export class ProblemsHomeComponent implements OnInit, OnDestroy {
   onSearch(query: string) {
     this.loading = true;
     this.problemService.setQuery(query);
+  }
+
+  onPageChange(page: number) {
+    this.loading = true;
+    this.problemService.change(page - 1);
   }
 }

@@ -18,4 +18,5 @@
     <app-chips-filter [chips]="chips" (onRemove)="onRemove($event)"></app-chips-filter>
 </div>
 <app-loading-page [loading]="loading"></app-loading-page>
-<app-problems-table *ngIf="!loading" [problems]="problems"></app-problems-table>
+<app-problems-table *ngIf="!loading" [problems]="problems" [pageInfo]="pageInfo" (pageChange)="onPageChange($event)">
+</app-problems-table>
