@@ -6,7 +6,7 @@
                 [class.is-invalid]="!title.valid && title.dirty">{{dictionary.title}} <span class="text-danger">*</span></label>
             <input [formControlName]="'title'" type="text" class="form-control" id="title">
             <div class="invalid-feedback">
-                {{dictionary.contributeProblemQuestionTitleInputError}}
+                {{dictionary.titleIsRequired}}
             </div>
         </div>
         <div>

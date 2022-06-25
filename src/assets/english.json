@@ -9,7 +9,7 @@
     "problemDefinition": "Problem Definition",
     "contributeProblemQuestionTip": "The title should be concise and the description well formulated containing enough details so that the objective of the problem is understood",
     "title": "Title",
-    "contributeProblemQuestionTitleInputError": "'Title' field is required",
+    "titleIsRequired": "'Title' field is required",
     "description": "Description",
     "contributeProblemQuestionDescriptionInputError": "'Description' field is required",
     "contributeProblemSolutionTitle": "Solution",
