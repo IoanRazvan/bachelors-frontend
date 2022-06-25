@@ -1,0 +1,16 @@
+<div class="row gx-0">
+    <div class="col-12 pb-0 pt-0">
+        <input id="title" type="text" style="width: 100%" [formControl]="control" [placeholder]="dictionary.title" pInputText>
+        <small id="title-help" *ngIf="control.invalid && control.dirty" class="p-error block">{{dictionary.titleIsRequired}}</small>
+    </div>
+    <div class="col-6 pe-1">
+        <button class="btn btn-primary" style="width: 100%" (click)="onCancelClick()">{{dictionary.cancel}}</button>
+    </div>
+    <div class="col-6 ps-0">
+        <button class="btn btn-primary" style="width: 100%" (click)="onSubmit.emit(control.value)"
+            [disabled]="submitting || control.invalid">
+            {{dictionary.add}}
+            <span *ngIf="submitting" class="spinner-border spinner-border-sm"></span>
+        </button>
+    </div>
+</div>

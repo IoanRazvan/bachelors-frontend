@@ -25,6 +25,7 @@ import { TemplateDirective } from './directives/template.directive';
 import { DifficultyDetailsPipe } from './pipes/difficulty-details.pipe';
 import { ProblemStatusDetailsPipe } from './pipes/problem-status-details.pipe';
 import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
+import { UserListFormComponent } from './components/user-list-form/user-list-form.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
     DisplayRunnerResultComponent,
     DifficultyDetailsPipe,
     ProblemStatusDetailsPipe,
-    LiveSearchComponent
+    LiveSearchComponent,
+    UserListFormComponent
   ],
   imports: [
     CommonModule,
@@ -79,7 +81,8 @@ import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
     DisplayRunnerResultComponent,
     DifficultyDetailsPipe,
     ProblemStatusDetailsPipe,
-    LiveSearchComponent
+    LiveSearchComponent,
+    UserListFormComponent
   ]
 })
 export class SharedModule { }
