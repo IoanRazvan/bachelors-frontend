@@ -1,5 +1,5 @@
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { LanguageService } from 'src/app/base/language.base';
 
 @Component({
@@ -12,9 +12,11 @@ export class UserListFormComponent implements OnChanges {
   @Input() value!: string;
   @Output() onCancel: EventEmitter<any>;
   @Output() onSubmit: EventEmitter<string>;
+  submitText: string;
   dictionary: any;
 
   constructor(languageService: LanguageService) {
+    this.submitText = languageService.dictionary.add;
     this.control = new FormControl('', Validators.required);
     this.onSubmit = new EventEmitter();
     this.onCancel = new EventEmitter();
@@ -23,6 +25,10 @@ export class UserListFormComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.resetControl();
+    if (this.value)
+      this.submitText = this.dictionary.update;
+    else
+      this.submitText = this.dictionary.add;
   }
 
   onCancelClick() {
