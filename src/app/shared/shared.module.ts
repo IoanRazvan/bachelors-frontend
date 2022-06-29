@@ -21,11 +21,11 @@ import { LiveSearchComponent } from './components/live-search/live-search.compon
 import { LoadingPageComponent } from './components/loading-page/loading-page.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RunnerResultWindowComponent } from './components/runner-result-window/runner-result-window.component';
+import { UserListFormComponent } from './components/user-list-form/user-list-form.component';
 import { TemplateDirective } from './directives/template.directive';
 import { DifficultyDetailsPipe } from './pipes/difficulty-details.pipe';
 import { ProblemStatusDetailsPipe } from './pipes/problem-status-details.pipe';
 import { StatusCodeDetailsPipe } from './pipes/status-code-details.pipe';
-import { UserListFormComponent } from './components/user-list-form/user-list-form.component';
 
 
 @NgModule({
