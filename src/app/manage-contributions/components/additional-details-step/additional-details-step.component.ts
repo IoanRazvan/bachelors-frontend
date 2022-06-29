@@ -46,10 +46,6 @@ export class AdditionalDetailsStepComponent extends FormStepBase implements OnIn
     });
   }
 
-  check() {
-    console.log(this.form.value);
-  }
-
   onSubmitClick() {
     this.onSubmit.emit(this.form.value);
   }
