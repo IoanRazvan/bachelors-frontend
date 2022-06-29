@@ -44,3 +44,8 @@ export interface ProblemStarter {
 export type ProblemStatus = "Todo" | "Solved" | "Attempted";
 
 export const PROBLEM_STATUSES : ProblemStatus[] = ["Todo", "Solved", "Attempted"]
+
+export interface ListProblem {
+    id: number;
+    title: string;
+}
