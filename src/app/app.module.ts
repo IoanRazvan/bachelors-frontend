@@ -10,6 +10,7 @@ import { AuthorizedModule } from './authorized/authorized.module';
 import { LandingComponent } from './components/landing/landing.component';
 import { ContributeProblemModule } from './contribute-problem/contribute-problem.module';
 import { CoreModule } from './core/core.module';
+import { ListModule } from './list/list.module';
 import { ManageContributionsModule } from './manage-contributions/manage-contributions.module';
 import { ProblemsModule } from './problems/problems.module';
 
@@ -29,6 +30,7 @@ import { ProblemsModule } from './problems/problems.module';
     BrowserAnimationsModule,
     ManageContributionsModule,
     ProblemsModule,
+    ListModule,
     MonacoEditorModule.forRoot()
   ],
   providers: [{

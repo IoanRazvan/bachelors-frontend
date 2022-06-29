@@ -1,0 +1,30 @@
+<app-loading-page [loading]="loading"></app-loading-page>
+<p-listbox class="list-details" *ngIf="!loading" [options]="problems" optionLabel="title" [emptyFilterMessage]="'Niciun rezultat'" [emptyMessage]="'Niciun rezultat'">
+    <ng-template pTemplate="header">
+        <div class="row gx-0" style="width: 100%">
+            <div class="col-auto me-auto">
+                {{userList.listTitle}}
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-sm btn-outline-primary me-2"  (click)="onListActionClick('EDIT')">Edit</button>
+                <button class="btn btn-sm btn-outline-danger" (click)="onListActionClick('DELETE')">Delete</button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-problem pTemplate="item">
+        <div class="row gx-0" style="width: 100%">
+            <div class="text-truncate col-10 me-auto">
+                <a class="link-dark text-decoration-none contribution-link"
+                    [routerLink]="['/problems', problem.id]">{{problem.id}}. {{problem.title}}</a>
+            </div>
+            <div class="col-auto align-self-center" (click)="onTrashClick(problem.id)">
+                <i class="text-dark pi pi-trash"></i>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="m-3">
+            <app-paginator [pageInfo]="pageInfo" (pageChange)="changePage($event)"></app-paginator>
+        </div>
+    </ng-template>
+</p-listbox>

@@ -1,0 +1,7 @@
+.list-details .p-listbox:not(.p-disabled) .p-listbox-item:not(.p-highlight):not(.p-disabled):hover {
+    background: inherit;
+}
+
+.list-details .p-listbox .p-listbox-list .p-listbox-item.p-highlight {
+    background: inherit;
+}
