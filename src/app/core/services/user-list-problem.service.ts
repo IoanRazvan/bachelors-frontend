@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Page } from "src/app/models/page.model";
+import { ListProblem } from "src/app/models/problem.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -26,5 +28,9 @@ export class UserListProblemService {
                 listId
             }
         });
+    }
+
+    getListProblems(listId: number, page: number, size: number) : Observable<Page<ListProblem>> {
+        return <any> this.http.get(`${this.endpoint}/${listId}?page=${page}&size=${size}`);
     }
 }

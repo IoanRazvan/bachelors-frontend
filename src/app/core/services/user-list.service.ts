@@ -14,12 +14,26 @@ export class UserListService {
     }
 
     getLists(problemId: number) : Observable<UserListRow[]> {
-        return <any>this.http.get(`${this.endpoint}/${problemId}`);     
+        return <any>this.http.get(`${this.endpoint}/problem/${problemId}`);     
     }
 
     addList(listTitle: string) : Observable<UserListResponse> {
         return <any>this.http.post(`${this.endpoint}`, {
             listTitle
         });
+    }
+
+    updateList(id: number, listTitle: string) : Observable<UserListResponse> {
+        return <any>this.http.put(`${this.endpoint}/${id}`, {
+            listTitle
+        });
+    }
+
+    getAll() : Observable<UserListResponse[]> {
+        return <any>this.http.get(this.endpoint);
+    }
+
+    deleteList(id: number) : Observable<any> {
+        return <any>this.http.delete(`${this.endpoint}/${id}`);
     }
 }
