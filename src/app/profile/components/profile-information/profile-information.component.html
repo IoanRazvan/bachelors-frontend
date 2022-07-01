@@ -1,0 +1,24 @@
+<app-centered *ngIf="loading">
+    <span class="spinner spinner-border"></span>
+</app-centered>
+<div *ngIf="!loading">
+    <div class="row">
+        <div class="col-auto">
+            <div style="width: 3rem" class="mb-2">
+                <img src="assets/images/profile-icon.jpg" alt="profile" class="img-fluid rounded">
+            </div>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-sm btn-primary" routerLink="../lists">
+                <span class="me-1">Listele Mele</span>
+                <i class="pi pi-external-link" style="font-size: 0.8rem;"></i>
+            </a>
+        </div>
+    </div>
+    <label for="firstName" class="form-label">First Name</label>
+    <input type="text" id="firstName" class="form-control mb-2" [value]="userInformation.firstName">
+    <label for="firstName" class="form-label">Last Name</label>
+    <input type="text" id="firstName" class="form-control mb-2" [value]="userInformation.lastName">
+    <label for="firstName" class="form-label">Email</label>
+    <input type="text" id="firstName" class="form-control mb-2" [value]="userInformation.email" readonly>
+</div>

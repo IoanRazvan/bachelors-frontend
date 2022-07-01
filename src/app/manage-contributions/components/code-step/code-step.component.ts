@@ -8,6 +8,7 @@ import { ProgrammingLanguageService } from 'src/app/core/services/programming-la
 import { CodeRunnerResult } from 'src/app/models/code-runner.model';
 import { DropdownOption } from 'src/app/models/dropdown-option.model';
 import { StepType } from 'src/app/models/step.type';
+import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 import { codeZonePresentValidator } from './code-step.validator';
 
 @Component({
@@ -24,7 +25,7 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
   loading: boolean;
   dropdownOptions!: DropdownOption<string, string>[];
 
-  constructor(languageService: LanguageService, private fb: FormBuilder, private runnerService: CodeRunnerService, private apiService: ProgrammingLanguageService) {
+  constructor(languageService: LanguageService, private fb: FormBuilder, private runnerService: CodeRunnerService, private apiService: ProgrammingLanguageService, private messageService: ToastMessageService) {
     super(languageService);
     this.form = fb.group({
       input: [''],
@@ -80,12 +81,18 @@ export class CodeStepComponent extends FormStepBase implements OnChanges {
   submitCodeForCheck() {
     const formValue = this.form.value;
     this.checkingCode = true;
-    this.runnerService.checkProgram(formValue[formValue.selectedLanguage], formValue.selectedLanguage, [formValue.input]).subscribe((res: CodeRunnerResult) => {
+    this.runnerService.checkProgram(formValue[formValue.selectedLanguage], formValue.selectedLanguage, [formValue.input]).subscribe({
+      next: (res: CodeRunnerResult) => {
       this.checkingCode = false;
       this.runnerResult = res;
       if (this.runnerResult.status === 0)
         this.chageRanWithNoErrors(formValue.selectedLanguage, true);
-    })
+    },
+    error: () => {
+      this.checkingCode = false;
+      this.messageService.addError('Programul nu a putut fi executat. Incearca din nou')
+    }
+  })
   }
 
   private chageRanWithNoErrors(language: string, value: boolean) {

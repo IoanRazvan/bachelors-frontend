@@ -1,4 +1,5 @@
 <app-loading-page [loading]="loading"></app-loading-page>
+<app-error-page [errorStatus]="errorStatus"></app-error-page>
 <ng-container *ngIf="!loading">
     <ng-container *ngIf="submission.statusCode === 0" >
         <div class="mt-3">{{dictionary.status}}:

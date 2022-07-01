@@ -119,5 +119,7 @@
     "submitted": "Submitted",
     "count": "Count",
     "runtimeDistribution": "Runtime Distribution",
-    "contributor": "Contributor"
+    "contributor": "Contributor",
+    "noResults": "No results",
+    "rejected2": "Rejected"
 }

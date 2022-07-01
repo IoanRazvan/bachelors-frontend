@@ -30,3 +30,8 @@ export interface FailedSubmission extends Submission {
     output: string;
     expected: string;
 }
+
+export interface SubmissionDateCount {
+    date: string;
+    count: number;
+}

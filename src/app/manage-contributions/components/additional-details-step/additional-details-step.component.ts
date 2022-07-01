@@ -4,6 +4,7 @@ import { FormStepBase } from 'src/app/base/form-step.base';
 import { LanguageService } from 'src/app/base/language.base';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { Category, ProblemDifficulty } from 'src/app/models/category.model';
+import { ToastMessageService } from 'src/app/shared/services/toast-message.service';
 
 @Component({
   selector: 'app-additional-details-step',
@@ -19,7 +20,7 @@ export class AdditionalDetailsStepComponent extends FormStepBase implements OnIn
   @Input() override formData: any;
   @Input() submitted!: boolean;
 
-  constructor(private service: CategoryService, languageService: LanguageService, fb: FormBuilder) {
+  constructor(private service: CategoryService, languageService: LanguageService, fb: FormBuilder, private messageService: ToastMessageService) {
     super(languageService);
     this.loading = true;
     this.difficulties = ["HARD", "EASY", "MEDIUM"];
@@ -33,10 +34,17 @@ export class AdditionalDetailsStepComponent extends FormStepBase implements OnIn
 
   ngOnInit(): void {
     this.setForm();
-    this.service.getCategories().subscribe((resp) => {
+    // TODO: use loading indicator
+    this.service.getCategories().subscribe({
+    next: (resp) => {
       this.categories = resp;
       this.loading = false;
-    });
+    },
+    error: () => {
+      this.loading = false;
+      this.messageService.addError('Categoriile nu au putut fi incarcate');
+    }
+  });
   }
 
   protected setForm(): void {

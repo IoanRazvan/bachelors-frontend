@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Submission, SubmissionRow } from "src/app/models/submission.model";
+import { Submission, SubmissionDateCount, SubmissionRow } from "src/app/models/submission.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -19,5 +19,9 @@ export class SubmissionService {
 
     getSubmission(submissionId: number) : Observable<Submission> {
         return <any>this.http.get(`${this.endpoint}/${submissionId}`);
+    }
+
+    getSubmissionsDateCount() : Observable<SubmissionDateCount[]> {
+        return <any>this.http.get(`${this.endpoint}/count`);
     }
 }

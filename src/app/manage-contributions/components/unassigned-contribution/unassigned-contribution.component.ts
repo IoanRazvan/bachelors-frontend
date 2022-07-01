@@ -49,7 +49,7 @@ export class UnassignedContributionComponent implements OnInit {
       next: () => {
         this.actions = [{ ...this.actions[0], loading: false }];
         this.notificationService.addNotification(this.dictionary.contributionAssignedSuccessfully, "SUCCESS")
-        this.router.navigate(['/manage-contributions/assigned', this.id])
+        this.router.navigate(['/manage-contributions/assigned', this.id], {replaceUrl: true});
       },
       error: () => {
         this.actions = [{ ...this.actions[0], loading: false }];

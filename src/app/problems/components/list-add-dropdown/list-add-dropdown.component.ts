@@ -19,17 +19,24 @@ export class ListAddDropdownComponent implements OnInit {
   selectedLists!: UserListRow[];
   lastUpdate!: UserListRow[];
   dictionary: any;
+  errorStatus: number;
 
   constructor(private userListService: UserListService, private route: ActivatedRoute, private userListProblemService: UserListProblemService, private messageService: ToastMessageService, languageService: LanguageService) {
     this.dictionary = languageService.dictionary;
+    this.errorStatus = 0;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
-      this.userListService.getLists(id).subscribe((resp) => {
-        this.lists = resp;
-        this.selectedLists = this.lists.filter(userList => userList.containsProblem);
-        this.lastUpdate = this.lists;
+      this.userListService.getLists(id).subscribe({
+        next: (resp) => {
+          this.lists = resp;
+          this.selectedLists = this.lists.filter(userList => userList.containsProblem);
+          this.lastUpdate = this.lists;
+        },
+        error: (err) => {
+          this.errorStatus = err.status || 1;
+        }
       });
       this.problemId = id;
     })

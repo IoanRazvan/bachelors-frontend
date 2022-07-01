@@ -16,51 +16,64 @@ export class SubmissionDetailsComponent implements OnInit {
   chartData: any;
   chartOptions: any;
   dictionary: any;
+  errorStatus: number;
 
   constructor(private service: SubmissionService, private route: ActivatedRoute, languageService: LanguageService) {
     this.dictionary = languageService.dictionary;
     this.loading = true;
+    this.errorStatus = 0;
     this.chartOptions = {
       aspectRatio: 1,
       maintainAspectRatio: false,
       plugins: {
-        tooltip: {callbacks: {
-          title: (tooltipItem : any) => `(${tooltipItem[0].label} ms, ${tooltipItem[0].formattedValue})`,
-          label: () => this.dictionary.runtimeDistribution
-        }},
+        tooltip: {
+          callbacks: {
+            title: (tooltipItem: any) => `(${tooltipItem[0].label} ms, ${tooltipItem[0].formattedValue})`,
+            label: () => this.dictionary.runtimeDistribution
+          }
+        },
       },
       scales: {
-        x: { grid: { display: false }, title: {display: true, text: this.dictionary.runtime + ' (ms)'}},
-        y: { grid: { display: false }, title: {display: true, text: this.dictionary.count}}
+        x: { grid: { display: false }, title: { display: true, text: this.dictionary.runtime + ' (ms)' } },
+        y: { grid: { display: false }, title: { display: true, text: this.dictionary.count } }
       }
     };
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
-      this.service.getSubmission(id).subscribe((submission) => {
-        this.submission = submission;
-        this.loading = false;
-        this.editorOptions = { theme: 'vs-light', minimap: { enabled: false }, language: submission.languageId, readOnly: true };
+      this.service.getSubmission(id).subscribe({
+        next: (submission) => {
+          this.submission = submission;
+          this.loading = false;
+          this.editorOptions = { theme: 'vs-light', minimap: { enabled: false }, language: submission.languageId, readOnly: true };
 
-        if (submission.statusCode === 0) {
-          const distribution = (<PassingSubmission>submission).acceptedDistribution; 
-          this.chartData = {
-            labels: distribution.map(bin => bin.runtime),
-            datasets: [{
-              label: this.dictionary.runtimeDistribution,
-              data: distribution.map(bin => bin.count),
-              backgroundColor: ['rgba(0, 99, 132, 0.2)'],
-              barPercentage: 1.0,
-              categoryPercentage: 1.0
-            }]
-          }
+          if (submission.statusCode === 0)
+            this.setChartData(submission)
+        },
+        error: (err) => {
+          this.errorStatus = err.status || 1;
+          this.loading = false;
         }
-       })
+      })
     })
   }
 
-  get runnerResult() : CodeRunnerResult {
+  private setChartData(submission: Submission) {
+    const distribution = (<PassingSubmission>submission).acceptedDistribution;
+    this.chartData = {
+      labels: distribution.map(bin => bin.runtime),
+      datasets: [{
+        label: this.dictionary.runtimeDistribution,
+        data: distribution.map(bin => bin.count),
+        backgroundColor: ['rgba(0, 99, 132, 0.2)'],
+        barPercentage: 1.0,
+        categoryPercentage: 1.0
+      }]
+    }
+  }
+
+  get runnerResult(): CodeRunnerResult {
     const failedSubmission: FailedSubmission = <FailedSubmission>this.submission;
     return {
       status: failedSubmission.statusCode,

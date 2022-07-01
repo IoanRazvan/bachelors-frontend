@@ -120,5 +120,7 @@
     "submitted": "Trimis",
     "count": "Număr",
     "runtimeDistribution": "Distribuție de Execuție",
-    "contributor": "Contributor"
+    "contributor": "Contributor",
+    "noResult": "Nici un rezultat",
+    "rejected2": "Respins"
 }

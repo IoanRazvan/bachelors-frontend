@@ -4,6 +4,7 @@ import { ConfirmationService } from 'primeng/api';
 import { LanguageService } from '../base/language.base';
 import { UserListService } from '../core/services/user-list.service';
 import { UserListResponse } from '../models/user-list.model';
+import { ToastMessageService } from '../shared/services/toast-message.service';
 import { ListPagedService } from './services/list-paged.service';
 
 
@@ -22,20 +23,28 @@ export class ListComponent implements OnInit {
   userListTitle: string;
   submitting: boolean;
   dictionary: any;
+  errorStatus: number;
 
-  constructor(private userListService: UserListService, private router: Router, private route: ActivatedRoute, private confirmationService: ConfirmationService, private listService: ListPagedService, private cdRef: ChangeDetectorRef, private languageService: LanguageService) {
+  constructor(private userListService: UserListService, private router: Router, private route: ActivatedRoute, private confirmationService: ConfirmationService, private listService: ListPagedService, private cdRef: ChangeDetectorRef, private languageService: LanguageService, private messageService: ToastMessageService) {
     this.loading = true;
     this.userListFormOpened = false;
     this.userListTitle = '';
     this.submitting = false;
     this.dictionary = languageService.dictionary;
+    this.errorStatus = 0;
   }
 
   ngOnInit(): void {
-    this.userListService.getAll().subscribe(resp => {
-      this.lists = resp;
-      this.loading = false;
-      this.listService.setLists(this.lists);
+    this.userListService.getAll().subscribe({
+      next: resp => {
+        this.lists = resp;
+        this.loading = false;
+        this.listService.setLists(this.lists);
+      },
+      error: err => {
+        this.errorStatus = err.status || 1;
+        this.loading = true;
+      }
     });
 
     this.listService.listId$.subscribe((id) => {
@@ -83,16 +92,24 @@ export class ListComponent implements OnInit {
   }
 
   onOptionClick() {
-    this.router.navigate(['.', this.selectedList?.id], {relativeTo: this.route})
+    this.router.navigate(['.', this.selectedList?.id], { relativeTo: this.route, replaceUrl: true })
   }
 
   addUserList(title: string) {
     this.submitting = true;
-    this.userListService.addList(title).subscribe(resp => {
-      this.submitting = false;
-      this.lists = this.lists.concat([resp]);
-      this.listService.setLists(this.lists);
-      this.closeUserListForm();
+    this.userListService.addList(title).subscribe({
+      next: resp => {
+        this.submitting = false;
+        this.lists = this.lists.concat([resp]);
+        this.userListTitle = ' ';
+        this.listService.setLists(this.lists);
+        this.closeUserListForm();
+        this.messageService.addSuccess('Lista creata cu succes')
+      },
+      error: () => {
+        this.submitting = false;
+        this.messageService.addError('Lista nu a putut fi creata. Incearca din nou');
+      }
     });
   }
 
@@ -121,8 +138,9 @@ export class ListComponent implements OnInit {
         nextListIndex = listIndex;
       this.lists = this.lists.filter(list => list.id !== this.selectedList?.id);
       this.selectedList = this.lists[nextListIndex];
-      this.router.navigate(['.', this.selectedList.id], {relativeTo: this.route}).then(() => {
+      this.router.navigate(['.', this.selectedList.id], { relativeTo: this.route }).then(() => {
         this.listService.setLists(this.lists);
+        this.messageService.addSuccess('Lista stearsa cu succes');
       });
     })
   }

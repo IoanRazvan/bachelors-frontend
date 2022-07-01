@@ -2,7 +2,9 @@
     <app-user-list-form [value]="userListTitle" [submitting]="submitting" (onCancel)="closeUserListForm()" (onSubmit)="submitUserListForm($event)"></app-user-list-form>
 </p-dialog>
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [style]="{width: '50vw'}"></p-confirmDialog>
+<p-toast></p-toast>
 <app-loading-page [loading]="loading"></app-loading-page>
+<app-error-page [errorStatus]="errorStatus"></app-error-page>
 <div *ngIf="!loading" class="row mt-3">
     <div class="col-4">
         <p-listbox [options]="lists" optionLabel="listTitle" (onClick)="onOptionClick()" [(ngModel)]="selectedList">

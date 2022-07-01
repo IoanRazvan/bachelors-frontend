@@ -8,13 +8,15 @@
         </div>
     </ng-container>
     <ng-container *ngSwitchCase="runnerResult.status === 0">
-        <div *ngFor="let field of acceptedFields" class="row mb-2">
-            <div class="col-3">
-                {{field.label}}
+        <ng-container *ngIf="acceptedFields[0].value">
+            <div *ngFor="let field of acceptedFields" class="row mb-2">
+                <div class="col-3">
+                    {{field.label}}
+                </div>
+                <div class="col-9 rounded bg-light border testcase" [innerHTML]="field.value">
+                </div>
             </div>
-            <div class="col-9 rounded bg-light border testcase" [innerHTML]="field.value">
-            </div>
-        </div>
+        </ng-container>
     </ng-container>
     <ng-container *ngSwitchDefault>
         <ng-container *ngFor="let field of wrongAnswerFields">

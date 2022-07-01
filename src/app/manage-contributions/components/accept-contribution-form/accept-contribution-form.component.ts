@@ -19,6 +19,7 @@ export class AcceptContributionFormComponent implements OnInit {
   submitted: boolean;
   id!: string;
   dictionary: any;
+  errorStatus: number;
 
   constructor(private route: ActivatedRoute, private contributionService: ProblemContributionService, languageService: LanguageService, private toastMessage: ToastMessageService, private contributionsManagement: ManageContributionsService) {
     this.dictionary = languageService.dictionary
@@ -27,17 +28,23 @@ export class AcceptContributionFormComponent implements OnInit {
     this.loading = true;
     this.submitted = false;
     this.form = {};
-
+    this.errorStatus = 0;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
       this.id = id;
-      this.contributionService.getContribution(id).subscribe((resp) => {
-        this.form = {
-          ...resp
+      this.contributionService.getContribution(id).subscribe({
+        next: resp => {
+          this.form = {
+            ...resp
+          }
+          this.loading = false;
+        },
+        error: err => {
+          this.loading = false;
+          this.errorStatus = err.status || 1;
         }
-        this.loading = false;
       });
     })
   }
@@ -59,7 +66,7 @@ export class AcceptContributionFormComponent implements OnInit {
       ...data,
     };
     const solutions = Object.getOwnPropertyNames(this.form.codeStep).filter(prop => ['selectedLanguage', 'languages', 'input', 'output', 'ranWithNoErrors'].indexOf(prop) === -1).map(prop => ({ languageId: prop, sourceCode: this.form.codeStep[prop] }));
-    
+
     const problem: Problem = {
       title: this.form.title,
       description: this.form.description,
@@ -69,9 +76,14 @@ export class AcceptContributionFormComponent implements OnInit {
       solutions
     };
 
-    this.contributionsManagement.acceptContribution(this.id, problem).subscribe(() => {
-      this.toastMessage.addSuccess(this.dictionary.problemAddedSuccessfully);
-      this.submitted = true
+    this.contributionsManagement.acceptContribution(this.id, problem).subscribe({
+      next: () => {
+        this.toastMessage.addSuccess(this.dictionary.problemAddedSuccessfully);
+        this.submitted = true
+      },
+      error: () => {
+        this.toastMessage.addError('Problema nu a putut fi adaugata. Incearca din nou');
+      }
     });
   }
 }

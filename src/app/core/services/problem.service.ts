@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { ProblemReponse, ProblemRow } from "src/app/models/problem.model";
+import { ProblemReponse, ProblemRow, SolvedProblemsStats } from "src/app/models/problem.model";
+import { SolvedProblemsStatsComponent } from "src/app/profile/components/solved-problems-stats/solved-problems-stats.component";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -28,5 +29,9 @@ export class ProblemService {
         if (parameters['query'])
             queryParams += `&query=${parameters['query']}`;
         return <any>this.http.get(`${this.endpoint}?page=${page}&size=${size}${queryParams}`);
+    }
+
+    getSolvedProblemsStats() : Observable<SolvedProblemsStats> {
+        return <any>this.http.get(`${this.endpoint}/stats`);
     }
 }

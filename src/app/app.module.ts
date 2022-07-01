@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { ListModule } from './list/list.module';
 import { ManageContributionsModule } from './manage-contributions/manage-contributions.module';
 import { ProblemsModule } from './problems/problems.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProblemsModule } from './problems/problems.module';
     ManageContributionsModule,
     ProblemsModule,
     ListModule,
-    MonacoEditorModule.forRoot()
+    ProfileModule,
+    MonacoEditorModule.forRoot(),
   ],
   providers: [{
     provide: APP_INITIALIZER,

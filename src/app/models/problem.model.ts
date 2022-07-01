@@ -49,3 +49,13 @@ export interface ListProblem {
     id: number;
     title: string;
 }
+
+export interface DifficultyCount {
+    difficulty: ProblemDifficulty;
+    count: number;
+}
+
+export interface SolvedProblemsStats {
+    total: DifficultyCount[];
+    solved: DifficultyCount[];
+}

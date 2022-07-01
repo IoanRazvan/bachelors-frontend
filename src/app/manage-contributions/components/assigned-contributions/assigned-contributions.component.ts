@@ -10,7 +10,7 @@ import { ContributionsService } from '../../services/contributions.service';
 
 const contributionsProvider = (apiService: ManageContributionsService) => {
   const service = {
-    request(page : number, size : number, parameters: {[key: string]: string}) {
+    request(page: number, size: number, parameters: { [key: string]: string }) {
       return apiService.getAssignedContributions(page, size, parameters['query'], <SortingType>parameters['order'], <ProblemContributionStatus>parameters['status']);
     }
   };
@@ -45,23 +45,28 @@ export class AssignedContributionsComponent extends DeveloperContributionsBase i
         }
       }
     };
-    this.statusOptions = [{label: this.dictionary.all, value: ''}, {label: this.dictionary.accepted, value: "ACCEPTED"}, {label: this.dictionary.rejected, value: "REJECTED"}, {label: this.dictionary.pending, value: "PENDING"}];
+    this.statusOptions = [{ label: this.dictionary.all, value: '' }, { label: this.dictionary.accepted, value: "ACCEPTED" }, { label: this.dictionary.rejected, value: "REJECTED" }, { label: this.dictionary.pending, value: "PENDING" }];
     this.selectedStatus = this.statusOptions[0];
   }
 
   protected override setUp() {
     super.setUp();
-    this.apiService.getStatistics().subscribe((resp) => {
-      if (resp.some(statusCount => statusCount.count != 0)) {
-        this.showStats = true;
-        this.chartData = {
-          labels: resp.map(statusCount => statusCount.status),
-          datasets: [{
-            data: resp.map(statusCount => statusCount.count),
-            backgroundColor: ["#ffc107", "#198754", "#dc3545"],
-            hoverBackgroundColor: ["#ffcd39", "#146c43", "#b02a37"]
-          }]
-        };
+    this.apiService.getStatistics().subscribe({
+      next: resp => {
+        if (resp.some(statusCount => statusCount.count != 0)) {
+          this.showStats = true;
+          this.chartData = {
+            labels: [this.dictionary.pending, this.dictionary.accepted2, this.dictionary.rejected2],
+            datasets: [{
+              data: resp.map(statusCount => statusCount.count),
+              backgroundColor: ["#ffc107", "#198754", "#dc3545"],
+              hoverBackgroundColor: ["#ffcd39", "#146c43", "#b02a37"]
+            }]
+          };
+        }
+      },
+      error: () => {
+        this.messageService.addError('Statisticile nu au putut fi incarcate');
       }
     })
   }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { LanguageService } from 'src/app/base/language.base';
 
@@ -23,8 +23,9 @@ export class UserListFormComponent implements OnChanges {
     this.dictionary = languageService.dictionary;
   }
 
-  ngOnChanges(): void {
-    this.resetControl();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['value'])
+      this.resetControl();
     if (this.value)
       this.submitText = this.dictionary.update;
     else

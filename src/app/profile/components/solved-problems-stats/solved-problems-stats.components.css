@@ -1,0 +1,15 @@
+.text-success .p-progressbar .p-progressbar-value {
+    background-color: #198754;
+}
+
+.text-danger .p-progressbar .p-progressbar-value {
+    background-color: #dc3545;
+}
+
+.text-warning .p-progressbar .p-progressbar-value {
+    background-color: #ffc107;
+}
+
+canvas {
+    height: 150px;
+}

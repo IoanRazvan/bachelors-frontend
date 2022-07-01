@@ -1,0 +1,23 @@
+<p>Probleme Rezolvate</p>
+
+<div *ngIf="loading">
+    <span class="spinner spinner-border"></span>
+</div>
+<div *ngIf="!loading">
+    <div class="row">
+        <div class="col-4">
+            <p-chart class="solved-problem-stats" type="doughnut" [data]="chartData" [options]="chartOptions"
+                [style]="{height: '180px'}"></p-chart>
+        </div>
+        <div class="col-7">
+            <div *ngFor="let diffCount of data.total; let i = index" class="mb-2">
+                <span class="text-muted"> <span class="me-2">{{data.solved[i].difficulty |
+                        difficultyDetails:'text'}}</span>
+                    {{data.solved[i].count}}/{{data.total[i].count}}</span>
+                <p-progressBar [class]="data.solved[i].difficulty | difficultyDetails:'class'"
+                    [value]="data.solved[i].count / data.total[i].count * 100"
+                    [style]="{height: '0.6em', color: 'green'}" [showValue]="false"></p-progressBar>
+            </div>
+        </div>
+    </div>
+</div>

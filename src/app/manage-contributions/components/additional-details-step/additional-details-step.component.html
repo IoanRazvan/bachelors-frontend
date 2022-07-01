@@ -1,6 +1,6 @@
 <app-form-step-layout [stepTitle]="dictionary.completeAdditionalData"
-    [stepTip]="dictionary.completeAdditionalDataStepTip"
-    [showPrevStepButton]="!submitted" [formGroup]="form" (onStep)="onStepClick($event)">
+    [stepTip]="dictionary.completeAdditionalDataStepTip" [showPrevStepButton]="!submitted" [formGroup]="form"
+    (onStep)="onStepClick($event)">
     <ng-template appTemplate="content">
         <label class="mt-3 form-label">{{dictionary.difficulty}} <span class="text-danger">*</span></label>
         <p-listbox [options]="difficulties" formControlName="difficulty">
@@ -9,11 +9,13 @@
             </ng-template>
         </p-listbox>
         <label class="mt-3 form-label mb-2">{{dictionary.categories}} <span class="text-danger">*</span></label>
-        <p-listbox [options]="categories" formControlName="selectedCategories" optionLabel="categoryName" [checkbox]="true"
-            [multiple]="true" [listStyle]="{maxHeight: '200px'}" [filter]="true"></p-listbox>
+        <p-listbox [options]="categories" formControlName="selectedCategories" optionLabel="categoryName"
+            [checkbox]="true" [multiple]="true" [listStyle]="{maxHeight: '200px'}" [filter]="true"
+            [emptyFilterMessage]="dictionary.noResults" [emptyMessage]="dictionary.noResults"></p-listbox>
     </ng-template>
     <ng-template appTemplate="next">
-        <button *ngIf="!submitted else takeMeBack" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmitClick()">Adauga</button>
+        <button *ngIf="!submitted else takeMeBack" class="btn btn-primary" [disabled]="form.invalid"
+            (click)="onSubmitClick()">Adauga</button>
         <ng-template #takeMeBack>
             <button class="btn btn-primary" [routerLink]="['../..']">{{dictionary.takeMeBack}}</button>
         </ng-template>

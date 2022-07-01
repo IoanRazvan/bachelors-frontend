@@ -10,6 +10,7 @@ import { manageContributionsRoutes } from "../manage-contributions/manage-contri
 import { ManageContributionsComponent } from "../manage-contributions/manage-contributions.component";
 import { problemsRoutes } from "../problems/problems-routing.module";
 import { ProblemsComponent } from "../problems/problems.component";
+import { ProfileComponent } from "../profile/profile.component";
 
 export const authorizedRoutes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: 'problems'},
@@ -18,6 +19,7 @@ export const authorizedRoutes: Routes = [
     {path: 'manage-contributions', component: ManageContributionsComponent, children: manageContributionsRoutes, canActivate: [AuthGuardService]},
     {path: 'problems', component: ProblemsComponent, children: problemsRoutes, canActivate: [AuthGuardService]},
     {path: 'lists', component: ListComponent, children: listRoutes, canActivate: [AuthGuardService]},
+    {path: 'profile', component: ProfileComponent, pathMatch: 'full', canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

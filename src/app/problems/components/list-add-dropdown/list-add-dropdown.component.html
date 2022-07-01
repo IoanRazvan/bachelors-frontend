@@ -2,7 +2,8 @@
 <p-overlayPanel styleClass="list-add-dropdown" #op>
     <ng-template pTemplate>
         <p-listbox [options]="lists" [(ngModel)]="selectedLists" [showToggleAll]="false" [checkbox]="true"
-            [multiple]="true" optionLabel="listTitle" (onClick)="onListClicked($event)">
+            [multiple]="true" optionLabel="listTitle" (onClick)="onListClicked($event)"
+            [emptyFilterMessage]="dictionary.noResults" [emptyMessage]="dictionary.noResults">
             <ng-template pTemplate="footer">
                 <app-toggleable-user-list-form (onAdded)="addList($event)"></app-toggleable-user-list-form>
             </ng-template>
@@ -10,4 +11,5 @@
     </ng-template>
 </p-overlayPanel>
 
-<button type="button" class="btn btn-sm btn-outline-primary" (click)="op.toggle($event)">{{dictionary.addToList}}</button>
+<button type="button" class="btn btn-sm btn-outline-primary"
+    (click)="op.toggle($event)">{{dictionary.addToList}}</button>
