@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LanguageService } from 'src/app/base/language.base';
 import { extractPageInfo, PageInfo } from 'src/app/models/page-info.model';
 import { ListProblem } from 'src/app/models/problem.model';
 import { UserListResponse } from 'src/app/models/user-list.model';
@@ -18,10 +19,12 @@ export class ListDetailsComponent implements OnInit {
   pageInfo!: PageInfo;
   userList: UserListResponse;
   subscription?: Subscription;
+  dictionary: any;
 
-  constructor(private listService: ListPagedService, private route: ActivatedRoute) {
+  constructor(private listService: ListPagedService, private route: ActivatedRoute, languageService: LanguageService) {
     this.loading = true;
     this.userList = window.history.state;
+    this.dictionary = languageService.dictionary;
   }
 
   ngOnInit() {

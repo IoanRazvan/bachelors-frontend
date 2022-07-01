@@ -6,8 +6,8 @@
                 {{userList.listTitle}}
             </div>
             <div class="col-auto">
-                <button class="btn btn-sm btn-outline-primary me-2"  (click)="onListActionClick('EDIT')">Edit</button>
-                <button class="btn btn-sm btn-outline-danger" (click)="onListActionClick('DELETE')">Delete</button>
+                <button class="btn btn-sm btn-outline-primary me-2"  (click)="onListActionClick('EDIT')">{{dictionary.edit}}</button>
+                <button class="btn btn-sm btn-outline-danger" (click)="onListActionClick('DELETE')">{{dictionary.delete}}</button>
             </div>
         </div>
     </ng-template>

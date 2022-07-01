@@ -10,15 +10,15 @@
         </div>
         <div class="col-auto">
             <a class="btn btn-sm btn-primary" routerLink="../lists">
-                <span class="me-1">Listele Mele</span>
+                <span class="me-1">{{dictionary.myLists}}</span>
                 <i class="pi pi-external-link" style="font-size: 0.8rem;"></i>
             </a>
         </div>
     </div>
-    <label for="firstName" class="form-label">First Name</label>
-    <input type="text" id="firstName" class="form-control mb-2" [value]="userInformation.firstName">
-    <label for="firstName" class="form-label">Last Name</label>
-    <input type="text" id="firstName" class="form-control mb-2" [value]="userInformation.lastName">
-    <label for="firstName" class="form-label">Email</label>
-    <input type="text" id="firstName" class="form-control mb-2" [value]="userInformation.email" readonly>
+    <label for="firstName" class="form-label">{{dictionary.firstName}}</label>
+    <input type="text" id="firstName" class="form-control mb-2" [value]="userInformation.firstName" readonly>
+    <label for="lastName" class="form-label">{{dictionary.lastName}}</label>
+    <input type="text" id="lastName" class="form-control mb-2" [value]="userInformation.lastName" readonly>
+    <label for="email" class="form-label">Email</label>
+    <input type="text" id="email" class="form-control mb-2" [value]="userInformation.email" readonly>
 </div>

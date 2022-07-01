@@ -121,5 +121,12 @@
     "runtimeDistribution": "Runtime Distribution",
     "contributor": "Contributor",
     "noResults": "No results",
-    "rejected2": "Rejected"
+    "rejected2": "Rejected",
+    "unsolved": "Unsolved",
+    "solvedProblems": "Solved Problems",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "myLists": "My Lists",
+    "lists": "Lists",
+    "edit": "Edit"
 }

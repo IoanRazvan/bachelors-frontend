@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Keycloak from 'keycloak-js';
+import { LanguageService } from 'src/app/base/language.base';
 import { IdentityService } from 'src/app/core/services/identity.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { IdentityService } from 'src/app/core/services/identity.service';
 export class ProfileInformationComponent implements OnInit {
   userInformation!: Keycloak.KeycloakProfile;
   loading: boolean;
+  dictionary: any;
 
-  constructor(private identityService: IdentityService) {
+  constructor(private identityService: IdentityService, languageService: LanguageService) {
     this.loading = true;
+    this.dictionary = languageService.dictionary;
   }
 
   ngOnInit(): void {

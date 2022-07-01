@@ -122,5 +122,12 @@
     "runtimeDistribution": "Distribuție de Execuție",
     "contributor": "Contributor",
     "noResult": "Nici un rezultat",
-    "rejected2": "Respins"
+    "rejected2": "Respins",
+    "unsolved": "Nerezolvat",
+    "solvedProblems": "Probleme Rezolvate",
+    "firstName": "Prenume",
+    "lastName": "Nume",
+    "myLists": "Listele Mele",
+    "lists": "Liste",
+    "edit": "Modifică"
 }
