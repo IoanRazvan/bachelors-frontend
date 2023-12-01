@@ -49,7 +49,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
-        url: 'http://localhost:8081/auth',
+        url: 'http://localhost:8081',
         realm: 'PPOCode',
         clientId: 'bachelors-online-coding'
       },
@@ -57,7 +57,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
         pkceMethod: 'S256',
         flow: 'standard',
         onLoad: 'check-sso',
-        silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html'
+        silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+        enableLogging: true
       }
     });
 }
